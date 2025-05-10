@@ -1,0 +1,248 @@
+<div class="navbar">
+    <div class="navbar-top">
+        <div class="logo-container">
+            {% if company_info.logo %}
+                <div class="logo-image">
+                    <img src="{{ company_info.logo.url }}" alt="{{ company_info.company_name }} Logo">
+                </div>
+            {% else %}
+                <div class="logo-image">
+                    <img src="https://via.placeholder.com/60" alt="Placeholder Logo">
+                </div>
+            {% endif %}
+        </div>
+        <div class="company-name-container">
+            <span class="company-name">{{ company_info.company_name|default:"Bullets Transport LLC" }}</span>
+        </div>
+    </div>
+    <div class="nav-container">
+        <button class="menu-toggle">☰</button>
+        <div class="nav-links">
+            <a href="{% url 'dashboard' %}" {% if request.path == '/' %}class="active"{% endif %}>My Loads</a>
+            <a href="{% url 'saved_carriers' %}" {% if request.path == '/saved-carriers/' %}class="active"{% endif %}>Carriers</a>
+            <a href="{% url 'settings' %}" {% if request.path == '/settings/' %}class="active"{% endif %}>Settings</a>
+            <a href="{% url 'logout' %}" {% if request.path == '/logout/' %}class="active"{% endif %}>Logout</a>
+        </div>
+    </div>
+    <div class="actions">
+        <!-- Removed both Save and Saved buttons from the navbar -->
+    </div>
+</div>
+
+<style>
+    :root {
+        --primary: #FFFFFF;
+        --secondary: #B0B0B0;
+        --background: #0A0A0A;
+        --card-bg: #1C1C1C;
+        --text: #E0E0E0;
+        --border: rgba(255, 255, 255, 0.1);
+        --accent: #00f5ff;
+    }
+
+    .navbar {
+        background: var(--card-bg);
+        padding: 12px 24px;
+        border-bottom: 1px solid var(--border);
+        border-radius: 6px;
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 1; /* Ensure navbar is below nav-links on mobile */
+    }
+
+    .navbar-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .logo-container {
+        margin-bottom: 8px;
+    }
+
+    .logo-image img {
+        max-height: 60px;
+    }
+
+    .company-name-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .nav-container {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 8px;
+        position: fixed;
+        top: 12px;
+        right: 24px;
+        z-index: 1001; /* Above everything */
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.875rem;
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        margin-right: 8px;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--primary);
+    }
+
+    .nav-links a.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--primary);
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .actions a, .actions button {
+        color: var(--text);
+        text-decoration: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        font-size: 0.75rem;
+        background: none;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        margin-right: 8px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .actions a:hover, .actions button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 16px;
+        }
+
+        .navbar-top {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .company-name-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .company-name {
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .menu-toggle {
+            display: block; /* Show hamburger menu on mobile */
+            color: #FFFFFF; /* Extra white for better visibility */
+            background: rgba(255, 255, 255, 0.1); /* Slight background for contrast */
+            border: 1px solid var(--border); /* Border to define the button */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        .nav-links {
+            display: none; /* Hidden by default on mobile */
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            top: 50px; /* Below the toggle button */
+            right: 0;
+            width: 200px; /* Fixed width for the menu */
+            background: var(--card-bg);
+            padding: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Above all other content */
+        }
+
+        .nav-links.active {
+            display: flex; /* Show when active */
+        }
+
+        .nav-links a {
+            width: 100%;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .actions {
+            flex-direction: column;
+            align-items: center;
+            z-index: 1; /* Below nav-links */
+        }
+
+        .actions a, .actions button {
+            width: 100%;
+            margin-bottom: 8px;
+            margin-right: 0;
+            text-align: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', function(event) {
+            event.stopPropagation(); /* Prevent click from bubbling */
+            navLinks.classList.toggle('active');
+        });
+
+        /* Close menu when clicking outside */
+        document.addEventListener('click', function(event) {
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        /* Close menu when clicking a link */
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+    });
+</script>
