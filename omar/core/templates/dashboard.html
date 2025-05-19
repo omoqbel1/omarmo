@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carrier Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --primary-light: #E0E0E0;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --text-secondary: #B0B0B0;
+            --success: #00FF00;
+            --danger: #FF0000;
+            --warning: #FFBB00;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 0;
+            max-width: 100%;
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            z-index: 1;
+        }
+
+        .dashboard-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 1px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+            gap: 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 4px 0 0 4px;
+        }
+
+        .lookup-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            align-items: end;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        li b {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .email-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 100%;
+        }
+
+        .email-text {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-button {
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+        }
+
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .good {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .bad {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .warning {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        .highlight-zero {
+            background-color: rgba(255, 255, 0, 0.15);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--warning);
+        }
+
+        .highlight-critical {
+            background-color: rgba(255, 0, 0, 0.15);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px dashed var(--danger);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .save-carrier-form {
+            margin-top: 8px;
+        }
+
+        .save-carrier-form-inline button {
+            padding: 8px 16px;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .save-carrier-form-inline button:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .manage-users-link {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .manage-users-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab:hover, .tab.active {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 24px 0;
+        }
+
+        .data-section {
+            margin-bottom: 16px;
+        }
+
+        .data-section-title {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .status-active {
+            background: rgba(46, 204, 113, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .status-inactive {
+            background: rgba(231, 76, 60, 0.15);
+            color: var(--danger);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .status-pending {
+            background: rgba(243, 156, 18, 0.15);
+            color: var(--warning);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .stat-card {
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .top-navbar {
+            background: rgba(20, 22, 40, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .company-logo {
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .monitored-carrier-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .monitored-carrier-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .carrier-name {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .carrier-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 16px;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .lookup-form {
+                grid-template-columns: 1fr;
+            }
+
+            li {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            li b {
+                color: var(--primary-light);
+                margin-bottom: 4px;
+            }
+
+            .email-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .email-text {
+                max-width: none;
+                white-space: normal;
+                word-break: break-word;
+            }
+
+            .copy-button {
+                margin-top: 8px;
+            }
+
+            .tabs {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info result=result %}
+
+    <div class="dashboard-container">
+        <div class="page-header">
+            <h1 class="page-title">Carrier Dashboard</h1>
+
+            {% if request.user.userprofile.is_superuser_profile %}
+            <div class="tabs">
+                <a href="{% url 'manage_users' %}" class="tab">Manage Users</a>
+                <a href="#" class="tab active">Carrier Lookup</a>
+                <a href="#" class="tab">Saved Carriers</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="container">
+            <div class="sidebar">
+                <div class="card fade-in">
+                    <h2>Carrier Lookup</h2>
+                    <form method="post" class="lookup-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="mc">MC Number:</label>
+                            <input type="text" name="mc" id="mc" value="{{ request.POST.mc|default_if_none:'' }}" placeholder="Enter MC number...">
+                        </div>
+                        <div class="form-group">
+                            <label for="dot">DOT Number:</label>
+                            <input type="text" name="dot" id="dot" value="{{ request.POST.dot|default_if_none:'' }}" placeholder="Enter DOT number...">
+                        </div>
+                        <button type="submit" name="lookup">Lookup Carrier</button>
+                    </form>
+                </div>
+
+                {% if request.user.userprofile.is_superuser_profile and monitored_carriers %}
+                <div class="card fade-in">
+                    <h2>Monitored Carriers</h2>
+                    {% for carrier in monitored_carriers %}
+                        <div class="monitored-carrier-item">
+                            <div class="carrier-name">{{ carrier.legal_name }}</div>
+                            <div class="carrier-meta">
+                                DOT: {{ carrier.dot_number }} | Added by: {{ carrier.created_by.username }}
+                                <div>{{ carrier.saved_at }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            {% if result %}
+            <div class="main-content">
+                <div class="card fade-in">
+                    <h2>Carrier Information
+                        <form method="post" action="{% url 'save_carrier' %}" class="save-carrier-form-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="mc" value="{{ result.MC_Number }}">
+                            <input type="hidden" name="dot" value="{{ result.USDOT_Number }}">
+                            <input type="hidden" name="legal_name" value="{{ result.Legal_Name }}">
+                            <input type="hidden" name="phone" value="{{ result.Phone }}">
+                            <input type="hidden" name="email" value="{{ result.Email }}">
+                            <input type="hidden" name="ein_number" value="{{ result.Tax_EIN }}">
+                            <input type="hidden" name="company_officer" value="{{ result.Company_Officer }}">
+                            <input type="hidden" name="address" value="{{ result.Physical_Address }}">
+                            <button type="submit">💾 Save Carrier</button>
+                        </form>
+                    </h2>
+
+                    <div class="data-section">
+                        <div class="data-section-title">Company Details</div>
+                        <ul>
+                            <li><b>Legal Name:</b> {{ result.Legal_Name|default:"N/A" }}</li>
+                            <li><b>DBA Name:</b> {{ result.DBA_Name|default:"N/A" }}</li>
+                            <li><b>Physical Address:</b> {{ result.Physical_Address|default:"N/A" }}</li>
+                            <li><b>Phone:</b> {{ result.Phone|default:"N/A" }}</li>
+                            <li>
+                                <b>Email:</b>
+                                <div class="email-container">
+                                    <span class="email-text">{{ result.Email|default:"N/A" }}</span>
+                                    {% if result.Email %}
+                                    <button class="copy-button" onclick="copyEmail('{{ result.Email }}')" title="Copy Email">
+                                        📋
+                                    </button>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li><b>Tax EIN:</b> {{ result.Tax_EIN|default:"N/A" }}</li>
+                            <li><b>Company Officer:</b> {{ result.Company_Officer|default:"N/A" }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <h2>Operational Status</h2>
+
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">USDOT Number</div>
+                            <div class="stat-value">{{ result.USDOT_Number|default:"N/A" }}</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">MC Number</div>
+                            <div class="stat-value">{{ result.MC_Number|default:"N/A" }}</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">Authority Status</div>
+                            <div class="stat-value">
+                                {% if result.Authority_Status == "ACTIVE" %}
+                                <span class="status-badge status-active">Active</span>
+                                {% elif result.Out_of_Service == "YES" %}
+                                <span class="status-badge status-inactive highlight-critical">OUT OF SERVICE</span>
+                                {% elif result.Authority_Status == "INACTIVE" %}
+                                <span class="status-badge status-inactive">Inactive</span>
+                                {% elif result.Authority_Status %}
+                                <span class="status-badge status-pending">Pending</span>
+                                {% endif %}
+                                {{ result.Authority_Status|default:"N/A" }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <ul>
+                        <li><b>Allow to Operate:</b> {{ result.Allow_to_Operate|default:"N/A" }}</li>
+                        <li><b>Out of Service:</b> {{ result.Out_of_Service|default:"N/A" }}</li>
+                        <li><b>Out of Service Date:</b> {{ result.Out_of_Service_Date|default:"N/A" }}</li>
+                        <li><b>Status Code:</b> {{ result.Status_Code|default:"N/A" }}</li>
+                        <li><b>Broker Authority:</b> {{ result.Broker_Authority_Status|default:"N/A" }}</li>
+                        <li><b>Common Authority:</b> {{ result.Common_Authority_Status|default:"N/A" }}</li>
+                        <li><b>Contract Authority:</b> {{ result.Contract_Authority_Status|default:"N/A" }}</li>
+                    </ul>
+                </div>
+
+                <div class="card fade-in">
+                    <h2>Crashes & Inspections</h2>
+
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">Total Crashes</div>
+                            <div class="stat-value" id="totalCrashes">{{ result.Crash_Total|default:"0" }}</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">Fatal Crashes</div>
+                            <div class="stat-value" id="fatalCrashes">
+                                {% if result.Fatal_Crash and result.Fatal_Crash != "0" %}
+                                <span class="highlight-critical">{{ result.Fatal_Crash }}</span>
+                                {% else %}
+                                {{ result.Fatal_Crash|default:"0" }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">Insurance</div>
+                            <div class="stat-value" id="insuranceStatus">
+                                {% if result.Insurance_BIPD_On_File == "NO" %}
+                                <span class="highlight-critical">NO INSURANCE</span>
+                                {% else %}
+                                {{ result.Insurance_BIPD_On_File|default:"Unknown" }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">Driver OOS Rate</div>
+                            <div class="stat-value" id="driverRate">{{ result.Driver_OOS_Rate|default:"N/A" }}</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">Vehicle OOS Rate</div>
+                            <div class="stat-value" id="vehicleRate">{{ result.Vehicle_OOS_Rate|default:"N/A" }}</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">Total Inspections</div>
+                            <div class="stat-value" id="totalInspections">
+                                {% if result.Driver_Inspections == "0" and result.Vehicle_Inspections == "0" %}
+                                <span class="highlight-zero">0</span>
+                                {% else %}
+                                {{ result.Driver_Inspections|default:"0"|add:result.Vehicle_Inspections|default:"0" }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="data-section">
+                        <div class="data-section-title">Crash Details</div>
+                        <ul>
+                            <li><b>Fatal Crash:</b> {{ result.Fatal_Crash|default:"0" }}</li>
+                            <li><b>Injury Crash:</b> {{ result.Injury_Crash|default:"0" }}</li>
+                            <li><b>Towaway Crash:</b> {{ result.Towaway_Crash|default:"0" }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-section">
+                        <div class="data-section-title">Inspection Details</div>
+                        <ul>
+                            <li><b>Driver Inspections:</b> {{ result.Driver_Inspections|default:"0" }}</li>
+                            <li><b>Driver OOS Inspections:</b> {{ result.Driver_OOS_Inspections|default:"0" }}</li>
+                            <li><b>Vehicle Inspections:</b> {{ result.Vehicle_Inspections|default:"0" }}</li>
+                            <li><b>Vehicle OOS Inspections:</b> {{ result.Vehicle_OOS_Inspections|default:"0" }}</li>
+                            <li><b>Hazmat Inspections:</b> {{ result.Hazmat_Inspections|default:"0" }}</li>
+                            <li><b>Complaint Count:</b> {{ result.Complaint_Count|default:"0" }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <h2>Insurance</h2>
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">BIPD Required Amount</div>
+                            <div class="stat-value">{{ result.Insurance_BIPD_Required_Amount|default:"N/A" }}</div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <ul>
+                        <li><b>BIPD On File:</b> {{ result.Insurance_BIPD_On_File|default:"N/A" }}</li>
+                        <li><b>BIPD Required:</b> {{ result.Insurance_BIPD_Required|default:"N/A" }}</li>
+                        <li><b>Cargo On File:</b> {{ result.Insurance_Cargo_On_File|default:"N/A" }}</li>
+                        <li><b>Cargo Required:</b> {{ result.Insurance_Cargo_Required|default:"N/A" }}</li>
+                    </ul>
+                </div>
+
+                <div class="card fade-in">
+                    <h2>Safety & Fleet Information</h2>
+
+                    <div class="card-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">Total Drivers</div>
+                            <div class="stat-value">{{ result.Total_Drivers|default:"N/A" }}</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-title">Broker Authority</div>
+                            <div class="stat-value">
+                                {% if result.Broker_Authority_Status == "ACTIVE" %}
+                                <span class="good">ACTIVE</span>
+                                {% else %}
+                                {{ result.Broker_Authority_Status|default:"N/A" }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <ul>
+                        <li><b>Review Date:</b> {{ result.Review_Date|default:"N/A" }}</li>
+                        <li><b>Review Type:</b> {{ result.Review_Type|default:"N/A" }}</li>
+                        <li><b>Safety Rating Date:</b> {{ result.Safety_Rating_Date|default:"N/A" }}</li>
+                        <li><b>Safety Review Date:</b> {{ result.Safety_Review_Date|default:"N/A" }}</li>
+                        <li><b>Safety Review Type:</b> {{ result.Safety_Review_Type|default:"N/A" }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function paint(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const text = el.textContent;
+            if (text === "N/A") return;
+            const val = parseFloat(text.replace('%', ''));
+            if (!isNaN(val)) {
+                // Changed threshold to 50% per requirement
+                if (val > 50) {
+                    el.classList.add('bad');
+                    el.classList.add('highlight-critical');
+                } else {
+                    el.classList.add('good');
+                    // Add green highlight for good rates
+                    el.innerHTML = `<span style="background-color: rgba(0, 255, 0, 0.15); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--success);">${text}</span>`;
+                }
+            }
+        }
+
+        // Highlight crash count if above zero
+        function highlightCrashes() {
+            const el = document.getElementById('totalCrashes');
+            if (!el) return;
+            const text = el.textContent;
+            if (text === "N/A" || text === "0") return;
+
+            const val = parseInt(text);
+            if (!isNaN(val) && val > 0) {
+                el.classList.add('warning');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            paint('driverRate');
+            paint('vehicleRate');
+            highlightCrashes();
+        });
+
+        function copyEmail(email) {
+            if (email && email !== "N/A") {
+                navigator.clipboard.writeText(email).then(() => {
+                    alert("Email copied to clipboard!");
+                }).catch(err => {
+                    console.error("Failed to copy email:", err);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

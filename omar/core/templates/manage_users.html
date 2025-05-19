@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --success: #00FF00;
+            --danger: #FF0000;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .manage-users-link {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .manage-users-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .delete-button {
+            padding: 6px 12px;
+            background: var(--danger);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .delete-button:hover {
+            background: #cc0000;
+            transform: translateY(-1px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+                padding-top: 80px;
+            }
+
+            th, td {
+                font-size: 0.75rem;
+                padding: 8px;
+            }
+
+            .delete-button {
+                padding: 4px 8px;
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <h1>Manage Users for {{ company.name }}</h1>
+
+    <div class="card">
+        <h2>Company Users
+            <a href="{% url 'signup' %}" class="manage-users-link">Add User</a>
+        </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user_profile in users %}
+                <tr>
+                    <td>{{ user_profile.user.username }}</td>
+                    <td>{{ user_profile.user.email }}</td>
+                    <td>
+                        {% if user_profile.is_superuser_profile %}
+                            Company Superuser
+                        {% else %}
+                            Sub-user
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user_profile.user != current_user and user_profile.is_superuser_profile %}
+                            <span style="color: var(--text); font-style: italic;">Cannot delete own account</span>
+                        {% elif user_profile.user != current_user %}
+                            <form method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="user_id" value="{{ user_profile.user.id }}">
+                                <button type="submit" name="delete_user" class="delete-button" onclick="return confirm('Are you sure you want to delete {{ user_profile.user.username }}?');">Delete</button>
+                            </form>
+                        {% else %}
+                            <span style="color: var(--text); font-style: italic;">Cannot delete own account</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No users found for this company.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

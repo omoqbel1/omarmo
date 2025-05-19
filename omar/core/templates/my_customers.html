@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Customers - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .table-container {
+            background: #FFFFFF; /* White background for the box */
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #CCCCCC;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #CCCCCC;
+            font-size: 0.875rem;
+            color: #000000; /* Black text for readability on white */
+        }
+
+        th {
+            background: #F5F5F5; /* Light gray header background */
+            color: #000000; /* Black text for header */
+            font-weight: 600;
+        }
+
+        tr.clickable:hover {
+            background: #F0F0F0; /* Light hover effect */
+            cursor: pointer;
+        }
+
+        .add-customer-btn {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            float: right;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-customer-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        tr:nth-child(odd) {
+            background: #F9F9F9; /* Very light gray for odd rows */
+        }
+
+        @media (max-width: 768px) {
+            .add-customer-btn {
+                float: none;
+                width: 100%;
+                margin-bottom: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            th, td {
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <h1>My Customers</h1>
+
+    <div class="table-container">
+        <a href="{% url 'add_customer' %}" class="add-customer-btn">+ Add Customer</a>
+        <table>
+            <thead>
+                <tr>
+                    <th></th> <!-- Checkbox column -->
+                    <th>Customer #</th>
+                    <th>Customer Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                    <tr class="clickable" onclick="window.location.href='{% url 'edit_customer' customer_id=customer.customer_id %}'">
+                        <td><input type="checkbox"></td>
+                        <td>{{ customer.customer_id }}</td>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.address }}</td>
+                        <td>{{ customer.city }}</td>
+                        <td>{{ customer.state }}</td>
+                        <td>{{ customer.zip }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.email }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9">No customers available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

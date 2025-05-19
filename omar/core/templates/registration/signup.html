@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Omar Lookup</title>
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --success: #00FF00;
+            --danger: #FF0000;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 16px;
+        }
+
+        .signup-box {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            margin-bottom: 16px;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .errorlist {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+            text-align: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.875rem;
+        }
+
+        .signup-link a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .signup-box {
+                padding: 24px;
+                max-width: 100%;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <h2>Sign Up for Omar Lookup</h2>
+        {% if form.errors %}
+            <ul class="errorlist">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+            <label for="id_password1">Password:</label>
+            {{ form.password1 }}
+            <label for="id_password2">Confirm Password:</label>
+            {{ form.password2 }}
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="signup-link">
+            Already have an account? <a href="{% url 'login' %}">Log in</a>
+        </div>
+    </div>
+</body>
+</html>

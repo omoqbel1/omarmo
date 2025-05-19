@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Onboarded Carriers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --primary-hover: #F0F0F0;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --card-header: #252525;
+            --text: #E0E0E0;
+            --text-muted: #A0A0A0;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --danger: #FF4757;
+            --danger-hover: #FF6B81;
+            --success: #2ED573;
+            --status-active: #2ED573;
+            --status-active-bg: rgba(46, 213, 115, 0.1);
+            --status-inactive: #808080;
+            --status-inactive-bg: rgba(128, 128, 128, 0.1);
+            --status-dontuse: #FF4757;
+            --status-dontuse-bg: rgba(255, 71, 87, 0.1);
+            --primary-gradient: linear-gradient(135deg, #5553EE 0%, #7571F9 100%);
+            --accent: #5553EE;
+            --accent-hover: #7571F9;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #101010 100%);
+            color: var(--text);
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 32px;
+            padding-top: 100px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+        }
+
+        .add-new-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 18px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-new-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(85, 83, 238, 0.4);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .card-header {
+            background: var(--card-header);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .search-bar {
+            margin-bottom: 24px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            color: var(--text-muted);
+        }
+
+        .search-bar input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 12px 12px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(85, 83, 238, 0.15);
+        }
+
+        .search-bar button {
+            padding: 12px 18px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-bar button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(85, 83, 238, 0.4);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--card-header);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        td {
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        th a {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+
+        th a:hover {
+            color: var(--accent);
+        }
+
+        .sort-arrow {
+            margin-left: 5px;
+            font-size: 0.75rem;
+        }
+
+        tr.clickable {
+            transition: all 0.2s ease;
+        }
+
+        tr.clickable:hover {
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-cell, .phone-cell {
+            max-width: 200px;
+            overflow-wrap: break-word;
+            white-space: normal;
+            color: var(--text-muted);
+        }
+
+        .mc-dot-cell {
+            font-family: 'Inter', monospace;
+            font-weight: 500;
+        }
+
+        /* Updated status cell style to match the screenshot */
+        .status-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Modified status indicator to match screenshot */
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-circle {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-circle.active {
+            background-color: #00FF00;
+        }
+
+        .status-circle.inactive {
+            background-color: var(--status-inactive);
+        }
+
+        .status-circle.dont-use {
+            background-color: var(--status-dontuse);
+        }
+
+        .status-text {
+            color: var(--text);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-danger {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .legal-name-cell {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .message.success {
+            background: rgba(46, 213, 115, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(46, 213, 115, 0.2);
+        }
+
+        .message.error {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        .empty-state {
+            padding: 80px 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 24px;
+                padding-top: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+                padding-top: 80px;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .search-bar input {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .search-bar button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            table {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: block;
+            }
+
+            tr {
+                display: block;
+                margin-bottom: 16px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                overflow: hidden;
+                background-color: var(--card-header);
+            }
+
+            td {
+                display: flex;
+                padding: 12px 16px;
+                border-bottom: 1px solid var(--border);
+                position: relative;
+            }
+
+            td:last-child {
+                border-bottom: none;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: var(--text-muted);
+                width: 110px;
+                flex-shrink: 0;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+            }
+
+            td.action-buttons {
+                padding-top: 16px;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            td.action-buttons::before {
+                display: none;
+            }
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .status-cell, .email-cell, .phone-cell, .mc-dot-cell, .legal-name-cell {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Onboarded Carriers</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <!-- Messages Block -->
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                                <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search by MC, DOT, or Legal Name..." value="{{ search_query|default_if_none:'' }}">
+                    <button type="button" onclick="performSearch()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+
+                {% if onboarded_carriers %}
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="120">Status</th>
+                                <th>
+                                    <a href="?sort=legal_name{% if sort == 'legal_name' and order == 'asc' %}&order=desc{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                        Legal Name
+                                        {% if sort == 'legal_name' %}
+                                            <span class="sort-arrow">
+                                                {% if order|default:"asc" == "asc" %}
+                                                    <i class="fas fa-chevron-up"></i>
+                                                {% else %}
+                                                    <i class="fas fa-chevron-down"></i>
+                                                {% endif %}
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                </th>
+                                <th>MC Number</th>
+                                <th>DOT Number</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th width="120">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for carrier in onboarded_carriers %}
+                            <tr class="clickable" onclick="window.location.href='{% url 'carrier_info' carrier.id %}'">
+                                <td data-label="Status" class="status-cell">
+                                    <!-- Modified status indicator to match the screenshot -->
+                                    <div class="status-indicator">
+                                        <span class="status-circle {% if carrier.status == 'Active' %}active{% elif carrier.status == 'Inactive' %}inactive{% else %}dont-use{% endif %}"></span>
+                                        <span class="status-text">{{ carrier.status }}</span>
+                                    </div>
+                                </td>
+                                <td data-label="Legal Name" class="legal-name-cell">{{ carrier.legal_name }}</td>
+                                <td data-label="MC Number" class="mc-dot-cell">MC-{{ carrier.mc_number }}</td>
+                                <td data-label="DOT Number" class="mc-dot-cell">{{ carrier.dot_number }}</td>
+                                <td data-label="Email" class="email-cell">{{ carrier.email }}</td>
+                                <td data-label="Phone" class="phone-cell">{{ carrier.phone }}</td>
+                                <td class="action-buttons" data-label="Actions" onclick="event.stopPropagation();">
+                                    <a href="{% url 'carrier_info' carrier.id %}" class="btn btn-outline">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a href="{% url 'delete_carrier' carrier.id %}?next=onboarded_carriers" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this carrier?')">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <i class="fas fa-truck"></i>
+                    <h3>No carriers found</h3>
+                    <p>{% if search_query %}No carriers match your search criteria. Try a different search or {% else %}You haven't added any carriers yet. Click the "Add Carrier" button to get started.{% endif %}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value;
+            let url = window.location.pathname;
+
+            if (searchQuery) {
+                url += `?search=${encodeURIComponent(searchQuery)}`;
+                // Preserve any existing sort and order parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('sort')) {
+                    url += `&sort=${urlParams.get('sort')}`;
+                }
+                if (urlParams.has('order')) {
+                    url += `&order=${urlParams.get('order')}`;
+                }
+            }
+            window.location.href = url;
+        }
+
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>

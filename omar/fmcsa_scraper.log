@@ -1,0 +1,1133 @@
+2025-05-18 18:44:43,548 - INFO - Logging setup completed successfully
+2025-05-18 18:44:43,548 - INFO - Logging setup completed successfully
+2025-05-18 18:44:43,548 - INFO - Script started
+2025-05-18 18:44:43,548 - INFO - Script started
+2025-05-18 18:44:43,548 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:44:43,548 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:44:43,548 - INFO - Parsing command-line arguments
+2025-05-18 18:44:43,548 - INFO - Parsing command-line arguments
+2025-05-18 18:44:43,549 - INFO - MC number provided: 1241143
+2025-05-18 18:44:43,549 - INFO - MC number provided: 1241143
+2025-05-18 18:44:43,549 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 18:44:43,549 - INFO - Starting scrape for MC number: 1241143
+ess mode
+2025-05-18 18:44:43,549 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 18:44:45,540 - INFO - WebDriver initialized successfully
+2025-05-18 18:44:45,542 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:44:45,542 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:44:46,558 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 18:44:46,662 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 18:44:48,607 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 18:44:48,607 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:44:48,621 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:44:48,624 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:44:48,705 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 18:44:48,705 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:44:48,716 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:44:48,720 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:44:48,936 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657517354'}
+2025-05-18 18:44:48,936 - INFO - 2Captcha request ID: 79657517354
+2025-05-18 18:44:49,080 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657517363'}
+2025-05-18 18:44:49,080 - INFO - 2Captcha request ID: 79657517363
+2025-05-18 18:44:49,298 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:44:49,299 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:44:49,322 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:44:49,322 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:44:54,517 - DEBUG - 2Captcha polling response after 5.22 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:44:54,517 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:44:54,540 - DEBUG - 2Captcha polling response after 5.39 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:44:54,540 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:44:59,781 - DEBUG - 2Captcha polling response after 10.60 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:44:59,781 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:05,015 - DEBUG - 2Captcha polling response after 15.85 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:05,015 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:10,241 - DEBUG - 2Captcha polling response after 21.08 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:10,241 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:15,628 - DEBUG - 2Captcha polling response after 26.31 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:15,628 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:20,996 - DEBUG - 2Captcha polling response after 31.69 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:20,996 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:26,223 - DEBUG - 2Captcha polling response after 37.06 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:26,224 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:31,614 - DEBUG - 2Captcha polling response after 42.29 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:31,614 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:37,078 - DEBUG - 2Captcha polling response after 47.68 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:37,078 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:42,450 - DEBUG - 2Captcha polling response after 53.14 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:42,450 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:47,732 - DEBUG - 2Captcha polling response after 58.51 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:47,732 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:53,100 - DEBUG - 2Captcha polling response after 63.80 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:53,100 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:45:58,539 - DEBUG - 2Captcha polling response after 69.16 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:45:58,539 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:46:03,781 - DEBUG - 2Captcha polling response after 74.60 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:46:03,781 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:46:09,159 - DEBUG - 2Captcha polling response after 79.84 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:46:09,159 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:46:14,533 - DEBUG - 2Captcha polling response after 85.22 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:46:14,533 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:46:19,766 - DEBUG - 2Captcha polling response after 90.60 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:46:19,766 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:46:25,002 - DEBUG - 2Captcha polling response after 95.83 seconds: {'status': 1, 'request': '03AFcWeA6LMTyJPIz9iYUkuAV6bzj4hV6ikUouridC46sPgrCgFNbaLZwSeUaWfITtW6adkPUuwZYkPS1als-000Cco2WJG0QvDgp6hjJP8TMkhmlGEOYyFeaNw1pNWIaFsvLbUueWqm69IbhH9JWiDon5dCDklJqp8qz5kP1MaBHTUugnLwVkrXfmHkWRrdv197V8U9AzwnkpOAUKwoiS_Yif_lD0BRA3GOHuNL4PuRHQCeeryVbtqlcXGI63KwJPlvAvnSTb7l49HZaYBerKN5zt7_-Dlo-6linVLE5yXSsNzpNaMugVDiJacS8iQCo24X-azNkuRX6pesjXAikfg8dtTjg4OJ6fFj6UAEfJmbkB2HHi8PG3UmnIxt-MXghi0ev2rBRwTWGhRFQ4ny3SOSV6oIsej2HvE4iSGILHa_MnRuRrD99xd7EroX0M-lqxwHC0pJotHOuRncx5ZPIICxcdcjHL4Y0YxmajHOtjWNEXaz3LtA95FgiWke_nDxfKykEgc5ArZIDjVHW6-qgsg-bcWps_twPr5YdNMC8Q35Scm7fzoirpueO3kbiEOHMEQJQPM2ZXGQIpadtVSjn-TFsu1iCzAK15ANsskdfF8mSO---jDlXpftO4Zf9HnYOk8fbSEAkIv1S-SlMoMVkh-kQthdmQD8nmfuVVoQaAvzvp8MmJjVUNfqEohFWeG9HVDkO83FWYOZd0CSc24T_smjupVHaeDzqh-sNAGn8CIrFS17Li8GO8RTXK2Mn_ipBvlI7oQPY1koY63y22jnEfBDR0exjuIvAMHjUacUWJcc_uxnXnML_EGM_yA3l2Tdi7XIkzk4rzpTGhzObVR8Ldwb_B5-Njj0KErn52xhkES9WuDqAkOZWRlngxUMyDs3AyB8W4T7pOtnA8RduzntKkUGy8DJhq7umlTeqixGbk6kXS9be-oLAD9fPav-5XpYr7BXUkkymsyn4tXpjMYkTVelG5ZONqR4YPCKVwWkxtMywbKJvuXld--wtdzXQHoqnwdt-GrBRfZiadFQypCcWPrI3sh9lE8buSZS10o8rcV-KrAoABmh05x2E'}
+2025-05-18 18:46:25,002 - INFO - reCAPTCHA solved successfully by 2Captcha in 95.83 seconds
+2025-05-18 18:46:25,017 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 18:46:27,032 - INFO - Step 4: Clicking Search button
+2025-05-18 18:46:27,085 - INFO - Step 5: Clicking HTML button
+2025-05-18 18:46:29,227 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 18:46:31,364 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 18:46:36,370 - INFO - Step 8: Parsing insurance page
+2025-05-18 18:46:36,383 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 18:46:36,383 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'UNITED FINANCIAL CASUALTY COMPANY', 'CA983221350', '01/17/2025', '$0', '$750,000', '01/17/2025', '07/16/2025']
+2025-05-18 18:46:36,383 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:46:36,383 - INFO - Successfully processed insurance details
+2025-05-18 18:47:51,800 - INFO - Logging setup completed successfully
+2025-05-18 18:47:51,800 - INFO - Logging setup completed successfully
+2025-05-18 18:47:51,801 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:47:51,801 - INFO - Parsing command-line arguments
+2025-05-18 18:47:51,801 - INFO - Script started
+2025-05-18 18:47:51,801 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:47:51,801 - INFO - Parsing command-line arguments
+2025-05-18 18:47:51,801 - INFO - MC number provided: 1241143
+2025-05-18 18:47:51,801 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 18:47:51,801 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 18:47:51,801 - INFO - MC number provided: 1241143
+2025-05-18 18:47:51,801 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 18:47:51,801 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 18:47:53,786 - INFO - WebDriver initialized successfully
+2025-05-18 18:47:53,786 - INFO - WebDriver initialized successfully
+2025-05-18 18:47:53,788 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:47:54,739 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 18:47:56,792 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 18:47:56,792 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:47:56,792 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:47:56,804 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:47:56,804 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:47:56,807 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:47:56,807 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:47:57,206 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657528795'}
+2025-05-18 18:47:57,206 - INFO - 2Captcha request ID: 79657528795
+2025-05-18 18:47:57,215 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657528797'}
+2025-05-18 18:47:57,215 - INFO - 2Captcha request ID: 79657528797
+2025-05-18 18:47:57,572 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:47:57,572 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:47:57,575 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:47:57,575 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:02,801 - DEBUG - 2Captcha polling response after 5.36 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:48:02,801 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:02,830 - DEBUG - 2Captcha polling response after 5.37 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:48:02,830 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:08,056 - DEBUG - 2Captcha polling response after 10.62 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:48:08,056 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:13,272 - DEBUG - 2Captcha polling response after 15.85 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:48:13,273 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:18,505 - DEBUG - 2Captcha polling response after 21.07 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:48:18,505 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:23,745 - DEBUG - 2Captcha polling response after 26.30 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:48:23,745 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:48:28,968 - DEBUG - 2Captcha polling response after 31.54 seconds: {'status': 1, 'request': '03AFcWeA6apTFEftXfbTP7WIMhIlIgwXlThPtalBxFVHSbyPd_1BXU6wZRxE_yKNHpTqbLKdF1jTQQHKIS9RVf8DD5gguck4rGN5gTterpkOofFV-n4VSYHYfogVAg1Qfm0JMukXhw9kKAEQo5UJE8H1mTANWdTcQ0cA7SPCONk5py3w7RsKgkvy0K3b59tx4g9dju1oZR80crfFA6MGMkbKGOTQuyvD5YPLkByvRkmIGJCIbV2KH8Zrjq3IQIyF93Lwkgl11qYB013D2HQH68HtmgI98S553jMApl5XfNE2BFuKI3TghwWrY-30qUQZWuN_sgWyqmfpq8i5uScrT9nVM4Hs7gEzFYJWyG4x9uJtwVG4hJZOPBPm_8-xcEoQA9mYjHHrWB625CGwPI1zd6wTA9cHQQIOEOcoLOqR0lVfeKVe17mfqAzCxSUeLOanw4y41vNJud7BJkrskjMXqqEzpUixZoS9i0OKetSKQezrv8_QNZ1XcouEifpvI6DoQv9j6Wj3Sa3x_0bcCwSKexT6bJGixdTMqBVXbL6DJvOS1VoRDXBjHrZwBuafKl66IvVVi9Zl_UeSOw8HxUMoXjJE21OyXA5H8w0TL2J5zfVnnWJ3L_ZHavmN-Ub9lXVwV0BLAHc8D5lD8ZM2kXxrHAj8agSc-E7irsn2Kx0vjDYgq49WNhQuFLIdMc--Gb2T3yp2nMggl9Wj4ugrEj7-lFOs31fXdAPuAoqoldk33pVrV1RtwyK2xGaPsIJcYj_myrxG99Pj75hd-_tWAXLQb7oRlydGsj0UGw82bCA9EPZkOAgzo-iIEd0TiBtF9P8PmOaMSnwBddcRcZbpyFWBdJkfaok_KhIvgSdqFXu80QDvok5c76V09KVZ8JxGX2_TRQWyUnzokBLCx2j7XSjcU37ypxgA4pwB1X46fybZ_XDKiDbkxcIgWg1m74VagJZ5haqbEzEKdU_xP2suoLeWjPdAcN-NYI5gG6TA'}
+2025-05-18 18:48:28,968 - INFO - reCAPTCHA solved successfully by 2Captcha in 31.54 seconds
+2025-05-18 18:48:28,981 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 18:48:30,994 - INFO - Step 4: Clicking Search button
+2025-05-18 18:48:31,050 - INFO - Step 5: Clicking HTML button
+2025-05-18 18:48:33,171 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 18:48:35,313 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 18:48:40,319 - INFO - Step 8: Parsing insurance page
+2025-05-18 18:48:40,329 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 18:48:40,329 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'UNITED FINANCIAL CASUALTY COMPANY', 'CA983221350', '01/17/2025', '$0', '$750,000', '01/17/2025', '07/16/2025']
+2025-05-18 18:48:40,329 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:48:40,329 - INFO - Successfully processed insurance details
+2025-05-18 18:50:03,590 - INFO - Logging setup completed successfully
+2025-05-18 18:50:03,590 - INFO - Script started
+2025-05-18 18:50:03,590 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:50:03,590 - INFO - Script started
+2025-05-18 18:50:03,590 - INFO - Parsing command-line arguments
+2025-05-18 18:50:03,590 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:50:03,590 - INFO - Parsing command-line arguments
+2025-05-18 18:50:03,590 - INFO - MC number provided: 1241143
+2025-05-18 18:50:03,590 - INFO - MC number provided: 1241143
+2025-05-18 18:50:03,590 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 18:50:03,590 - INFO - Starting scrape for MC number: 1241143
+ess mode
+2025-05-18 18:50:03,590 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 18:50:05,446 - INFO - WebDriver initialized successfully
+2025-05-18 18:50:05,448 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:50:05,461 - INFO - WebDriver initialized successfully
+2025-05-18 18:50:05,463 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:50:06,379 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 18:50:06,440 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 18:50:08,450 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 18:50:08,450 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:50:08,461 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:50:08,464 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:50:08,483 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 18:50:08,484 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:50:08,502 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:50:08,505 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:50:08,814 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657536496'}
+2025-05-18 18:50:08,814 - INFO - 2Captcha request ID: 79657536496
+2025-05-18 18:50:08,953 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657536503'}
+2025-05-18 18:50:08,953 - INFO - 2Captcha request ID: 79657536503
+2025-05-18 18:50:09,029 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:09,030 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:09,299 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:09,299 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:14,275 - DEBUG - 2Captcha polling response after 5.22 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:14,275 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:14,505 - DEBUG - 2Captcha polling response after 5.35 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:14,505 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:19,495 - DEBUG - 2Captcha polling response after 10.46 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:19,495 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:24,855 - DEBUG - 2Captcha polling response after 15.68 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:24,855 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:30,087 - DEBUG - 2Captcha polling response after 21.04 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:30,087 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:35,324 - DEBUG - 2Captcha polling response after 26.27 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:35,324 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:40,554 - DEBUG - 2Captcha polling response after 31.51 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:40,554 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:45,773 - DEBUG - 2Captcha polling response after 36.74 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:45,774 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:51,006 - DEBUG - 2Captcha polling response after 41.96 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:50:51,007 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:50:56,247 - DEBUG - 2Captcha polling response after 47.19 seconds: {'status': 1, 'request': '03AFcWeA40soRegnWrxPBOBCEXafkLCFn9ZQthH8PY7TSCwzIvA906D041KYPEQEo-o2lFdXD6NrAybG7y1x1w-Nxam0ccclfhOSc_DBR-aMQ38ZeE4BjoldF4KcbsoH5sbKFELdfLDl9qwDx_ESZB1nr-RAiAqSFaBdgO-7aPcAD_4FZPS3zV1RDfjdkd1OZ0zaXlL0Kd25NV5vGpaIjl1VMMDRSW8HO45vUXPpUp--EQqfjlnpAV_DuvvibbkfDJ3diQDsKBfQwhnfhouiFGvzMavq18fD9eweZOxpashh_PDJ0SIleYjqh7rOq2Yu_Cr1ZxNPRNKC54Y5fxKtcdYOjzgR1J3X0SY4ph90yiES6hFkr_Zmk4FsNzDcmpkASz8AruFPFpxwkHbNCPAJ5gejaHQuYB4dWasO87uI6Lfn2KG5hVsZrcSmmYBGEGgoaObXMnjqkac-dpJzgKjkeo5d8E0YY3koNsPdNNu-BptEj4MH8UFT9cagXDbx4DzyTbl_3y1Cv8cYvQ3Ec5bPpJwszvuRvnT8Svt7nh76EDjDa3B17uKdMOAnT-Cj_zDIxN4X16lchQNLX7zXSRYcY7r0EpbTGyF-nPcfM54x89VcS0x6J_T6TVQGmLacpJtVho9q3NHJPGWFI6EZc2-nSWsM1R88EQ-RDaorzXHR7Yo2RFaDVldviDO1qjd_Hacvxwv29neZkg27cYOtJlKNhB_exb6zc3z2CEXkOZ4yFOzKGse-AfbuJr2KkMB0yIPwnz0laHG0yXa2cI07Ek_nkEJDF_TWZryzyhHmVyauTwsgAuAVmclbqM0HZJVE58b8jwLh20O_56KAM3Gd7tmaSARZrUEHo6_W638D4W69U0Vpy-bv8ePoZvGp7movjWbbqE60OtE-W852LhaOB25ZJHZK1lm3p_Gn9Ih07Toi2Jr8am-ByIvihwRO24SEexbPMPWCROCakgSrn8tWwb8UbtkWcFWBfNY0Qg_xibDdRoILDY1Vk8fhFsNrB9kzufS_f3NPv_aPxY53tXkhax7bXMSNmRkZlEFRTSmRvu3b14C1srmmJa8d4TtfDAgPvhvJnxG5LOthhpGEax'}
+2025-05-18 18:50:56,247 - INFO - reCAPTCHA solved successfully by 2Captcha in 47.19 seconds
+2025-05-18 18:50:56,258 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 18:50:58,270 - INFO - Step 4: Clicking Search button
+2025-05-18 18:50:58,331 - INFO - Step 5: Clicking HTML button
+2025-05-18 18:51:00,456 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 18:51:02,598 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 18:51:07,605 - INFO - Step 8: Parsing insurance page
+2025-05-18 18:51:07,622 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 18:51:07,623 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'UNITED FINANCIAL CASUALTY COMPANY', 'CA983221350', '01/17/2025', '$0', '$750,000', '01/17/2025', '07/16/2025']
+2025-05-18 18:51:07,623 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:51:07,624 - INFO - Successfully processed insurance details
+2025-05-18 18:53:50,441 - INFO - Logging setup completed successfully
+2025-05-18 18:53:50,441 - INFO - Script started
+2025-05-18 18:53:50,441 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:53:50,442 - INFO - Parsing command-line arguments
+2025-05-18 18:53:50,442 - INFO - Logging setup completed successfully
+2025-05-18 18:53:50,442 - INFO - Script started
+2025-05-18 18:53:50,442 - INFO - Selenium dependencies imported successfully
+2025-05-18 18:53:50,442 - INFO - Parsing command-line arguments
+2025-05-18 18:53:50,442 - INFO - MC number provided: 1647700
+2025-05-18 18:53:50,442 - INFO - Starting scrape for MC number: 1647700
+2025-05-18 18:53:50,442 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 18:53:50,442 - INFO - MC number provided: 1647700
+2025-05-18 18:53:50,442 - INFO - Starting scrape for MC number: 1647700
+2025-05-18 18:53:50,442 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 18:53:52,356 - INFO - WebDriver initialized successfully
+2025-05-18 18:53:52,358 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:53:52,371 - INFO - WebDriver initialized successfully
+2025-05-18 18:53:52,373 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 18:53:53,290 - INFO - Step 2: Entering MC number: 1647700
+2025-05-18 18:53:53,368 - INFO - Step 2: Entering MC number: 1647700
+2025-05-18 18:53:55,342 - INFO - MC number 1647700 entered on the webpage
+2025-05-18 18:53:55,342 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:53:55,355 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:53:55,358 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:53:55,411 - INFO - MC number 1647700 entered on the webpage
+2025-05-18 18:53:55,411 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 18:53:55,422 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 18:53:55,425 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 18:53:55,654 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657550876'}
+2025-05-18 18:53:55,654 - INFO - 2Captcha request ID: 79657550876
+2025-05-18 18:53:55,793 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657550887'}
+2025-05-18 18:53:55,793 - INFO - 2Captcha request ID: 79657550887
+2025-05-18 18:53:56,010 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:53:56,010 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:53:56,018 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:53:56,018 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:01,254 - DEBUG - 2Captcha polling response after 5.22 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:01,255 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:01,255 - DEBUG - 2Captcha polling response after 5.36 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:01,256 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:06,476 - DEBUG - 2Captcha polling response after 10.46 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:06,476 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:11,701 - DEBUG - 2Captcha polling response after 15.68 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:11,701 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:16,931 - DEBUG - 2Captcha polling response after 20.91 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:16,931 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:22,379 - DEBUG - 2Captcha polling response after 26.14 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:22,379 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:27,867 - DEBUG - 2Captcha polling response after 31.59 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:27,867 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:33,231 - DEBUG - 2Captcha polling response after 37.07 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:33,231 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:38,457 - DEBUG - 2Captcha polling response after 42.44 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:38,457 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:43,832 - DEBUG - 2Captcha polling response after 47.66 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:43,832 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:49,052 - DEBUG - 2Captcha polling response after 53.04 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:49,052 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:54,297 - DEBUG - 2Captcha polling response after 58.26 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:54,297 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:54:59,523 - DEBUG - 2Captcha polling response after 63.50 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:54:59,524 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:55:04,757 - DEBUG - 2Captcha polling response after 68.73 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 18:55:04,757 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 18:55:10,004 - DEBUG - 2Captcha polling response after 73.96 seconds: {'status': 1, 'request': '03AFcWeA5HJhcMt5fQC02ggKB6Dpp1E1KdrU1pT9djG4pk-ln8PY5GKSntvGQ5vEkSsB_7mWLqTeNY4pID8YoXgt4Gk2lhGmPqNhJct6Tjzp2jOfhS_Ydx03E1j_zdO3Xz-yNyI_Ug87BfSgj1dvFBwb16MyrXys7tMLrVmyYyjTAIuvwBAjuel1MKJv1hMWKhJYl5DfUaNHtBx9JXxYGcFjw_PxndGnUK_ruF4wvX1bNnHAfnELi7uOpszG7GyWQVrQJSewXaOeJUpbaxh6h7WHD3QLG354COQRbu2V8JPaWWy9SkfGjDVw5xdeXTxke12-AUWWIgW2lgLxDGLlJC5FCHP8VMHzk7Gl7O6StlQYzIQvAQ5xDk_j0tqs6GN4WPCN0LGUaw0g5baxcF02hy4hGF5heE6cXMaxHKI2hrA8ovUQUEtctY-Dd5mJfRzJDRIAmgsYV8EaP_xaToIkm6vb8FrZj_4U66UUga_ytR4yC0zd0MC-g7urSxsXiX4y1mXOn4QdTeohF3JfozTYzzK1SshQg0bjTiIJDE-niUgl5SkHlw_C07qYkZOg2E940nENuyDP37gFBUsWOuFRj6GEAeJTzxl3lDOeL63DsDDF9tz37svLv5Klgg7mO8ElukeS_kUuCeemngFSo4F3Ko0NNCfPZESIWh_SqpP8FwnYzzwoAgG2p8J1BfS0_0GWjvkJNXim4LEtkmjQeCKPTxlzA-3amR2hMFC__vCVRulqbLjQ5ox4XWOzd7ji1CnofaebyWU8rRGLuYj3JRCrEos6cMhjVq43x5C-OQkdpDe2y3vWgcVzn74r4uDvExyEokUVLu4YANRRJVLGVQdzRB4keNNCw_p3Hz_LVtGdA86llkKoR5byrJmMNiW7-EFBfwvHmX12FezfU-WrWIFCfzOw4Q5lBJ_1TkNMJBqAwwo8Jvn8oGPTc-IvwONSnsL_OA2d-KoW0lE7t-XmxU9vZbRGsEfN7smXsRxQ'}
+2025-05-18 18:55:10,004 - INFO - reCAPTCHA solved successfully by 2Captcha in 73.96 seconds
+2025-05-18 18:55:10,019 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 18:55:12,032 - INFO - Step 4: Clicking Search button
+2025-05-18 18:55:12,105 - INFO - Step 5: Clicking HTML button
+2025-05-18 18:55:14,254 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 18:55:16,396 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 18:55:21,403 - INFO - Step 8: Parsing insurance page
+2025-05-18 18:55:21,413 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 18:55:21,414 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'ACCREDITED SPECIALTY INSURANCE COMPANY', '2-XPT-TX-19-S0349800-00', '06/25/2024', '$0', '$1,000,000', '06/25/2024', '']
+2025-05-18 18:55:21,414 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "ACCREDITED SPECIALTY INSURANCE COMPANY",
+  "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+  "posted_date": "06/25/2024",
+  "coverage_from": "$0",
+  "coverage_to": "$1,000,000",
+  "effective_date": "06/25/2024",
+  "cancellation_date": ""
+}
+2025-05-18 18:55:21,414 - INFO - Successfully processed insurance details
+2025-05-18 19:07:13,993 - INFO - Logging setup completed successfully
+2025-05-18 19:07:13,993 - INFO - Script started
+2025-05-18 19:07:13,993 - INFO - Logging setup completed successfully
+fully
+2025-05-18 19:07:13,993 - INFO - Parsing command-line arguments
+2025-05-18 19:07:13,993 - INFO - Script started
+2025-05-18 19:07:13,993 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:07:13,993 - INFO - Parsing command-line arguments
+2025-05-18 19:07:13,993 - INFO - MC number provided: 1647700
+2025-05-18 19:07:13,993 - INFO - Starting scrape for MC number: 1647700
+2025-05-18 19:07:13,993 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:07:13,993 - INFO - MC number provided: 1647700
+2025-05-18 19:07:13,993 - INFO - Starting scrape for MC number: 1647700
+2025-05-18 19:07:13,994 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:07:16,322 - INFO - WebDriver initialized successfully
+2025-05-18 19:07:16,324 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:07:16,338 - INFO - WebDriver initialized successfully
+2025-05-18 19:07:16,339 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:07:19,654 - INFO - Step 2: Entering MC number: 1647700
+2025-05-18 19:07:21,170 - INFO - Step 2: Entering MC number: 1647700
+2025-05-18 19:07:21,725 - INFO - MC number 1647700 entered on the webpage
+2025-05-18 19:07:21,726 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:07:21,741 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:07:21,745 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:07:22,049 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657618480'}
+2025-05-18 19:07:22,049 - INFO - 2Captcha request ID: 79657618480
+2025-05-18 19:07:23,220 - INFO - MC number 1647700 entered on the webpage
+2025-05-18 19:07:23,220 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:07:23,233 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:07:23,236 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:07:23,411 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:23,412 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:23,698 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657618595'}
+2025-05-18 19:07:23,698 - INFO - 2Captcha request ID: 79657618595
+2025-05-18 19:07:23,924 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:23,924 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:29,154 - DEBUG - 2Captcha polling response after 5.23 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:29,154 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:34,785 - DEBUG - 2Captcha polling response after 10.46 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:34,785 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:40,223 - DEBUG - 2Captcha polling response after 16.09 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:40,223 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:45,677 - DEBUG - 2Captcha polling response after 21.53 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:45,677 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:51,078 - DEBUG - 2Captcha polling response after 26.98 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:51,079 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:07:56,313 - DEBUG - 2Captcha polling response after 32.38 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:07:56,313 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:08:01,557 - DEBUG - 2Captcha polling response after 37.62 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:08:01,557 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:08:07,025 - DEBUG - 2Captcha polling response after 42.86 seconds: {'status': 1, 'request': '03AFcWeA4s9eyUT7kMsZ2dOPu3RiZ1Pcx1VaDxs-xGS_PhsnKttHd-dvWFypJ8JLMcN2i6-GoPd6iZf6S5EASrbRjVHw24SDV81QFDeeUXQCzu7zItMd6XsLzuTzv2U339L5J6lCehH1EMCES66yNzuTkryrskYkfTzcW8t1tRRZJTkaujeazkeygeTN_BgaSbknGk7PaCQ979FWuwcrqrw6HmHrWJdMDP-EUTYCjO6BMVHuD_CcnOYlaEFaQyIIp9gGKRxGr5iBjYEw9wwia9LMj0bs3nXHIEFObLwOze2QOoXhYfhW0cGkSlS6AcgxKD2ncx30zl-1Y5aZeXSs2VqWQ9TKp19nuztI4QEfmPfuj8EL1fH-eVStA2dgKyVxtU3xohxrBdJEYpZ9gaCDWm-D0TmqBSU9Ym2nTsvDNIBpa5F4fvNIOLXOnN4jeOZx34b-xmys3M0jl8wTZ9-TfoOGDmhYcQR9vtUgdSU7P6pivuqk3mtAqH3EhNmOS9m5pSG0WmRBfTN7tdGpfJMjwpfXmhwFmTC6q5iWSFQ-k75YY1FAQa7CHOG9ek9ZJUaB2tBtbkYIWK-5x5UzVXSU1TbhzWCXR4HiNGRQK3x6obZXiaSeSQlQDcAdJRoHfUt05xM1m9jWMk38bpCdpYfIY7-vj4KW2gHJihhmytTpAj16thyjoP4jwzQW-EoVNG7FL61vUnCXo1ULsHFx4l9BXNlaHB_XIDS6gcQ2z-1y2COxmmrrV23ILC_smd3HzyPNvyEEilMKfQullH5HxQnI51PT2XJWsNeY82Lsk5nq64bsInDuW9Uf8zo-nA84Gr1uD3QcS-zXlPu6NYxyVqqaE9GNKl69eUQCfr92NzR2aRPGI3iPGrkDCy3eAbnLFw67PQ0Hj-USycqZViVzJ5j2ggGVe7DgJcFTI_h-Sa5Uvc1bY4T7lkShwRxtGArXBc7cw0kV1NCkkEqmaqk0ihumv7vkzp5ka0aD-f71ghDUqdi5G8EY6ry1kLfFSI5Wa28NDCJolnaxGzI7jiB4UJRyFxEyV3qm8D-ve6wuhNfUcOX-lwuxb1cjSaieSp2LfBDLltEdDm1JErW3KE'}
+2025-05-18 19:08:07,025 - INFO - reCAPTCHA solved successfully by 2Captcha in 42.86 seconds
+2025-05-18 19:08:07,038 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:08:09,050 - INFO - Step 4: Clicking Search button
+2025-05-18 19:08:09,115 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:08:11,240 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:08:13,644 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:08:18,653 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:08:18,664 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:08:18,665 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'ACCREDITED SPECIALTY INSURANCE COMPANY', '2-XPT-TX-19-S0349800-00', '06/25/2024', '$0', '$1,000,000', '06/25/2024', '']
+2025-05-18 19:08:18,665 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "ACCREDITED SPECIALTY INSURANCE COMPANY",
+  "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+  "posted_date": "06/25/2024",
+  "coverage_from": "$0",
+  "coverage_to": "$1,000,000",
+  "effective_date": "06/25/2024",
+  "cancellation_date": ""
+}
+2025-05-18 19:08:18,665 - INFO - Successfully processed insurance details
+2025-05-18 19:08:41,753 - INFO - Logging setup completed successfully
+2025-05-18 19:08:41,754 - INFO - Script started
+2025-05-18 19:08:41,754 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:08:41,754 - INFO - Parsing command-line arguments
+2025-05-18 19:08:41,754 - INFO - MC number provided: 1241143
+2025-05-18 19:08:41,754 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 19:08:41,754 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:08:41,764 - INFO - Logging setup completed successfully
+2025-05-18 19:08:41,765 - INFO - Script started
+2025-05-18 19:08:41,765 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:08:41,765 - INFO - Parsing command-line arguments
+2025-05-18 19:08:41,765 - INFO - MC number provided: 1241143
+2025-05-18 19:08:41,765 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 19:08:41,765 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:08:43,734 - INFO - WebDriver initialized successfully
+2025-05-18 19:08:43,736 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:08:43,827 - INFO - WebDriver initialized successfully
+2025-05-18 19:08:43,829 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:08:44,784 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 19:08:44,789 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 19:08:46,830 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 19:08:46,830 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:08:46,836 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 19:08:46,836 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:08:46,841 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:08:46,846 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:08:46,848 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:08:46,851 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:08:47,112 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657624149'}
+2025-05-18 19:08:47,112 - INFO - 2Captcha request ID: 79657624149
+2025-05-18 19:08:47,129 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657624150'}
+2025-05-18 19:08:47,129 - INFO - 2Captcha request ID: 79657624150
+2025-05-18 19:08:47,315 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 1, 'request': '03AFcWeA4nHSARix75CQAZKZMc0WflxTTQYlvCqiuy7HFqzuHbAHjFsjHkaTGsIxepWEd-dcxZ0CTLlL8IDHT0espUYx9lunmOshBsBRh1pPPn4yrD2qU94acswbTqO_mC0Qz1gMKpb_neTJwUmUNka2At74VQQixIOvkbXxoaW-f5G9BQpN1YFthp9BobjEcBEpK9G6yD8NUPOk3vXy8GmWedwOWpxGTLQ9_CiJU7pikv_je-DNV3uBE_Xe5oYTr8ocCgtEGRw7eGtZI4xtA8nv-VVg8Dac5mcZyP__tGNgEnUWHjzhPcEcBZLLiElZnLnhXg5QAAEzPrOcqOpBr1vzRod-28NS4FwkUnBGjGdTPtHhsEs_Hh9-v2RHqIT1Uc5mRYjoJOMivWUCDR2ZiFslmd7uPd1O_Ufu_ryRXtVOMjswPQWWmEYX2U1rhEhwtzNR59lS3ZLvSwCB84o9m2d75rg6RLcudN2Pvk80o_4-wUNdlvHfW0XAXNvojWn0wG63bnzopU4u3OqkLAOSHUXdRQcSM_VM-lGj2_3S8U78ZUOMCebr1GrooHy60rsOkm0bbVb6C1ZEbcD51EJxDPQP-XzapEEjfC6Be6NpsEqdACm8zQDTwYF3llvEoQWQcaM45-E0JYbWByhXVujOJNU33UIxO43otPEvieM1mQmQ1QLnhwcd8L_kxacj8vNzAst5_SLBq7J7bzrPiZWAWBMzlQhtGCsJJs_bca9maHeV0JzPR2S261ZaPfATOyy3n9LmfUlyL8J8rsliXPa20AD960QXxeuXkJaakcaC54DQg92wn_uPoekTxKndln_aHAga82zWQORkHi9lPFWNQSzzyuBjc6SzFspO2Y3UJo9LTvvtR8WKOfDZEn1awA-Psr-Y7koCiN5-tHTB1Lrc-M4fiKvAs3N9h4C1eChhxu8LzjT6KNF0eSplLwbahMLnuJlYY9htIrIWdoC6IRRsYoRHqPYlMJIhFYGQ'}
+2025-05-18 19:08:47,316 - INFO - reCAPTCHA solved successfully by 2Captcha in 0.00 seconds
+2025-05-18 19:08:47,327 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:08:47,508 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:08:47,508 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:08:49,340 - INFO - Step 4: Clicking Search button
+2025-05-18 19:08:49,615 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:08:51,741 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:08:52,787 - DEBUG - 2Captcha polling response after 5.38 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:08:52,787 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:08:53,882 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:08:58,889 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:08:58,900 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:08:58,900 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'UNITED FINANCIAL CASUALTY COMPANY', 'CA983221350', '01/17/2025', '$0', '$750,000', '01/17/2025', '07/16/2025']
+2025-05-18 19:08:58,901 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:08:58,901 - INFO - Successfully processed insurance details
+2025-05-18 19:12:33,540 - INFO - Logging setup completed successfully
+2025-05-18 19:12:33,540 - INFO - Logging setup completed successfully
+2025-05-18 19:12:33,540 - INFO - Script started
+2025-05-18 19:12:33,540 - INFO - Script started
+2025-05-18 19:12:33,540 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:12:33,540 - INFO - Parsing command-line arguments
+2025-05-18 19:12:33,540 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:12:33,540 - INFO - Parsing command-line arguments
+2025-05-18 19:12:33,540 - INFO - MC number provided: 1241143
+2025-05-18 19:12:33,540 - INFO - MC number provided: 1241143
+2025-05-18 19:12:33,540 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 19:12:33,540 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:12:33,540 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:12:35,514 - INFO - WebDriver initialized successfully
+2025-05-18 19:12:35,517 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:12:35,531 - INFO - WebDriver initialized successfully
+2025-05-18 19:12:35,534 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:12:36,590 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 19:12:36,596 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 19:12:38,634 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 19:12:38,634 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:12:38,657 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:12:38,659 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:12:38,666 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 19:12:38,666 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:12:38,677 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:12:38,680 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:12:39,083 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657639967'}
+2025-05-18 19:12:39,083 - INFO - 2Captcha request ID: 79657639967
+2025-05-18 19:12:39,108 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657639969'}
+2025-05-18 19:12:39,108 - INFO - 2Captcha request ID: 79657639969
+2025-05-18 19:12:39,301 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:12:39,301 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:12:39,340 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:12:39,340 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:12:44,531 - DEBUG - 2Captcha polling response after 5.22 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:12:44,531 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:12:44,564 - DEBUG - 2Captcha polling response after 5.23 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:12:44,564 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:12:49,757 - DEBUG - 2Captcha polling response after 10.45 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:12:49,757 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:12:55,121 - DEBUG - 2Captcha polling response after 15.67 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:12:55,121 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:13:00,344 - DEBUG - 2Captcha polling response after 21.04 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:13:00,344 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:13:05,720 - DEBUG - 2Captcha polling response after 26.26 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:13:05,720 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:13:11,108 - DEBUG - 2Captcha polling response after 31.64 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:13:11,108 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:13:16,355 - DEBUG - 2Captcha polling response after 37.03 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:13:16,355 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:13:21,746 - DEBUG - 2Captcha polling response after 42.27 seconds: {'status': 1, 'request': '03AFcWeA5qilW272_DJv4CMNkx2j0wZ3S_8cdTH5qBbO0SRDWMq_sChHoIyOYV3YRMf6oSCFsPgzG8KTKqvPv9kVu94k7PO6FuWft4vCS28YrmYSkOjLjXwXfYNDMWH1q9RvlC0ncEZ1KREA2lkSZUD7cRLtATHJJjGL0MuG-xiARO6zR10MfQkDHr2dA6CXMUpmHnU0iTklBKfrZVkB9xjtvmJV4rBPBTcjc--RCTENGg9A7eO_Qeh0Lmo2Bm5lkfaa4vgjCnlvfkyqwfTQ95Nmg7MjJ1uEZPvw6HWe97y78kOluhwiaq_Y0vZ-82jMeIet0gjlmeEAMcDXlbk8zRVpw8KM3oSxg8qqK-gCkNSJIL1rV85f9h-Xq3RfSscsp14n3f6VcTzduBinUjm_wqlBtqD3eYUMb1OOIzowN0UVkfdZOt2kzvq4k0kvU3t5-Z-c75PI_ZITub1JVSriYhxv6Q4DvsYc_AM_bjrdLM2yZ22H38K0zSnRZVvdkPelTut4f89MNvpIvVi_KYWxQLyD4gwicJHpzgoLhtOyvAVmaYWQiih7roAX1J36fhEU4kKdRP7ax0KHDT4SE6-LNJqJaepskP2NhnonHMzp7KjIEdK-VSP3uDBgdRAw1Ssvz4iDol3Rf4uZgsT0mTixne-_jEkMj1o6iJ-PTEhyxSeosj2rFY9CcW6ygLATlNFKSniadGdCWwt-iT1zvfvJdmBNq79TG7Tnkq3PxTS82YxEIy4HtQiyyKW0mXGng23zZZerZrdN7M_IDBKek4Rzorm1W1QMgcuHc7ij7LwOlILdzuq9lZwee3vBnratJ3DZ85mOgdmY9hJ2Uaqvf8hygxJzIhtv3WOh39mztwIme-J4zpsGsfXeU9cfFUc_tUEMO84y_rhJi_HQ1rtgUv_7-GuchdngYsAFyHoHYsYEmOREUQnApUnW370u-ZoVGeJAiOWhTlJcAUz3IAmHvSkb_nJOIa5e2QcpqXmo4Xg0sArZV7fPPjYEwuM04L1jkGd822S1qnyBI-eY-0dN8MgcrfzgaIX0JR9OewIzBHhAiFR3GQtfmgc81-c2Y'}
+2025-05-18 19:13:21,746 - INFO - reCAPTCHA solved successfully by 2Captcha in 42.27 seconds
+2025-05-18 19:13:21,758 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:13:23,770 - INFO - Step 4: Clicking Search button
+2025-05-18 19:13:23,827 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:13:25,973 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:13:28,110 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:13:33,118 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:13:33,127 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:13:33,128 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'UNITED FINANCIAL CASUALTY COMPANY', 'CA983221350', '01/17/2025', '$0', '$750,000', '01/17/2025', '07/16/2025']
+2025-05-18 19:13:33,128 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:13:33,128 - INFO - Successfully processed insurance details
+2025-05-18 19:22:20,324 - INFO - Logging setup completed successfully
+2025-05-18 19:22:20,324 - INFO - Logging setup completed successfully
+2025-05-18 19:22:20,324 - INFO - Script started
+2025-05-18 19:22:20,324 - INFO - Script started
+2025-05-18 19:22:20,324 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:22:20,324 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:22:20,324 - INFO - Parsing command-line arguments
+2025-05-18 19:22:20,324 - INFO - Parsing command-line arguments
+2025-05-18 19:22:20,324 - INFO - MC number provided: 1241143
+2025-05-18 19:22:20,324 - INFO - MC number provided: 1241143
+2025-05-18 19:22:20,324 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 19:22:20,324 - INFO - Starting scrape for MC number: 1241143
+2025-05-18 19:22:20,325 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:22:20,325 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:22:22,325 - INFO - WebDriver initialized successfully
+2025-05-18 19:22:22,327 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:22:22,341 - INFO - WebDriver initialized successfully
+2025-05-18 19:22:22,344 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:22:23,343 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 19:22:23,491 - INFO - Step 2: Entering MC number: 1241143
+2025-05-18 19:22:25,391 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 19:22:25,391 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:22:25,403 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:22:25,406 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:22:25,536 - INFO - MC number 1241143 entered on the webpage
+2025-05-18 19:22:25,536 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:22:25,547 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:22:25,550 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:22:25,795 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657678935'}
+2025-05-18 19:22:25,795 - INFO - 2Captcha request ID: 79657678935
+2025-05-18 19:22:25,944 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657678942'}
+2025-05-18 19:22:25,944 - INFO - 2Captcha request ID: 79657678942
+2025-05-18 19:22:26,004 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:26,004 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:26,148 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:26,148 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:31,270 - DEBUG - 2Captcha polling response after 5.21 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:31,270 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:31,523 - DEBUG - 2Captcha polling response after 5.21 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:31,523 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:36,514 - DEBUG - 2Captcha polling response after 10.48 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:36,514 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:41,884 - DEBUG - 2Captcha polling response after 15.72 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:41,884 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:47,259 - DEBUG - 2Captcha polling response after 21.09 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:47,259 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:52,543 - DEBUG - 2Captcha polling response after 26.46 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:52,543 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:22:57,765 - DEBUG - 2Captcha polling response after 31.75 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:22:57,765 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:03,076 - DEBUG - 2Captcha polling response after 36.97 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:03,076 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:08,520 - DEBUG - 2Captcha polling response after 42.28 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:08,521 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:13,913 - DEBUG - 2Captcha polling response after 47.73 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:13,913 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:19,145 - DEBUG - 2Captcha polling response after 53.12 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:19,145 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:24,391 - DEBUG - 2Captcha polling response after 58.35 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:24,391 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:29,620 - DEBUG - 2Captcha polling response after 63.60 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:29,620 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:34,987 - DEBUG - 2Captcha polling response after 68.83 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:23:34,987 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:23:40,214 - DEBUG - 2Captcha polling response after 74.19 seconds: {'status': 1, 'request': '03AFcWeA7F3FF7nw7bu74PIdPMEgHzRg0p5SZj730krgRD815kGc6Gmo_loTjkfEN-CA8-Q3yVY5LgUvrDWI5f9gdluFdZ3_O0H7kR7N3tuXgrb5ejOCArQv1k97SezDTDa4kBClOt6_5eSpcPZde2zuL4bZV4G_npDxXGftZyUAkcsp0vBNdyFW5aZlzJINU5voHO4s1XJR5GEdHZEGNRBnowlZGuRtRCtfzizoLWrEpDpIVd81nhQ2OUEoKP1PbXrdy2t2QUXsvljldAWgAjJmrOKiHMn-OP5bRj38z4hXvW1t0IjOV42PpotW0_vgLFdiQeIZn_GFILoQ3yXJrMA2Ja9kOg3OIUvDgWyZquq2eSzDZlXnPMA11RYmSC-Wqc_9l_J9oxnnK8CZsigk-TS2qfq0mjcwlTVWrCtMmqnfQ_nFWAvJCfLG_2HE8LLrHTM2ycID4jtIdZatmlhOPnZVSh-dp5cjUZxicngEb7irU_TjI6YqiUs1J89oVa_DeNHCU4Wc3_00AEpNR-xM8mDhYHR_s4jVdQSPEGKgiUji_k0j20ke8CPFDOO23tiGk5Q8tgzNPoy4MCcZgWZTbIvlbPb40bIgThvQvINv8GNZjI_KMcDk9Ph7Z_0rJfT2R2RuWXrN3BA_E6dIWgUVVMVngyhWYdUL3l8VnLCGZaN17af71lSUhxHEQD4qbtStal1Um5Zmsg5J6BuQjD8wJSoMnHpVXtdIUM6YsihJHs-oRlSOHb0HQSDMIGvI8OqHd_yg62mg0tXqle_-yZ67nn5qim1QdyN3uvqtiwJPWYlJ__bTgzc8nN3oZrZmB0hz3k0uPheL4GBVGNO3jBb9pylVp3bqhI9kwc6pH9O0EkcJW46BOeS_B66otZN2qmSpLBiXpj5ENMqPXDlgUQdL0BsJ_4UbiJYOMA4hnx6HOalE1cW6DAlgOMzxPl2l2yHDocYsdxGmD98W4JG1wQVcd0OiqnAyIcKGm85g'}
+2025-05-18 19:23:40,214 - INFO - reCAPTCHA solved successfully by 2Captcha in 74.19 seconds
+2025-05-18 19:23:40,227 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:23:42,241 - INFO - Step 4: Clicking Search button
+2025-05-18 19:23:42,315 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:23:44,446 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:23:46,588 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:23:51,597 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:23:51,608 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:23:51,608 - INFO - Raw row cells: ['91X', 'BIPD/Primary', 'UNITED FINANCIAL CASUALTY COMPANY', 'CA983221350', '01/17/2025', '$0', '$750,000', '01/17/2025', '07/16/2025']
+2025-05-18 19:23:51,608 - INFO - Parsed insurance entry: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:23:51,608 - INFO - Successfully processed insurance details
+2025-05-18 19:25:23,197 - INFO - Logging setup completed successfully
+2025-05-18 19:25:23,198 - INFO - Script started
+2025-05-18 19:25:23,198 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:25:23,198 - INFO - Parsing command-line arguments
+2025-05-18 19:25:23,198 - INFO - Logging setup completed successfully
+2025-05-18 19:25:23,198 - INFO - Script started
+2025-05-18 19:25:23,198 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:25:23,198 - INFO - Parsing command-line arguments
+2025-05-18 19:25:23,198 - INFO - MC number provided: 1060228
+2025-05-18 19:25:23,198 - INFO - Starting scrape for MC number: 1060228
+2025-05-18 19:25:23,198 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:25:23,198 - INFO - MC number provided: 1060228
+2025-05-18 19:25:23,198 - INFO - Starting scrape for MC number: 1060228
+2025-05-18 19:25:23,198 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:25:25,092 - INFO - WebDriver initialized successfully
+2025-05-18 19:25:25,094 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:25:25,094 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:25:26,170 - INFO - Step 2: Entering MC number: 1060228
+2025-05-18 19:25:26,227 - INFO - Step 2: Entering MC number: 1060228
+2025-05-18 19:25:28,210 - INFO - MC number 1060228 entered on the webpage
+2025-05-18 19:25:28,210 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:25:28,223 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:25:28,225 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:25:28,266 - INFO - MC number 1060228 entered on the webpage
+2025-05-18 19:25:28,266 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:25:28,276 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:25:28,279 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:25:28,495 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657690753'}
+2025-05-18 19:25:28,495 - INFO - 2Captcha request ID: 79657690753
+2025-05-18 19:25:28,545 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657690755'}
+2025-05-18 19:25:28,545 - INFO - 2Captcha request ID: 79657690755
+2025-05-18 19:25:28,766 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:28,766 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:28,851 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:28,851 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:34,119 - DEBUG - 2Captcha polling response after 5.36 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:34,119 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:34,281 - DEBUG - 2Captcha polling response after 5.22 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:34,281 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:39,526 - DEBUG - 2Captcha polling response after 10.74 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:39,526 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:44,899 - DEBUG - 2Captcha polling response after 15.98 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:44,899 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:50,276 - DEBUG - 2Captcha polling response after 21.35 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:50,276 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:25:55,509 - DEBUG - 2Captcha polling response after 26.73 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:25:55,509 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:00,948 - DEBUG - 2Captcha polling response after 31.96 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:00,948 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:06,322 - DEBUG - 2Captcha polling response after 37.40 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:06,322 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:11,700 - DEBUG - 2Captcha polling response after 42.78 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:11,700 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:17,078 - DEBUG - 2Captcha polling response after 48.16 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:17,078 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:22,466 - DEBUG - 2Captcha polling response after 53.53 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:22,466 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:27,846 - DEBUG - 2Captcha polling response after 58.92 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:27,846 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:33,053 - DEBUG - 2Captcha polling response after 64.30 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:26:33,053 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:26:38,422 - DEBUG - 2Captcha polling response after 69.51 seconds: {'status': 1, 'request': '03AFcWeA6yCgy9rYBnkTfQmwiS8PjlJsrlWJ1Y85U2tPfM1XyUvL1DP5EHGjjQRvciJrQMf9uF23bGW14e4kAcyjOyJVXyNhqKVRPO-KlVzG-MmJRIhHpDSHnVeT18I1Ul-1pTLrzz9oSDQk2Ob-m9juTNy8XeIcZjQIz8N7n-pDptPgb1k5elCwKpQoZtu6S8LVEElEhX3nSoUCd0OGwIWw2soaApVcPDyegNeShpppnFSKMbIFY3AKZj3zeOrd709r_sGz-nfoAYj--Tk56pc6TGTJGGb4cNGxDrvE07TkzMWAKVDzuukMOY75IdsMUBWMovjvf-JTPZWzI_vW-cYEJ-fQK_y9Cb1sv1dJZlHj3_IYe-x487nQLgqWHtzkGRjI6wKgIg0TYF4_gqquerlJ484bWfMEILuJIbp55JZy4eTYjSXRjleQ3NPs0Fq4v0Rx-v2kx-4GNa40EEf3IvmAdZlgmW3YBithp4vm9QSKsjTkOS9QmGyKC5nMzSECHRiclKBXDIuXqVc-eRyGxELxJdOjCtWR-d5fOYimPgr7fTJTdezlj-aCUXeqoxuADfrjs6wjZAGy1ZOcaQ0furq0Q_KOf2fN9jGDLgQIukvwOz1CizphHG7QOPnnVof_drlj5TAtcUh1x3IWWaMqLvHx2HSjB1BRf3V7RjZgo-ydEQANi8hYy8Tyv8naVoC9N6VmL2AcjfhORKmMt5Jd62O51putjc6f2ts3xuc-ccvvG25KjtxE8dUX5tcWM5rTYXDM-eNHk3UUOC0nXbIcX1zc9FBSPsffPUPwlx4MESR5cCjV-hH9L1OqCZ1406I5ddnra_H3Ujf46YmHZvvoFu4UKRpjXqYVqqXJyVo21wCX4TCcszVjok5YIlcm-_c3pJBJEbt3h0qc2p6gau4mRedoduas0CkTJApf-6boBegnDauigjl4bInGa9drm5fFqxUC8gG4OIAQJ6kedf0IN49YuSyS1YRi_p9Qhg6dJKPUseibRRKuV36nG0NAgJFO3n1g_ipBl85B1J6LDh9kQX8hNYRvAhh1HYF8wbcIoF5qSyHn3MTR1xKjA'}
+2025-05-18 19:26:38,422 - INFO - reCAPTCHA solved successfully by 2Captcha in 69.51 seconds
+2025-05-18 19:26:38,433 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:26:40,442 - INFO - Step 4: Clicking Search button
+2025-05-18 19:26:40,487 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:26:42,598 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:26:44,728 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:26:49,734 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:26:49,741 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:26:49,741 - INFO - Raw row cells: ['84', 'SURETY', 'NATIONWIDE MUTUAL INSURANCE COMP', '7901100773', '05/03/2022', '$0', '$75,000*', '05/04/2022', '']
+2025-05-18 19:26:49,742 - DEBUG - Discarding insurance type: 'SURETY' (normalized: 'surety')
+2025-05-18 19:26:49,742 - INFO - No qualifying insurance data extracted for MC number 1060228
+2025-05-18 19:26:49,745 - DEBUG - Page source: <html><head>
+<title>Active/Pending Insurance</title>
+
+
+<title>FMCSA Licensing and Insurance Web Site</title>
+<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-GLJF0N9VGX&amp;cx=c&amp;_slc=1"></script><script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="/lihtml/entourage.js"></script>
+<script type="text/javascript" src="/lihtml/googleanalytics.js"></script>
+<script type="text/javascript" src="/lihtml/dot_analytics.js"></script>
+<noscript>Script edits data entry fields for valid data and required field.  The application may not work correctly without these scripts.</noscript>
+<script src="/lihtml/li.js"></script></head>
+
+<body bgcolor="#ffffff"><noscript>Script edits data entry fields for valid data and required field.  The application may not work correctly without this script</noscript>
+<script src="/lihtml/calendar.js"></script>
+<noscript>Script provides pop-up calendar.  The application may not work correctly without this script</noscript>
+<script language="JavaScript">
+         <!--
+           function CheckMenu(form)
+           {
+           for (i=0; i < form.elements.length; i++){
+             if (form.elements[i].type == "select-one"){
+              j = form.elements[i].selectedIndex;
+               if (j == 0) {
+                alert( "Please Select a Menu Option." );
+                form.elements[i].focus();
+                return false;
+               }
+               else {
+               return true;
+               }
+              }
+            }
+           }
+         // -->
+         </script>
+<noscript>Script edits selection as a required field.  The application may not work correctly without this script</noscript>
+<link rel="stylesheet" href="/lihtml/li.css">
+<font size="2" face="Arial, Helvetica">
+<a href="#skiplink"><img src="blank.gif" alt="Skip to Main Content" width="1" height="1" border="0"></a>
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                 <td style="position:relative;">
+                   <div style="position:relative;">
+                   <img src="/lihtml/l_i_logo_public.gif" alt="FMCSA License and Insurance logo">
+<div style="position:absolute;  top:40px; right:10px;">
+<table border="0" cellspacing="0" cellpadding="0" align="right" summary="Table used for formatting purposes only">
+<tbody><tr><td align="right">
+<form action="/LIVIEW/pkg_menu.prc_menu" method="post" name="Dropdown" onsubmit="return CheckMenu(this)">
+<font size="-15" color="white"><label for="menu">Menu</label></font><font size="3" "white"="" face="Arial, Helvetica"></font>
+<select id="menu" name="pv_choice">
+<option selected="" value="ZZZ">Choose Menu Option
+</option><option value="BOC3">BOC3 Filing
+</option><option value="BL_COMP">Blanket Companies
+</option><option value="CARR_SEARCH">Carrier Search
+</option><option value="FED_REG">FMCSA Register
+</option><option value="HOME">Home Page
+</option><option value="INS">Insurance Filing
+</option><option value="MXTRK">Mex Application Status
+</option><option value="OOS_LIST">Out Of Service Carriers
+</option></select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="image" src="/lihtml/go.gif" align="absmiddle" alt="Menu Go">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+</form>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div></td>
+</tr></tbody></table>
+<a name="skiplink"></a>
+
+<table align="center" summary="Table used for formating purposes only">
+<tbody><tr>
+<td>
+<h3 align="center">Active/Pending Insurance</h3>
+</td>
+</tr>
+</tbody></table>
+<table border="4" cellspacing="1" cellpadding="1" width="100%" summary="Table used for formating purposes only">
+<tbody><tr align="left">
+<th id="us_dot" width="13%" bgcolor="#D9D9D9"><font size="2" face="Arial, Helvetica"><b>&nbsp;US DOT: </b></font></th>
+<td headers="us_dot" width="30%"><font size="2" face="Arial, Helvetica">&nbsp;3328333</font></td>
+<th id="ldocketnumber" width="20%" bgcolor="#D9D9D9"><font size="2" face="Arial, Helvetica"><b>&nbsp;Docket Number: </b></font></th>
+<td id="ldocketnumber" width="37%"><font size="2" face="Arial, Helvetica">&nbsp;MC01060228</font></td>
+</tr>
+<tr align="left">
+<th id="lname" bgcolor="#D9D9D9"><font size="2" face="Arial, Helvetica"><b>&nbsp;Legal Name: </b></font></th>
+<td colspan="3" headers="lname"><font size="2" face="Arial, Helvetica">&nbsp;BULLETS TRANSPORT LLC</font></td>
+</tr>
+</tbody></table>
+<table width="100%" border="4" cellspacing="1" cellpadding="1summary=&quot;table" used="" for="" formating="" purposes="" only"="">
+<tbody><tr bgcolor="#D9D9D9">
+<th id="form"><font size="-1" face="Arial, Helvetica">Form</font></th>
+<th id="type"><font size="-1" face="Arial, Helvetica">Type</font></th>
+<th id="insurance_carrier"><font size="-1" face="Arial, Helvetica">Insurance Carrier</font></th>
+<th id="policy_surety"><font size="-1" face="Arial, Helvetica"> Policy/Surety </font></th>
+<th id="posted_date"><font size="-1" face="Arial, Helvetica">Posted </font><div><font size="-1" face="Arial, Helvetica"> Date</font></div></th>
+<th id="coverage_from"><font size="-1" face="Arial, Helvetica"> Coverage </font><div><font size="-1" face="Arial, Helvetica">From</font></div></th>
+<th id="coverage_to"><font size="-1" face="Arial, Helvetica"> Coverage </font><div><font size="-1" face="Arial, Helvetica">To</font></div></th>
+<th id="effective_date"><font size="-1" face="Arial, Helvetica">Effective </font><div><font size="-1" face="Arial, Helvetica"> Date</font></div></th>
+<th id="cancellation_date"><font size="-1" face="Arial, Helvetica">Cancellation </font><div><font size="-1" face="Arial, Helvetica"> Date</font></div></th>
+</tr>
+<tr align="LEFT">
+<th align="2" id="84" headers="form"><center><font size="-1" face="Arial, Helvetica">84</font></center></th>
+<td width="15%" headers="84 type"><center><font size="-1" face="Arial, Helvetica">SURETY</font></center></td>
+<td headers="84 insurance_carrier" align="left" class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_insfiler_details" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_inser_id" value="03670">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_legal_name" value="BULLETS^TRANSPORT^LLC">
+<input type="hidden" name="pv_pref_docket" value="MC01060228">
+<input type="hidden" name="pv_dot_no" value="3328333">
+<input type="hidden" name="pv_prc_back" value="prc_activeinsurance">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<center><u>NATIONWIDE MUTUAL INSURANCE COMP</u></center>
+</form>
+</td>
+<td headers="84 policy_surety "><center><font size="-1" face="Arial, Helvetica">7901100773</font></center></td>
+<td width="15%" headers="84 posted_date "><center><font size="-1" face="Arial, Helvetica">05/03/2022</font></center></td>
+<td width="15%" headers="84 coverage_from "><center><font size="-1" face="Arial, Helvetica"> $0 </font></center></td>
+<td width="15%" headers="84 coverage_to "><center><font size="-1" face="Arial, Helvetica">$75,000*</font></center></td>
+<td width="15%" headers="84 effective_date "><center><font size="-1" face="Arial, Helvetica">05/04/2022</font></center></td>
+<td headers="84 cancellation_date ">&nbsp;</td>
+</tr>
+</tbody></table>
+<font size="-1" face="Arial, Helvetica">* If a carrier is in compliance, the amount of coverage will always be shown as the required Federal minimum ($5,000 per vehicle, $10,000 per occurrence for cargo insurance, $75,000 for bond/trust fund insurance for brokers and freight forwarders).  The carrier may actually have higher levels of coverage.</font>
+<center>
+<hr>
+<table align="center">
+<tbody><tr>
+<td align="left" class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_getdetail" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<u>Carrier Details</u>
+</form>
+</td>
+<td align="left" class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_rejectinsurance" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_legal_name" value="BULLETS^TRANSPORT^LLC">
+<input type="hidden" name="pv_pref_docket" value="MC01060228">
+<input type="hidden" name="pv_usdot_no" value="3328333">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<u>Rejected Insurance</u>
+</form>
+</td>
+<td align="left" class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_insurancehistory" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_legal_name" value="BULLETS^TRANSPORT^LLC">
+<input type="hidden" name="pv_pref_docket" value="MC01060228">
+<input type="hidden" name="pv_usdot_no" value="3328333">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<u>Insurance History</u>
+</form>
+</td>
+<td align="left" class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_authorityhistory" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_legal_name" value="BULLETS^TRANSPORT^LLC">
+<input type="hidden" name="pv_pref_docket" value="MC01060228">
+<input type="hidden" name="pv_usdot_no" value="3328333">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<u>Authority History</u>
+</form>
+</td>
+<td align="left" class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_pendapplication" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_legal_name" value="BULLETS^TRANSPORT^LLC">
+<input type="hidden" name="pv_pref_docket" value="MC01060228">
+<input type="hidden" name="pv_usdot_no" value="3328333">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<u>Pending Application</u>
+</form>
+</td>
+<td class="information_db" onmouseover="style.cursor='pointer'">
+<form action="pkg_carrquery.prc_revocation" name="detail" method="post" onclick="return submit();">
+<input type="hidden" name="pv_apcant_id" value="1133279">
+<input type="hidden" name="pv_legal_name" value="BULLETS^TRANSPORT^LLC">
+<input type="hidden" name="pv_pref_docket" value="MC01060228">
+<input type="hidden" name="pv_usdot_no" value="3328333">
+<input type="hidden" name="pv_vpath" value="LIVIEW">
+<u>Revocation</u>
+</form>
+</td>
+</tr>
+</tbody></table>
+</center>
+<script language="JavaScript">
+      <!--
+      function another_window(h_name)
+      {
+      window.open(h_name);
+      return;
+      }
+      // -->
+      </script>
+<noscript>Displays another window.  The application may not work correctly without this script</noscript>
+
+<br>
+<span class="footer_title_text" align="left"> May 18, 2025</span>
+<center>
+<style type="text/css">
+
+    a.footer_link:link, a.footer_link:visited, a.footer_link:hover, a.footer_link:active
+    {
+    font-size: 10px; font-family: Arial;
+    color: rgb(102,102,102);
+    font-weight: normal;
+    text-decoration: none;
+    }
+
+    a.footer_link:visited
+    {
+    font-size: 10px;
+    font-family: Arial;
+    }
+
+    a.footer_link:hover
+    {
+    font-size: 10px;
+    color: #012255;
+    text-decoration: underline;
+    font-family: Arial;
+    }
+
+    SPAN.footer_white_text, SPAN.footer_title_text
+    {
+    font-size: 10px; font-family: Arial;
+    color: rgb(102,102,102);
+    font-weight: normal;
+    text-decoration: none;
+    }
+    hr
+    {
+    border: 1;
+    height:1px;
+    color:cccccc;
+    }
+    .vertical-line
+    {
+    width: 1px;
+    height: 60;
+    }
+    .vcontrol
+    {
+    font-size: 4px;
+    font-family: Arial;
+    height:8;
+    }
+  </style>
+<hr width="98%" height="12">
+<table align="left" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td>
+<img id="NetFYIBigImg" src="/lihtml/logo_footer.gif" alt="USDOT logo">
+</td>
+<td align="center" width="1">
+</td><td align="center" width="1" bgcolor="#cccccc"><br></td>
+<td align="middle" colspan="2">
+</td><td>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="center">
+<a class="footer_link" href="https://www.fmcsa.dot.gov/" target="_blank" title="FMCSA Home">FMCSA Home</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.dot.gov/" target="_blank" title="DOT Home">DOT Home</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/feedback.htm" target="_blank" title="Go to Feedback">Feedback</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/Online-Privacy-Policy.aspx" target="_blank" title="Go to Privacy Policy">Privacy Policy </a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/redirect.aspx?page=https://www.usa.gov/" target="_blank" title="Go to USA gov">USA.gov</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/foia/foia.htm" target="_blank" title="Go to Freedom of Information Act">Freedom of Information Act (FOIA)</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/508disclaimer.htm" target="_blank" title="Go to Accessibility">Accessibility</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/redirect.aspx?page=https://www.oig.dot.gov/Hotline" target="_blank" title="Go to OIG Hotline"> OIG Hotline </a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/about/WebPoliciesAndImportantLinks.htm" target="_blank" title="Go to Web Policies and Important Links"> Web Policies and Important Links </a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/plugins.htm" target="_blank" title="Get Plug Ins">Plug-ins </a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="/LIVIEW/pkg_li_std_routines.prc_related_sites?pv_vpath=LIVIEW" target="_blank" title="Related Sites">Related Sites</a>
+<span class="footer_white_text">|</span>
+<a class="footer_link" href="/LIVIEW/pkg_li_std_routines.prc_help?pn_pageid=5" target="_blank" title="FMCSA Home">Help</a>
+</td>
+</tr>
+<tr class="vcontrol"><td>&nbsp;</td>
+</tr>
+<tr>
+<td align="center">
+<span class="footer_title_text"> Federal Motor Carrier Safety Administration </span>
+<br>
+<span class="footer_white_text">1200 New Jersey Avenue SE, Washington, DC 20590 - 1-800-832-5660 - TTY: 1-800-877-8339 - </span>
+<a class="footer_link" href="https://www.fmcsa.dot.gov/about/contact/offices/displayfieldroster.asp" target="_blank" title="Go to Field Office Contacts">  Field Office Contacts </a>
+</td>
+</tr>
+<tr>
+<td colspan="3" height="20"></td>
+<td colspan="3" height="20"></td>
+<td colspan="3" height="20"></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+
+
+
+
+</font></body></html>
+2025-05-18 19:29:50,950 - INFO - Logging setup completed successfully
+2025-05-18 19:29:50,950 - INFO - Script started
+2025-05-18 19:29:50,951 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:29:50,951 - INFO - Parsing command-line arguments
+2025-05-18 19:29:50,951 - INFO - MC number provided: 1060228
+2025-05-18 19:29:50,951 - INFO - Starting scrape for MC number: 1060228
+2025-05-18 19:29:50,951 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:29:50,959 - INFO - Logging setup completed successfully
+2025-05-18 19:29:50,959 - INFO - Script started
+2025-05-18 19:29:50,959 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:29:50,959 - INFO - Parsing command-line arguments
+2025-05-18 19:29:50,959 - INFO - MC number provided: 1060228
+2025-05-18 19:29:50,959 - INFO - Starting scrape for MC number: 1060228
+2025-05-18 19:29:50,959 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:29:52,865 - INFO - WebDriver initialized successfully
+2025-05-18 19:29:52,867 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:29:52,928 - INFO - WebDriver initialized successfully
+2025-05-18 19:29:52,931 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:29:53,786 - INFO - Step 2: Entering MC number: 1060228
+2025-05-18 19:29:54,081 - INFO - Step 2: Entering MC number: 1060228
+2025-05-18 19:29:55,849 - INFO - MC number 1060228 entered on the webpage
+2025-05-18 19:29:55,849 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:29:55,861 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:29:55,864 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:29:56,140 - INFO - MC number 1060228 entered on the webpage
+2025-05-18 19:29:56,140 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:29:56,149 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:29:56,151 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:29:56,233 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657707773'}
+2025-05-18 19:29:56,234 - INFO - 2Captcha request ID: 79657707773
+2025-05-18 19:29:56,466 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:29:56,466 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:29:56,575 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657707799'}
+2025-05-18 19:29:56,575 - INFO - 2Captcha request ID: 79657707799
+2025-05-18 19:29:56,790 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:29:56,790 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:01,751 - DEBUG - 2Captcha polling response after 5.23 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:30:01,751 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:02,009 - DEBUG - 2Captcha polling response after 5.21 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:30:02,009 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:07,249 - DEBUG - 2Captcha polling response after 10.43 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:30:07,249 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:12,741 - DEBUG - 2Captcha polling response after 15.67 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:30:12,741 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:18,017 - DEBUG - 2Captcha polling response after 21.17 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:30:18,017 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:23,291 - DEBUG - 2Captcha polling response after 26.44 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:30:23,291 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:30:28,711 - DEBUG - 2Captcha polling response after 31.72 seconds: {'status': 1, 'request': '03AFcWeA5S0DJL1VjpPD-cFwL8uPDqpNR9jfsG17S4Uc-J-1VJhWdaPtaHPZeBm4ily4j94x_PCGj4nf8g34ujyiJUImRsWi8ekUWUK0Fvv2VV7LVwbXnfvJF7RHbS8WrI6OSQZkMYac9rZ4275XZfeXTwCTkGUOZ0_xKv-wKEh72y5bZpIAFGrqLUoMT4NcHCK8g_vh2K7rRXHO5Us38wPUsXEYpl_tcGqCP2PKT1IO3rG1njzqH6-uQUx0LI-LdDR9YN5CscFpk0xm9vkeGOVnsIszTFFrElVcJ577g5Mbit3I-IyRFQB5u7kMMTLVE4wG18tVP7kjhM8VmY2MZxz942bAL1LSVuAuTmtNlOyJYpxh2To0GUtcknbm8m65Er15EYL5a3bXLEThjsutcSYRJJ11fGYOakxjEdanbulEMG3OMvQfcxAemh7WsVSXeVnUmsxBTrsZiq0usZeaDTosv7uF9sWvSPiIb4cx3cInFVPX2mTQiOuIVjLoiK57P7NN_jZ9GzmdMCD_0pzYcYIMIflALMKB2H2LPphkCJqyNbgcIVN3sKWQhY9Nuw4rOB7D5AzT-Si9UOTvk77P8LOCZzQMJUeYt-SqWBzv2b0ZCpFw44F0uSiO3IBuYOyvJ_MXczQ05V1AVevP9qUs_PpG0gmGrywB1hYRLz8swSEMOkNhmUE-BFQe3-kXmKusfNSFW-o1Nm97E-dvwbF3PrHOC9Di72ZJgd_cmnVDEI5b1BfKcblmQmoalhSe25less9Zz-We7ayF5jkFk661mOUu3XOpS9L9U95XP8cdy1LLUTEK-71CtREjWpAIRwdGL52bkPzi8O_b2xJqrVemQP6xTcMuFzkUDQVRm04Tyj2f4jJlJKhA5vjajtIrdSLCce1iBouqKidO1RZ7CZf84db4Hrp6nTl5VRC0B_GRE6JBmynMe21Cv24qYFjBXWz5K4WizIbMUU-zHNSkwyb8WzTSTTY2FGiokBhGe1Pf1sjWDd_5xcLqvP-kM7dOANyUgf5FSSRrwThFrxL_EljFgHPjb4Db342kYjPjuWp64LA2XKa8q_0INBkWA'}
+2025-05-18 19:30:28,711 - INFO - reCAPTCHA solved successfully by 2Captcha in 31.72 seconds
+2025-05-18 19:30:28,723 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:30:30,734 - INFO - Step 4: Clicking Search button
+2025-05-18 19:30:30,799 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:30:32,914 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:30:34,986 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:30:40,047 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:30:40,056 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:30:40,056 - INFO - Raw row cells: ['84', 'SURETY', 'NATIONWIDE MUTUAL INSURANCE COMP', '7901100773', '05/03/2022', '$0', '$75,000*', '05/04/2022', '']
+2025-05-18 19:30:40,056 - INFO - Parsed insurance entry: {
+  "type": "SURETY",
+  "insurance_carrier": "NATIONWIDE MUTUAL INSURANCE COMP",
+  "policy_surety_number": "7901100773",
+  "posted_date": "05/03/2022",
+  "coverage_from": "$0",
+  "coverage_to": "$75,000*",
+  "effective_date": "05/04/2022",
+  "cancellation_date": ""
+}
+2025-05-18 19:30:40,057 - INFO - Successfully processed insurance details
+2025-05-18 19:34:39,227 - INFO - Logging setup completed successfully
+2025-05-18 19:34:39,227 - INFO - Script started
+2025-05-18 19:34:39,228 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:34:39,228 - INFO - Parsing command-line arguments
+2025-05-18 19:34:39,228 - INFO - MC number provided: 1060228
+2025-05-18 19:34:39,228 - INFO - Starting scrape for MC number: 1060228
+2025-05-18 19:34:39,228 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:34:39,235 - INFO - Logging setup completed successfully
+2025-05-18 19:34:39,235 - INFO - Script started
+2025-05-18 19:34:39,235 - INFO - Selenium dependencies imported successfully
+2025-05-18 19:34:39,235 - INFO - Parsing command-line arguments
+2025-05-18 19:34:39,236 - INFO - MC number provided: 1060228
+2025-05-18 19:34:39,236 - INFO - Starting scrape for MC number: 1060228
+2025-05-18 19:34:39,236 - INFO - Initializing Selenium WebDriver in headless mode
+2025-05-18 19:34:41,087 - INFO - WebDriver initialized successfully
+2025-05-18 19:34:41,089 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:34:41,197 - INFO - WebDriver initialized successfully
+2025-05-18 19:34:41,199 - INFO - Step 1: Navigating to FMCSA Carrier Search page
+2025-05-18 19:34:42,094 - INFO - Step 2: Entering MC number: 1060228
+2025-05-18 19:34:42,227 - INFO - Step 2: Entering MC number: 1060228
+2025-05-18 19:34:44,138 - INFO - MC number 1060228 entered on the webpage
+2025-05-18 19:34:44,139 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:34:44,151 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:34:44,154 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:34:44,273 - INFO - MC number 1060228 entered on the webpage
+2025-05-18 19:34:44,273 - INFO - Step 3: Solving reCAPTCHA with 2Captcha
+2025-05-18 19:34:44,284 - INFO - reCAPTCHA site key: 6Ldbx1gUAAAAAMEylxZ_DoZS430WhNsmV47Y5t58
+2025-05-18 19:34:44,286 - INFO - Sending reCAPTCHA solving request to 2Captcha (attempt 1)
+2025-05-18 19:34:44,408 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657727113'}
+2025-05-18 19:34:44,408 - INFO - 2Captcha request ID: 79657727113
+2025-05-18 19:34:44,674 - DEBUG - 2Captcha initial response: {'status': 1, 'request': '79657727133'}
+2025-05-18 19:34:44,674 - INFO - 2Captcha request ID: 79657727133
+2025-05-18 19:34:44,773 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:34:44,773 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:34:44,885 - DEBUG - 2Captcha polling response after 0.00 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:34:44,885 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:34:50,035 - DEBUG - 2Captcha polling response after 5.37 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:34:50,035 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:34:50,232 - DEBUG - 2Captcha polling response after 5.21 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:34:50,232 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:34:55,423 - DEBUG - 2Captcha polling response after 10.63 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:34:55,423 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:35:00,669 - DEBUG - 2Captcha polling response after 16.02 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:35:00,669 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:35:06,069 - DEBUG - 2Captcha polling response after 21.26 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:35:06,069 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:35:11,313 - DEBUG - 2Captcha polling response after 26.66 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:35:11,313 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:35:16,703 - DEBUG - 2Captcha polling response after 31.90 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:35:16,703 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:35:22,089 - DEBUG - 2Captcha polling response after 37.30 seconds: {'status': 0, 'request': 'CAPCHA_NOT_READY'}
+2025-05-18 19:35:22,089 - DEBUG - Waiting for 2Captcha to solve the reCAPTCHA...
+2025-05-18 19:35:27,321 - DEBUG - 2Captcha polling response after 42.68 seconds: {'status': 1, 'request': '03AFcWeA6Vil11tiEfjDTNTsCDUxEsSOPO-2cmqe5Gjhe-YyT5wLkH-myVQ4as4KVBXlPi6CjS9I77MzyCVDlOEd36zeczy34GO_q556u-Sx1hpBuOxlNziDsLKoXn0VuVZhnJt_wuLyX0uCubFcVvGZCsObMnU6q-rZPCCZcVdHeJoM_y5vksdX-3Md0OmquhVGX9OaPVxc9q-06bBwjWbQR_t6HV8PJpYgy1-suy7ecu0mtdURubZHF3NzjanSBerCON42Zg7J2QLoc2OQvwaogC1jcPDQTnLfmSbcz3D8rwcMJlz6M0Xj4mskfGfDGeNsVLruNooj5XBNLD85tL3ydp1mRxXhs4LDFs06SperTaEByozTB_jAOPFwJ_ZFmn5eo68IGeGfyJLjOwO5JjBYr6XkBXFvMzgBfY0BPgGC9pmSZk8PkqXhcRzPQAo34E-qR6OlTDRgy_TzmDk-GtC-0eguTWDlALwv0EJBMStBNx-TOLSIYF4-8S4ZxuYHHFaLw_4oB_zlScxxLAxDLK5bPGjvA84ffuxQ7pQt05iJv6q8hr0mL1pRcR_MRXC8psO-zmayskQvJb9heRStXx96oxw0IyOyvQ7QTV-3IyAIxY5-EZC33D2MfE8xOlcqsOerELmdPa7cdP8V_Dk9gB2NZzCjr7nYopWLD-RTLn8OKBnGgEWyPhUI0DaMEipbetKAljv59VQ6KreNQsUxBxcajwSMsLvEm2wWUy-D0vStvnLxOjNSyOq5JNYUlqIQtGHY-jAhbOCM4BC8wVtf0XtSswT5gSfFy_Jf-562YRPsag5rMezcClARnynm9YLDjqItaw_JgMENXC2f3Nr5zZEjdwOKsZhr1W8UV5Pa1FmenhRImGxy9ihnMX-ijfxFiBaBEhHSZ_bRQqCyLrUTCibXxx8kuORVfE_aYXCzThURr19Ej9aKFKfxKn4e3vY6y43p4t32JPeOoFjPq7miyfhJAzAvtrSk-6yQ'}
+2025-05-18 19:35:27,321 - INFO - reCAPTCHA solved successfully by 2Captcha in 42.68 seconds
+2025-05-18 19:35:27,330 - WARNING - No reCAPTCHA callback function found. Proceeding without callback.
+2025-05-18 19:35:29,339 - INFO - Step 4: Clicking Search button
+2025-05-18 19:35:29,382 - INFO - Step 5: Clicking HTML button
+2025-05-18 19:35:31,613 - INFO - Step 6: Clicking Active/Pending Insurance link
+2025-05-18 19:35:33,747 - INFO - Step 7: Waiting for insurance page to load
+2025-05-18 19:35:38,754 - INFO - Step 8: Parsing insurance page
+2025-05-18 19:35:38,761 - INFO - Table headers: ['Form', 'Type', 'Insurance Carrier', 'Policy/Surety', 'Posted  Date', 'Coverage From', 'Coverage To', 'Effective  Date', 'Cancellation  Date']
+2025-05-18 19:35:38,761 - INFO - Raw row cells: ['84', 'SURETY', 'NATIONWIDE MUTUAL INSURANCE COMP', '7901100773', '05/03/2022', '$0', '$75,000*', '05/04/2022', '']
+2025-05-18 19:35:38,761 - INFO - Parsed insurance entry: {
+  "type": "SURETY",
+  "insurance_carrier": "NATIONWIDE MUTUAL INSURANCE COMP",
+  "policy_surety_number": "7901100773",
+  "posted_date": "05/03/2022",
+  "coverage_from": "$0",
+  "coverage_to": "$75,000*",
+  "effective_date": "05/04/2022",
+  "cancellation_date": ""
+}
+2025-05-18 19:35:38,761 - INFO - Successfully processed insurance details

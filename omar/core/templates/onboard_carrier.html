@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Onboard Carrier: {{ carrier.legal_name }} - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+            --status-active: #00ff00;  /* Green for Active */
+            --status-inactive: #808080;  /* Grey for Inactive */
+            --status-dontuse: #ff5555;  /* Red for Don't Use */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .status-section {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-circle.active {
+            background-color: var(--status-active);
+        }
+
+        .status-circle.inactive {
+            background-color: var(--status-inactive);
+        }
+
+        .status-circle.dont-use {
+            background-color: var(--status-dontuse);
+        }
+
+        .status-text {
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        button[type="button"] {
+            background: linear-gradient(45deg, #ff5555, #ff9999);
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .messages .success {
+            color: #00ff00;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .messages .error {
+            color: #ff9999;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <div class="container">
+        <h1>Onboard Carrier: {{ carrier.legal_name }}</h1>
+
+        <!-- Messages Block -->
+        <div class="messages">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- Status Indicator -->
+        <div class="status-section">
+            <span class="status-circle {% if carrier.status == 'Active' %}active{% elif carrier.status == 'Inactive' %}inactive{% else %}dont-use{% endif %}"></span>
+            <span class="status-text">Status: {{ carrier.status }}</span>
+        </div>
+
+        <p>Are you sure you want to onboard this carrier? You can attach files in the Carrier Info page after onboarding.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="buttons">
+                <button type="submit">Confirm Onboarding</button>
+                <button type="button" onclick="window.location.href='{% url 'saved_carriers' %}'">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

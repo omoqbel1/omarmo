@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{datetime}
+\usepackage{titling}
+
+% Define colors
+\definecolor{lightgray}{gray}{0.9}
+
+% Title setup
+\pretitle{\begin{center}\Large\bfseries}
+\posttitle{\par\end{center}\vskip 0.5em}
+\title{Load Confirmation \& Rate Agreement}
+\author{}
+\date{}
+
+\begin{document}
+
+% Title
+\maketitle
+
+% Load Info
+\begin{center}
+Load\#: \textbf{<LoadNumber>} \hfill Order Date: \textbf{<OrderDate>} \hfill Amount: \textbf{<Amount>}
+\end{center}
+
+\vspace{0.5cm}
+
+% Company and Carrier Info Table
+\begin{tabular}{|p{5.5in}|p{5.5in}|}
+\hline
+\rowcolor{lightgray} \multicolumn{1}{|c|}{\textbf{Company:}} & \multicolumn{1}{c|}{\textbf{This Load Is Assigned To:}} \\
+\textbf{<CompanyName>} & \textbf{<CarrierName>} \\
+<CompanyAddress> & <CarrierAddress> \\
+<CompanyCityStateZip> & <CarrierCityStateZip> \\
+Phone \#: <CompanyPhone> & Phone: <CarrierPhone> \\
+Fax \#: <CompanyFax> & Driver 1: <Driver1> \\
+E-Mail: <CompanyEmail> & Driver 2: <Driver2> \\
+Contact: <CompanyContact> & Truck\#: <TruckNumber> \\
+ & Temperature: $0^{\circ} \mathrm{C}$ \\
+ & Contact: <CarrierContact> \\
+ & Ref No: <RefNo> \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+% Load Details
+\section*{Load Details}
+\begin{itemize}[leftmargin=*,label={}]
+    \item \textbf{Load\#:} <LoadNumber>
+    \item \textbf{Date:} <OrderDate>
+    \item \textbf{Amount:} <Amount>
+    \item \textbf{Weight:} <TotalWeight>
+\end{itemize}
+
+% Pickup and Delivery Stops
+\section*{Stops}
+\begin{itemize}[leftmargin=*,label={}]
+    <PickupStops>
+    <DeliveryStops>
+\end{itemize}
+
+% Instructions (if any)
+\ifx\Instructions\empty
+\else
+\section*{Instructions}
+\Instructions
+\fi
+
+% Carrier Terms
+\section*{Carrier Terms}
+<CarrierTerms>
+
+\vspace{0.5cm}
+
+% Signature
+\begin{center}
+SIGNATURE \rule{2in}{0.4pt} \hfill DATE \rule{1in}{0.4pt}
+\end{center}
+\begin{center}
+PRINT NAME \rule{2in}{0.4pt}
+\end{center}
+
+\end{document}

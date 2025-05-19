@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Loads - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- CSS Fix: All styles wrapped in a single properly closed style tag -->
+    <style>
+        /* === Core Styles - DO NOT EDIT === */
+
+        /* Reset and fundamentals */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Force text above the navbar to be hidden */
+        body > *:not(.navbar):not(script):not(style):not(link):not(meta):first-child {
+            display: none !important;
+        }
+
+        /* Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-darker: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #64748b;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --pending: #8b5cf6;
+            --completed: #22c55e;
+            --problem: #94a3b8;
+            --active: #f43f5e;
+            --table-hover: #f1f5f9;
+            --shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3b82f6;
+                --primary-darker: #2563eb;
+                --primary-light: #1e3a8a;
+                --secondary: #94a3b8;
+                --background: #0f172a;
+                --card-bg: #1e293b;
+                --text: #f1f5f9;
+                --text-light: #cbd5e1;
+                --border: #334155;
+                --table-hover: #334155;
+                --shadow: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Make sure navbar is visible */
+        .navbar {
+            position: relative !important;
+            z-index: 1000 !important;
+            display: block !important;
+        }
+
+        /* === Layout === */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .date-display {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .date-display i {
+            color: var(--primary);
+        }
+
+        /* === Main Components === */
+        /* Card component */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px var(--shadow), 0 1px 3px var(--shadow);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 5;
+            margin-top: 1rem;
+        }
+
+        /* Card header */
+        .card-header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-item i {
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .stat-value {
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            outline: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary) !important;
+            color: white !important;
+            z-index: 50;
+            position: relative;
+            display: inline-flex !important;
+            align-items: center;
+            padding: 0.625rem 1.25rem !important;
+            border-radius: 0.5rem !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-darker) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--background);
+        }
+
+        /* Action bar */
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        /* Search box */
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+            max-width: 24rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.625rem 1rem 0.625rem 2.5rem;
+            font-size: 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background-color: var(--card-bg);
+            color: var(--text);
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Table */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+            background-color: var(--card-bg);
+            z-index: 10;
+        }
+
+        th a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        th a:hover {
+            color: var(--primary);
+        }
+
+        tbody tr {
+            transition: all 0.1s ease;
+        }
+
+        tr.clickable:hover {
+            background-color: var(--table-hover);
+            cursor: pointer;
+        }
+
+        /* Status badges */
+        .status-badge {
+            display: inline-flex;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-active {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .status-booked {
+            background-color: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .status-paid {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+       passed-color: #d1fae5;
+            color: #047857;
+        }
+
+        .status-problem {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+
+        .money-positive {
+            color: var(--success);
+        }
+
+        .money-negative {
+            color: var(--danger);
+        }
+
+        /* Checkboxes */
+        .checkbox-custom {
+            width: 1.125rem;
+            height: 1.125rem;
+            border: 1.5px solid var(--border);
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-custom:hover {
+            border-color: var(--primary);
+        }
+
+        .checkbox-input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkbox-input:checked ~ .checkbox-custom {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkbox-input:checked ~ .checkbox-custom:after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 3px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .load-id {
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .pagination-info {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .page-btn {
+            width: 2.25rem;
+            height: 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+            background-color: var(--card-bg);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .page-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .page-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .table-cell-highlight {
+            font-weight: 500;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background-color: var(--card-bg);
+            color: var(--text);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast-error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .toast-warning {
+            border-left: 4px solid var(--warning);
+        }
+
+        .toast-info {
+            border-left: 4px solid var(--info);
+        }
+
+        .toast-icon {
+            font-size: 1.25rem;
+        }
+
+        .toast-success .toast-icon {
+            color: var(--success);
+        }
+
+        .toast-error .toast-icon {
+            color: var(--danger);
+        }
+
+        .toast-warning .toast-icon {
+            color: var(--warning);
+        }
+
+        .toast-info .toast-icon {
+            color: var(--info);
+        }
+
+        .toast-content {
+            flex-grow: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-message {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header, .card-header, .stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .action-bar {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-box {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .pagination {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .pagination-controls {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation for status badges */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-badge {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Selective columns visibility */
+        @media (max-width: 1200px) {
+            .hide-md {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hide-sm {
+                display: none;
+            }
+        }
+        .btn-primary {
+      background-color: #2563eb !important; /* Bright blue color matching screenshot */
+      color: white !important;
+      z-index: 50 !important;
+      position: relative !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 0.625rem 1.25rem !important;
+      border-radius: 0.5rem !important;
+      text-decoration: none !important;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      border: none !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .btn-primary:hover {
+      background-color: #1d4ed8 !important; /* Slightly darker blue on hover */
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .btn-primary i {
+      margin-right: 8px !important;
+  }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    {% load humanize %}
+    {% load mathfilters %}
+
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1 class="page-title">
+                    <i class="fas fa-truck-loading"></i>
+                    Load Management
+                </h1>
+                <div class="date-display">
+                    <i class="far fa-calendar-alt"></i>
+                    {% now "l, F j, Y • h:i A T" %}
+                </div>
+            </div>
+        </div>
+
+        <!-- CSRF token for AJAX requests -->
+        {% csrf_token %}
+
+        <!-- Display Django messages if any -->
+        {% if messages %}
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                            showToast('success', 'Success', '{{ message }}');
+                        {% elif message.tags == 'error' %}
+                            showToast('error', 'Error', '{{ message }}');
+                        {% elif message.tags == 'warning' %}
+                            showToast('warning', 'Warning', '{{ message }}');
+                        {% else %}
+                            showToast('info', 'Information', '{{ message }}');
+                        {% endif %}
+                    {% endfor %}
+                });
+            </script>
+        {% endif %}
+
+        <div class="card">
+            <div class="card-header">
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clipboard-list" style="color: var(--primary);"></i>
+                        <div>
+                            <div class="stat-label">Total Loads</div>
+                            <div class="stat-value">{{ loads|length }}</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-fire" style="color: var(--active);"></i>
+                        <div>
+                            <div class="stat-label">Active</div>
+                            <div class="stat-value">{{ active_count|default:"0" }}</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-calendar-check" style="color: var(--info);"></i>
+                        <div>
+                            <div class="stat-label">Booked</div>
+                            <div class="stat-value">{{ booked_count|default:"0" }}</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-check-circle" style="color: var(--completed);"></i>
+                        <div>
+                            <div class="stat-label">Completed</div>
+                            <div class="stat-value">{{ completed_count|default:"0" }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search loads, customers, carriers...">
+                    </div>
+                    <a href="{% url 'add_load' %}" class="btn btn-primary" style="min-width: 120px; text-decoration: none !important;">
+                        <i class="fas fa-plus" style="margin-right: 8px;"></i>
+                        Add Load
+                    </a>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-filter"></i>
+                        Filter
+                    </button>
+                </div>
+                <div class="selected-actions" style="display: none; margin-top: 1rem; padding: 0.75rem; background-color: var(--primary-light); border-radius: 0.5rem; width: 100%;">
+                    <span class="selected-count">0 load(s) selected</span>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                        <button class="btn btn-outline" id="copy-button" style="background-color: white;">
+                            <i class="fas fa-copy"></i>
+                            Copy Load
+                        </button>
+                        <button class="btn btn-outline" style="background-color: white;">
+                            <i class="fas fa-file-export"></i>
+                            Export
+                        </button>
+                        <button class="btn btn-outline" style="background-color: white;">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button id="delete-button" class="btn btn-outline" style="background-color: white; color: var(--danger);">
+                            <i class="fas fa-trash-alt"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="checkbox-input" id="select-all">
+                                    <span class="checkbox-custom"></span>
+                                </label>
+                            </th>
+                            <th>
+                                <a href="?sort=load_number{% if sort == 'load_number' and order == 'asc' %}&order=desc{% endif %}">
+                                    LOAD #
+                                    {% if sort == 'load_number' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="?sort=status{% if sort == 'status' and order == 'asc' %}&order=desc{% endif %}">
+                                    STATUS
+                                    {% if sort == 'status' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="?sort=customer{% if sort == 'customer' and order == 'asc' %}&order=desc{% endif %}">
+                                    CUSTOMER
+                                    {% if sort == 'customer' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="?sort=pickup_date{% if sort == 'pickup_date' and order == 'asc' %}&order=desc{% endif %}">
+                                    PICKUP
+                                    {% if sort == 'pickup_date' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>ORIGIN</th>
+                            <th>
+                                <a href="?sort=delivery_date{% if sort == 'delivery_date' and order == 'asc' %}&order=desc{% endif %}">
+                                    DELIVERY
+                                    {% if sort == 'delivery_date' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>DESTINATION</th>
+                            <th>
+                                <a href="?sort=cust_amt{% if sort == 'cust_amt' and order == 'asc' %}&order=desc{% endif %}">
+                                    REVENUE
+                                    {% if sort == 'cust_amt' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="?sort=carr_amt{% if sort == 'carr_amt' and order == 'asc' %}&order=desc{% endif %}">
+                                    COST
+                                    {% if sort == 'carr_amt' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="?sort=total_miles{% if sort == 'total_miles' and order == 'asc' %}&order=desc{% endif %}">
+                                    MILES
+                                    {% if sort == 'total_miles' %}
+                                        <i class="fas fa-sort-{% if order|default:'asc' == 'asc' %}up{% else %}down{% endif %}"></i>
+                                    {% else %}
+                                        <i class="fas fa-sort"></i>
+                                    {% endif %}
+                                </a>
+                            </th>
+                            <th>CARRIER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for load in loads %}
+                            <tr class="clickable" onclick="window.location.href='{% url 'edit_load' load_id=load.load_number %}'">
+                                <td onclick="event.stopPropagation()">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" class="checkbox-input load-checkbox" value="{{ load.load_number }}">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                </td>
+                                <td><span class="load-id">{{ load.load_number }}</span></td>
+                                <td>
+                                    <span class="status-badge status-{{ load.status|lower }}">
+                                        {{ load.status }}
+                                    </span>
+                                </td>
+                                <td class="table-cell-highlight">{{ load.customer|default:"N/A" }}</td>
+                                <td>
+                                    {% if load.pickup_date %}
+                                        <div class="table-cell-highlight">{{ load.pickup_date|date:"m/d/Y" }}</div>
+                                    {% else %}
+                                        <span>N/A</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if load.pickup_city and load.pickup_state %}
+                                        {{ load.pickup_city }}, {{ load.pickup_state }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if load.delivery_date %}
+                                        <div class="table-cell-highlight">{{ load.delivery_date|date:"m/d/Y" }}</div>
+                                    {% else %}
+                                        <span>N/A</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if load.delivery_city and load.delivery_state %}
+                                        {{ load.delivery_city }}, {{ load.delivery_state }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
+                                <td class="money-positive">
+                                    ${{ load.cust_amt|default:"0.00"|floatformat:2 }}
+                                </td>
+                                <td class="money-negative">
+                                    ${{ load.carr_amt|default:"0.00"|floatformat:2 }}
+                                </td>
+                                <td>
+                                    {{ load.total_miles|default:"0"|intcomma }}
+                                </td>
+                                <td>{{ load.carrier|default:"N/A" }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="12" style="text-align: center; padding: 2rem;">
+                                    <div style="color: var(--text-light);">
+                                        <i class="fas fa-inbox fa-3x" style="margin-bottom: 1rem; opacity: 0.5;"></i>
+                                        <p style="font-size: 1rem; font-weight: 500;">No loads available</p>
+                                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Get started by adding your first load</p>
+                                        <a href="{% url 'add_load' %}" class="btn btn-primary" style="margin-top: 1rem;">
+                                            <i class="fas fa-plus"></i>
+                                            Add Load
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if loads|length > 0 %}
+            <div class="pagination">
+                <div class="pagination-info">
+                    Showing <span style="font-weight: 600;">1-{{ loads|length }}</span> of <span style="font-weight: 600;">{{ loads|length }}</span> loads
+                </div>
+                <div class="pagination-controls">
+                    <button class="page-btn disabled">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn disabled">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Delete</h3>
+                <button class="modal-close" onclick="hideModal('delete-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="delete-message">Are you sure you want to delete the selected loads? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="hideModal('delete-modal')">Cancel</button>
+                <button id="confirm-delete" class="btn btn-primary" style="background-color: var(--danger);">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Load Modal -->
+    <div id="copy-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Copy Load</h3>
+                <button class="modal-close" onclick="hideModal('copy-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="copy-message">Create a copy of the selected load with the following options:</p>
+                <div style="margin-top: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">New Load Status:</label>
+                        <select id="copy-status" style="width: 100%; padding: 0.625rem; font-size: 0.875rem; border: 1px solid var(--border); border-radius: 0.5rem; background-color: var(--card-bg); color: var(--text);">
+                            <option value="BOOKED">BOOKED</option>
+                            <option value="ACTIVE">ACTIVE</option>
+                            <option value="PROBLEM">PROBLEM</option>
+                            <option value="COMPLETED">COMPLETED</option>
+                            <option value="PAID">PAID</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label class="checkbox-container" style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" id="reset-carrier" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            <span style="margin-left: 0.5rem;">Reset carrier information</span>
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label class="checkbox-container" style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" id="reset-dates" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            <span style="margin-left: 0.5rem;">Reset pickup/delivery dates</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="hideModal('copy-modal')">Cancel</button>
+                <button id="confirm-copy" class="btn btn-primary">Copy Load</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast toast-success">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">Success</div>
+            <div class="toast-message" id="toast-message">Operation completed successfully.</div>
+        </div>
+        <button class="toast-close" onclick="hideToast()">×</button>
+    </div>
+
+    <!-- Script that fixes CSS leakage -->
+    <script>
+        // This function executes immediately when the page begins loading
+        (function() {
+            // Create a style element to hide unexpected content
+            const style = document.createElement('style');
+            style.textContent = `body > *:not(.navbar):not(script):not(style):not(link):not(meta):first-child { display: none !important; }`;
+            document.head.appendChild(style);
+
+            // Remove any text nodes that might be CSS leakage
+            const bodyChildNodes = Array.from(document.body.childNodes);
+            bodyChildNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent.trim();
+                    if (text.length > 0 && (
+                        text.includes('{') ||
+                        text.includes('}') ||
+                        text.includes(';') ||
+                        text.includes(':') ||
+                        text.includes('flex') ||
+                        text.includes('width') ||
+                        text.includes('max-width') ||
+                        text.includes('padding') ||
+                        text.includes('@media') ||
+                        text.includes('animation') ||
+                        text.match(/[a-zA-Z-]+:\s*[a-zA-Z0-9-#\.\(\)]+;/) // Matches CSS-like patterns e.g., "property: value;"
+                    )) {
+                        node.remove(); // Remove the node entirely instead of just clearing its content
+                    }
+                }
+            });
+        })();
+
+        // Main initialization when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Double-check for any remaining leakage
+            const bodyChildNodes = Array.from(document.body.childNodes);
+            bodyChildNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent.trim();
+                    if (text.length > 0 && (
+                        text.includes('{') ||
+                        text.includes('}') ||
+                        text.includes(';') ||
+                        text.includes(':') ||
+                        text.includes('flex') ||
+                        text.includes('width') ||
+                        text.includes('max-width') ||
+                        text.includes('padding') ||
+                        text.includes('@media') ||
+                        text.includes('animation') ||
+                        text.match(/[a-zA-Z-]+:\s*[a-zA-Z0-9-#\.\(\)]+;/)
+                    )) {
+                        node.remove();
+                    }
+                }
+            });
+
+            // Force navbar to be visible and properly positioned
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.style.position = 'relative';
+                navbar.style.zIndex = '1000';
+                navbar.style.display = 'block';
+            }
+
+            // Ensure the "Add Load" button is visible
+            const addLoadBtn = document.querySelector('.btn-primary');
+            if (addLoadBtn) {
+                addLoadBtn.style.position = 'relative';
+                addLoadBtn.style.zIndex = '50';
+                addLoadBtn.style.display = 'inline-flex';
+                addLoadBtn.style.backgroundColor = '#2563eb';
+                addLoadBtn.style.color = 'white';
+            }
+        });
+
+        // Select all checkbox functionality
+        document.getElementById('select-all').addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.load-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            updateSelectedCount();
+        });
+
+        // Individual checkbox click handler
+        document.querySelectorAll('.load-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function(e) {
+                e.stopPropagation();
+                updateSelectedCount();
+                const allChecked = Array.from(document.querySelectorAll('.load-checkbox')).every(cb => cb.checked);
+                document.getElementById('select-all').checked = allChecked;
+            });
+        });
+
+        // Update the count of selected loads
+        function updateSelectedCount() {
+            const selectedCheckboxes = document.querySelectorAll('.load-checkbox:checked');
+            const selectedCount = selectedCheckboxes.length;
+            const actionText = document.querySelector('.selected-count');
+            const copyButton = document.getElementById('copy-button');
+
+            if (actionText) {
+                if (selectedCount > 0) {
+                    actionText.textContent = `${selectedCount} load(s) selected`;
+                    actionText.parentElement.style.display = 'block';
+
+                    // Disable copy button if more than 1 load is selected
+                    if (copyButton) {
+                        if (selectedCount > 1) {
+                            copyButton.disabled = true;
+                            copyButton.style.opacity = '0.5';
+                            copyButton.style.cursor = 'not-allowed';
+                            copyButton.title = 'You can only copy one load at a time';
+                        } else {
+                            copyButton.disabled = false;
+                            copyButton.style.opacity = '1';
+                            copyButton.style.cursor = 'pointer';
+                            copyButton.title = '';
+                        }
+                    }
+                } else {
+                    actionText.parentElement.style.display = 'none';
+                }
+            }
+        }
+
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                const shouldShow = text.includes(searchTerm);
+                row.style.display = shouldShow ? '' : 'none';
+            });
+        });
+
+        // Fixed delete functionality based on the actual Django view code
+        document.addEventListener('DOMContentLoaded', function() {
+            // Delete button functionality
+            document.getElementById('delete-button').addEventListener('click', function() {
+                const selectedLoads = document.querySelectorAll('.load-checkbox:checked');
+
+                if (selectedLoads.length === 0) {
+                    showToast('error', 'Error', 'Please select at least one load to delete.');
+                    return;
+                }
+
+                const loadIds = Array.from(selectedLoads).map(checkbox => checkbox.value);
+                const message = `Are you sure you want to delete ${selectedLoads.length} load(s)? This action cannot be undone.`;
+
+                document.getElementById('delete-message').textContent = message;
+
+                // Set up the confirm delete button
+                document.getElementById('confirm-delete').onclick = function() {
+                    // Hide the modal
+                    hideModal('delete-modal');
+
+                    // Show loading toast
+                    showToast('info', 'Processing', 'Deleting loads...');
+
+                    // Process deletions sequentially
+                    deleteLoadsSequentially(loadIds, 0);
+                };
+
+                showModal('delete-modal');
+            });
+
+            // Copy button functionality
+            document.getElementById('copy-button').addEventListener('click', function() {
+                const selectedLoads = document.querySelectorAll('.load-checkbox:checked');
+
+                if (selectedLoads.length === 0) {
+                    showToast('error', 'Error', 'Please select a load to copy.');
+                    return;
+                }
+
+                if (selectedLoads.length > 1) {
+                    showToast('error', 'Error', 'Please select only one load to copy.');
+                    return;
+                }
+
+                const loadId = selectedLoads[0].value;
+                showModal('copy-modal');
+
+                // Set up the confirm copy button
+                document.getElementById('confirm-copy').onclick = function() {
+                    // Get copy options
+                    const newStatus = document.getElementById('copy-status').value;
+                    const resetCarrier = document.getElementById('reset-carrier').checked;
+                    const resetDates = document.getElementById('reset-dates').checked;
+
+                    // Hide the modal
+                    hideModal('copy-modal');
+
+                    // Show loading toast
+                    showToast('info', 'Processing', 'Creating load copy...');
+
+                    // Send the copy request
+                    copyLoad(loadId, newStatus, resetCarrier, resetDates);
+                };
+            });
+
+            // Function to delete loads one by one
+            function deleteLoadsSequentially(loadIds, index) {
+                if (index >= loadIds.length) {
+                    // All loads deleted
+                    showToast('success', 'Success', `${loadIds.length} load(s) deleted successfully.`);
+
+                    // Reload the page after a short delay
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                    return;
+                }
+
+                const loadId = loadIds[index];
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                // Create a form for submission - this is the most reliable method with Django
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/delete-load/${loadId}/`;
+                form.style.display = 'none';
+
+                // Add CSRF token
+                const csrfField = document.createElement('input');
+                csrfField.type = 'hidden';
+                csrfField.name = 'csrfmiddlewaretoken';
+                csrfField.value = csrfToken;
+                form.appendChild(csrfField);
+
+                // Add to document
+                document.body.appendChild(form);
+
+                // Prepare for handling the response
+                const iframe = document.createElement('iframe');
+                iframe.name = 'delete-frame-' + loadId;
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                form.target = 'delete-frame-' + loadId;
+
+                // Set timeout to process next item regardless of iframe load status
+                setTimeout(() => {
+                    // Process next load
+                    deleteLoadsSequentially(loadIds, index + 1);
+                }, 1000);
+
+                // Submit the form
+                form.submit();
+            }
+
+            // Function to copy a load
+            function copyLoad(loadId, newStatus, resetCarrier, resetDates) {
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                // Create a form for submission
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/copy-load/${loadId}/`;
+                form.style.display = 'none';
+
+                // Add CSRF token
+                const csrfField = document.createElement('input');
+                csrfField.type = 'hidden';
+                csrfField.name = 'csrfmiddlewaretoken';
+                csrfField.value = csrfToken;
+                form.appendChild(csrfField);
+
+                // Add status field
+                const statusField = document.createElement('input');
+                statusField.type = 'hidden';
+                statusField.name = 'new_status';
+                statusField.value = newStatus;
+                form.appendChild(statusField);
+
+                // Add reset carrier field
+                const resetCarrierField = document.createElement('input');
+                resetCarrierField.type = 'hidden';
+                resetCarrierField.name = 'reset_carrier';
+                resetCarrierField.value = resetCarrier ? '1' : '0';
+                form.appendChild(resetCarrierField);
+
+                // Add reset dates field
+                const resetDatesField = document.createElement('input');
+                resetDatesField.type = 'hidden';
+                resetDatesField.name = 'reset_dates';
+                resetDatesField.value = resetDates ? '1' : '0';
+                form.appendChild(resetDatesField);
+
+                // Add to document
+                document.body.appendChild(form);
+
+                // Submit the form
+                form.submit();
+            }
+        });
+
+        // Modify the checkbox values in the table to use id instead of load_number
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all load rows and update their checkbox values
+            const rows = document.querySelectorAll('tbody tr.clickable');
+
+            rows.forEach(row => {
+                // Extract the href attribute from the row's onclick
+                const onclickAttr = row.getAttribute('onclick');
+                if (!onclickAttr) return;
+
+                // Look for the load ID in the URL pattern
+                const matches = onclickAttr.match(/edit_load\/(\d+)/);
+                if (matches && matches[1]) {
+                    const loadId = matches[1];
+
+                    // Find the checkbox in this row and update its value
+                    const checkbox = row.querySelector('.load-checkbox');
+                    if (checkbox) {
+                        checkbox.value = loadId;
+                    }
+                }
+            });
+        });
+        // Modal functionality
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    modal.querySelector('.modal-content').style.transform = 'translateY(0)';
+                }, 10);
+            }
+        }
+
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.opacity = '0';
+                modal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        // Toast notification functionality
+        function showToast(type, title, message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastTitle = toast.querySelector('.toast-title');
+            const toastIcon = toast.querySelector('.toast-icon i');
+
+            // Remove all type classes
+            toast.classList.remove('toast-success', 'toast-error', 'toast-warning', 'toast-info');
+
+            // Add the appropriate type class
+            toast.classList.add(`toast-${type}`);
+
+            // Set the icon
+            toastIcon.className = '';
+            switch(type) {
+                case 'success':
+                    toastIcon.className = 'fas fa-check-circle';
+                    break;
+                case 'error':
+                    toastIcon.className = 'fas fa-times-circle';
+                    break;
+                case 'warning':
+                    toastIcon.className = 'fas fa-exclamation-triangle';
+                    break;
+                case 'info':
+                    toastIcon.className = 'fas fa-info-circle';
+                    break;
+            }
+
+            // Set the title and message
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            // Show the toast
+            toast.classList.add('show');
+
+            // Automatically hide after 5 seconds
+            setTimeout(hideToast, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    const modalId = modal.getAttribute('id');
+                    hideModal(modalId);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

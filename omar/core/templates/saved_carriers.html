@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saved Carriers - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --border: rgba(255, 255, 255, 0.1);
+            --danger: #FF0000;
+            --success: #28a745;
+            --disabled: #666666;
+            --accent: #00f5ff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .add-carrier {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .add-carrier:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .add-carrier:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--card-bg);
+        }
+
+        th a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        th a:hover {
+            text-decoration: underline;
+        }
+
+        th a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        td {
+            word-break: break-word;
+        }
+
+        .email-cell, .address-cell {
+            max-width: 250px;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .action-buttons {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .action-buttons a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin: 0 4px;
+            display: inline-block;
+            vertical-align: middle;
+            transition: all 0.2s ease;
+        }
+
+        .action-buttons a.onboard {
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        .action-buttons a.onboard.disabled {
+            color: var(--disabled);
+            border-color: var(--disabled);
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        .action-buttons a.delete {
+            color: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .action-buttons a:hover:not(.disabled) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .action-buttons a.onboard:hover:not(.disabled) {
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .action-buttons a.delete:hover {
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        .action-buttons a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .messages .success {
+            color: #00ff00;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .messages .error {
+            color: #ff9999;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .add-carrier {
+                width: 100%;
+                text-align: center;
+            }
+
+            table {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: block;
+            }
+
+            tr {
+                display: block;
+                padding: 16px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                margin-bottom: 16px;
+                background-color: #111111;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            td {
+                display: block;
+                text-align: left;
+                padding: 8px 0;
+                position: relative;
+                word-break: break-word;
+                white-space: normal;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: var(--primary);
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .email-cell, .address-cell {
+                max-width: 100%;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                white-space: normal;
+            }
+
+            .action-buttons {
+                text-align: center;
+                padding-top: 12px;
+                border-top: 1px solid var(--border);
+                margin-top: 12px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .action-buttons a {
+                display: block;
+                width: 100%;
+                margin: 0;
+                text-align: center;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <div class="card">
+        <div class="header">
+            <h1>Saved Carriers</h1>
+            <a href="{% url 'save_carrier' %}" class="add-carrier" role="button">Add New Carrier</a>
+        </div>
+
+        <!-- Messages Block -->
+        <div class="messages">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        {% if carriers %}
+        <table role="grid">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <a href="?sort=legal_name&order={% if sort == 'legal_name' and order == 'asc' %}desc{% else %}asc{% endif %}">
+                            Legal Name {% if sort == 'legal_name' %}{% if order == 'asc' %}↑{% else %}↓{% endif %}{% endif %}
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="?sort=mc_number&order={% if sort == 'mc_number' and order == 'asc' %}desc{% else %}asc{% endif %}">
+                            MC Number {% if sort == 'mc_number' %}{% if order == 'asc' %}↑{% else %}↓{% endif %}{% endif %}
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="?sort=dot_number&order={% if sort == 'dot_number' and order == 'asc' %}desc{% else %}asc{% endif %}">
+                            DOT Number {% if sort == 'dot_number' %}{% if order == 'asc' %}↑{% else %}↓{% endif %}{% endif %}
+                        </a>
+                    </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for carrier in carriers %}
+                <tr>
+                    <td data-label="Legal Name">{{ carrier.legal_name }}</td>
+                    <td data-label="MC Number">{{ carrier.mc_number }}</td>
+                    <td data-label="DOT Number">{{ carrier.dot_number }}</td>
+                    <td data-label="Email" class="email-cell">{{ carrier.email|default:"-" }}</td>
+                    <td data-label="Phone">{{ carrier.phone|default:"-" }}</td>
+                    <td data-label="Address" class="address-cell">
+                        {{ carrier.street|default_if_none:"" }}
+                        {% if carrier.street and carrier.city %}, {% endif %}
+                        {{ carrier.city|default_if_none:"" }}
+                        {% if carrier.city and carrier.state %}, {% endif %}
+                        {{ carrier.state|default_if_none:"" }}
+                        {% if carrier.state and carrier.zip_code %} {% endif %}
+                        {{ carrier.zip_code|default_if_none:"" }}
+                        {% if not carrier.street and not carrier.city and not carrier.state and not carrier.zip_code %}-{% endif %}
+                    </td>
+                    <td class="action-buttons" data-label="Actions">
+                        <a href="{% url 'edit_carrier' carrier.id %}" role="button">Edit</a>
+                        <a href="{% url 'onboard_carrier' carrier.id %}" class="onboard {% if carrier.is_onboarded %}disabled{% endif %}" {% if carrier.is_onboarded %}aria-disabled="true"{% endif %} role="button">
+                            {% if carrier.is_onboarded %}Already Onboarded{% else %}Onboard Carrier{% endif %}
+                        </a>
+                        <a href="{% url 'delete_carrier' carrier.id %}" class="delete" onclick="return confirm('Are you sure you want to delete this carrier?')" role="button">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No saved carriers found. <a href="{% url 'save_carrier' %}" role="button">Add a new carrier</a>.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

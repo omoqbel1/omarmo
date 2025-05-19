@@ -1,0 +1,1105 @@
+2025-05-18 18:44:43,009 - INFO - Insurance fetch requested for MC#: 1241143 by user omar2
+2025-05-18 18:44:43,010 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:44:43,010 - INFO - Looking up carrier with MC# 1241143 for company 2, found carrier_id: 16
+2025-05-18 18:44:43,011 - INFO - Starting background scraper for MC# 1241143, process 37020, thread Thread-3 (run_insurance_scraper)
+2025-05-18 18:44:43,011 - INFO - Parameters: user_id=3, carrier_id=16, company_id=2
+2025-05-18 18:44:43,011 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1241143
+2025-05-18 18:44:58,074 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 18:45:13,082 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:45:13,082 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:45:13,083 - INFO - No insurance data available for MC# 1241143, returning processing status
+2025-05-18 18:45:28,091 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:45:28,092 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:45:28,092 - INFO - No insurance data available for MC# 1241143, returning processing status
+2025-05-18 18:45:43,098 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:45:43,099 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:45:43,099 - INFO - No insurance data available for MC# 1241143, returning processing status
+2025-05-18 18:45:58,107 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:45:58,108 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:45:58,108 - INFO - No insurance data available for MC# 1241143, returning processing status
+2025-05-18 18:46:13,117 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:46:13,118 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:46:13,118 - INFO - No insurance data available for MC# 1241143, returning processing status
+2025-05-18 18:46:28,124 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:46:28,124 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:46:28,124 - INFO - No insurance data available for MC# 1241143, returning processing status
+2025-05-18 18:46:38,518 - INFO - Scraper completed for MC# 1241143, return code: 0, took 115.51 seconds
+2025-05-18 18:46:38,518 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+    "policy_surety_number": "CA983221350",
+    "posted_date": "01/17/2025",
+    "coverage_from": "$0",
+    "coverage_to": "$750,000",
+    "effective_date": "01/17/2025",
+    "cancellation_date": "07/16/2025"
+  }
+]
+...
+2025-05-18 18:46:38,518 - DEBUG - Stderr: 
+2025-05-18 18:46:38,518 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'UNITED FINANCIAL CASUALTY COMPANY', 'policy_surety_number': 'CA983221350', 'posted_date': '01/17/2025', 'coverage_from': '$0', 'coverage_to': '$750,000', 'effective_date': '01/17/2025', 'cancellation_date': '07/16/2025'}]
+2025-05-18 18:46:38,518 - INFO - Getting user with id 3
+2025-05-18 18:46:38,520 - INFO - Looking up carrier with id 16 and company_id 2
+2025-05-18 18:46:38,521 - INFO - Found 1 carriers with id 16
+2025-05-18 18:46:38,521 - INFO -   Carrier 16 has company_id=2
+2025-05-18 18:46:38,521 - INFO - Found 1 carriers in company 2
+2025-05-18 18:46:38,522 - INFO - Found 1 carriers matching both id=16 and company_id=2
+2025-05-18 18:46:38,523 - INFO - Found carrier 16 in company 2
+2025-05-18 18:46:38,523 - INFO - Processing insurance data for carrier 16 in company 2: {
+  "insurance": [
+    {
+      "type": "BIPD/Primary",
+      "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+      "policy_surety_number": "CA983221350",
+      "posted_date": "01/17/2025",
+      "coverage_from": "$0",
+      "coverage_to": "$750,000",
+      "effective_date": "01/17/2025",
+      "cancellation_date": "07/16/2025"
+    }
+  ]
+}
+2025-05-18 18:46:38,536 - INFO - Saved new insurance data for carrier 16 as file 46
+2025-05-18 18:46:38,536 - INFO - Updating SavedCarrier with insurance data: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:46:38,536 - INFO - Before update: SavedCarrier coverage_from=None, coverage_to=None
+2025-05-18 18:46:38,536 - INFO - New values: coverage_from=$0, coverage_to=$750,000
+2025-05-18 18:46:38,538 - INFO - Updated posted_date to 2025-01-17
+2025-05-18 18:46:38,538 - INFO - Updated effective_date to 2025-01-17
+2025-05-18 18:46:38,539 - INFO - Updated cancellation_date to 2025-07-16
+2025-05-18 18:46:38,541 - INFO - Updated insurance fields for carrier 16
+2025-05-18 18:46:38,549 - INFO - After save (from database): SavedCarrier coverage_from=$0, coverage_to=$750,000, posted_date=2025-01-17, effective_date=2025-01-17
+2025-05-18 18:46:38,549 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 18:46:38,550 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 18:46:43,132 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:46:43,133 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:46:43,133 - INFO - Returning SavedCarrier data for MC# 1241143: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:47:36,256 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:47:36,588 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1241143/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:47:37,590 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:47:37,744 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/3627033/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:47:38,746 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 18:47:39,278 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=3627033 HTTP/1.1" 200 None
+2025-05-18 18:47:51,259 - INFO - Insurance fetch requested for MC#: 1241143 by user omar2
+2025-05-18 18:47:51,260 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:47:51,261 - INFO - Looking up carrier with MC# 1241143 for company 2, found carrier_id: 16
+2025-05-18 18:47:51,261 - INFO - Starting background scraper for MC# 1241143, process 37020, thread Thread-7 (run_insurance_scraper)
+2025-05-18 18:47:51,261 - INFO - Parameters: user_id=3, carrier_id=16, company_id=2
+2025-05-18 18:47:51,261 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1241143
+2025-05-18 18:48:06,325 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 18:48:21,334 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:48:21,335 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:48:21,335 - INFO - Returning SavedCarrier data for MC# 1241143: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:48:42,471 - INFO - Scraper completed for MC# 1241143, return code: 0, took 51.21 seconds
+2025-05-18 18:48:42,471 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+    "policy_surety_number": "CA983221350",
+    "posted_date": "01/17/2025",
+    "coverage_from": "$0",
+    "coverage_to": "$750,000",
+    "effective_date": "01/17/2025",
+    "cancellation_date": "07/16/2025"
+  }
+]
+...
+2025-05-18 18:48:42,471 - DEBUG - Stderr: 
+2025-05-18 18:48:42,471 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'UNITED FINANCIAL CASUALTY COMPANY', 'policy_surety_number': 'CA983221350', 'posted_date': '01/17/2025', 'coverage_from': '$0', 'coverage_to': '$750,000', 'effective_date': '01/17/2025', 'cancellation_date': '07/16/2025'}]
+2025-05-18 18:48:42,471 - INFO - Getting user with id 3
+2025-05-18 18:48:42,473 - INFO - Looking up carrier with id 16 and company_id 2
+2025-05-18 18:48:42,473 - INFO - Found 1 carriers with id 16
+2025-05-18 18:48:42,473 - INFO -   Carrier 16 has company_id=2
+2025-05-18 18:48:42,474 - INFO - Found 1 carriers in company 2
+2025-05-18 18:48:42,474 - INFO - Found 1 carriers matching both id=16 and company_id=2
+2025-05-18 18:48:42,475 - INFO - Found carrier 16 in company 2
+2025-05-18 18:48:42,475 - INFO - Processing insurance data for carrier 16 in company 2: {
+  "insurance": [
+    {
+      "type": "BIPD/Primary",
+      "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+      "policy_surety_number": "CA983221350",
+      "posted_date": "01/17/2025",
+      "coverage_from": "$0",
+      "coverage_to": "$750,000",
+      "effective_date": "01/17/2025",
+      "cancellation_date": "07/16/2025"
+    }
+  ]
+}
+2025-05-18 18:48:42,488 - INFO - Saved new insurance data for carrier 16 as file 47
+2025-05-18 18:48:42,488 - INFO - Updating SavedCarrier with insurance data: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:48:42,488 - INFO - Before update: SavedCarrier coverage_from=$0, coverage_to=$750,000
+2025-05-18 18:48:42,488 - INFO - New values: coverage_from=$0, coverage_to=$750,000
+2025-05-18 18:48:42,488 - INFO - Updated posted_date to 2025-01-17
+2025-05-18 18:48:42,488 - INFO - Updated effective_date to 2025-01-17
+2025-05-18 18:48:42,489 - INFO - Updated cancellation_date to 2025-07-16
+2025-05-18 18:48:42,490 - INFO - Updated insurance fields for carrier 16
+2025-05-18 18:48:42,498 - INFO - After save (from database): SavedCarrier coverage_from=$0, coverage_to=$750,000, posted_date=2025-01-17, effective_date=2025-01-17
+2025-05-18 18:48:42,498 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 18:48:42,498 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 18:50:03,038 - INFO - Insurance fetch requested for MC#: 1241143 by user omar2
+2025-05-18 18:50:03,039 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:50:03,039 - INFO - Looking up carrier with MC# 1241143 for company 2, found carrier_id: 16
+2025-05-18 18:50:03,040 - INFO - Starting background scraper for MC# 1241143, process 37020, thread Thread-13 (run_insurance_scraper)
+2025-05-18 18:50:03,040 - INFO - Parameters: user_id=3, carrier_id=16, company_id=2
+2025-05-18 18:50:03,040 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1241143
+2025-05-18 18:50:18,102 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 18:50:33,249 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:50:33,249 - INFO - Checking insurance status for MC# 1241143 in company 2, found carrier_id: 16
+2025-05-18 18:50:33,249 - INFO - Returning SavedCarrier data for MC# 1241143: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:51:09,791 - INFO - Scraper completed for MC# 1241143, return code: 0, took 66.75 seconds
+2025-05-18 18:51:09,791 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+    "policy_surety_number": "CA983221350",
+    "posted_date": "01/17/2025",
+    "coverage_from": "$0",
+    "coverage_to": "$750,000",
+    "effective_date": "01/17/2025",
+    "cancellation_date": "07/16/2025"
+  }
+]
+...
+2025-05-18 18:51:09,791 - DEBUG - Stderr: 
+2025-05-18 18:51:09,791 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'UNITED FINANCIAL CASUALTY COMPANY', 'policy_surety_number': 'CA983221350', 'posted_date': '01/17/2025', 'coverage_from': '$0', 'coverage_to': '$750,000', 'effective_date': '01/17/2025', 'cancellation_date': '07/16/2025'}]
+2025-05-18 18:51:09,792 - INFO - Getting user with id 3
+2025-05-18 18:51:09,793 - INFO - Looking up carrier with id 16 and company_id 2
+2025-05-18 18:51:09,794 - INFO - Found 1 carriers with id 16
+2025-05-18 18:51:09,794 - INFO -   Carrier 16 has company_id=2
+2025-05-18 18:51:09,795 - INFO - Found 1 carriers in company 2
+2025-05-18 18:51:09,796 - INFO - Found 1 carriers matching both id=16 and company_id=2
+2025-05-18 18:51:09,796 - INFO - Found carrier 16 in company 2
+2025-05-18 18:51:09,797 - INFO - Processing insurance data for carrier 16 in company 2: {
+  "insurance": [
+    {
+      "type": "BIPD/Primary",
+      "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+      "policy_surety_number": "CA983221350",
+      "posted_date": "01/17/2025",
+      "coverage_from": "$0",
+      "coverage_to": "$750,000",
+      "effective_date": "01/17/2025",
+      "cancellation_date": "07/16/2025"
+    }
+  ]
+}
+2025-05-18 18:51:09,808 - INFO - Saved new insurance data for carrier 16 as file 48
+2025-05-18 18:51:09,809 - INFO - Updating SavedCarrier with insurance data: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 18:51:09,809 - INFO - Before update: SavedCarrier coverage_from=$0, coverage_to=$750,000
+2025-05-18 18:51:09,809 - INFO - New values: coverage_from=$0, coverage_to=$750,000
+2025-05-18 18:51:09,809 - INFO - Updated posted_date to 2025-01-17
+2025-05-18 18:51:09,809 - INFO - Updated effective_date to 2025-01-17
+2025-05-18 18:51:09,809 - INFO - Updated cancellation_date to 2025-07-16
+2025-05-18 18:51:09,811 - INFO - Updated insurance fields for carrier 16
+2025-05-18 18:51:09,819 - INFO - After save (from database): SavedCarrier coverage_from=$0, coverage_to=$750,000, posted_date=2025-01-17, effective_date=2025-01-17
+2025-05-18 18:51:09,819 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 18:51:09,819 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 18:52:04,983 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:05,303 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1647770/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:06,304 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:06,456 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/4250996/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:07,458 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 18:52:07,965 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=4250996 HTTP/1.1" 200 None
+2025-05-18 18:52:19,838 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:20,110 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1647770/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:21,111 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:21,253 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/4250996/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:22,255 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 18:52:22,768 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=4250996 HTTP/1.1" 200 None
+2025-05-18 18:52:31,560 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:31,762 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1060228/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:32,763 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:32,929 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/3328333/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:33,931 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 18:52:34,386 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=3328333 HTTP/1.1" 200 None
+2025-05-18 18:52:42,551 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:42,767 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1647770/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:43,769 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:52:43,916 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/4250996/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:52:44,918 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 18:52:45,297 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=4250996 HTTP/1.1" 200 None
+2025-05-18 18:53:35,310 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:53:35,623 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1647700/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:53:36,624 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 18:53:36,769 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/4250855/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 18:53:37,771 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 18:53:38,215 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=4250855 HTTP/1.1" 200 None
+2025-05-18 18:53:49,869 - INFO - Insurance fetch requested for MC#: 1647700 by user omar2
+2025-05-18 18:53:49,870 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:53:49,871 - INFO - Looking up carrier with MC# 1647700 for company 2, found carrier_id: None
+2025-05-18 18:53:49,871 - WARNING - Carrier with MC# 1647700 not found
+2025-05-18 18:53:49,871 - INFO - Starting background scraper for MC# 1647700, process 37020, thread Thread-18 (run_insurance_scraper)
+2025-05-18 18:53:49,871 - INFO - Parameters: user_id=3, carrier_id=None, company_id=2
+2025-05-18 18:53:49,871 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1647700
+2025-05-18 18:54:04,933 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 18:54:19,939 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:54:19,940 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:54:19,940 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:54:34,946 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:54:34,947 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:54:34,947 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:54:49,955 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:54:49,956 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:54:49,956 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:55:04,963 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:55:04,964 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:55:04,964 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:55:19,971 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:55:19,971 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:55:19,971 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:55:23,553 - INFO - Scraper completed for MC# 1647700, return code: 0, took 93.68 seconds
+2025-05-18 18:55:23,553 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "ACCREDITED SPECIALTY INSURANCE COMPANY",
+    "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+    "posted_date": "06/25/2024",
+    "coverage_from": "$0",
+    "coverage_to": "$1,000,000",
+    "effective_date": "06/25/2024",
+    "cancellation_date": ""
+  }
+]
+...
+2025-05-18 18:55:23,553 - DEBUG - Stderr: 
+2025-05-18 18:55:23,553 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'ACCREDITED SPECIALTY INSURANCE COMPANY', 'policy_surety_number': '2-XPT-TX-19-S0349800-00', 'posted_date': '06/25/2024', 'coverage_from': '$0', 'coverage_to': '$1,000,000', 'effective_date': '06/25/2024', 'cancellation_date': ''}]
+2025-05-18 18:55:34,977 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:55:34,977 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:55:34,977 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:55:49,984 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:55:49,984 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:55:49,984 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:56:04,991 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:56:04,992 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:56:04,992 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:56:19,998 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:56:19,998 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:56:19,999 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:56:35,005 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:56:35,006 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:56:35,006 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:56:50,014 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:56:50,015 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:56:50,015 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:57:05,021 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:57:05,021 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:57:05,022 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:57:20,028 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:57:20,029 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:57:20,029 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:57:35,037 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:57:35,037 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:57:35,037 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:57:50,046 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:57:50,047 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:57:50,047 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:58:05,054 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:58:05,054 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:58:05,054 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:58:20,059 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:58:20,060 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:58:20,060 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:58:35,067 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:58:35,067 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:58:35,068 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:58:50,076 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:58:50,077 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:58:50,077 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:59:05,083 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:59:05,083 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:59:05,083 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:59:18,054 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 18:59:20,098 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:59:20,099 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:59:20,099 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:59:35,107 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:59:35,108 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:59:35,108 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 18:59:50,115 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 18:59:50,116 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 18:59:50,116 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:00:05,125 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:00:05,125 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:00:05,125 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:00:20,134 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:00:20,135 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:00:20,135 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:00:35,143 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:00:35,144 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:00:35,144 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:00:50,150 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:00:50,151 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:00:50,151 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:01:05,160 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:01:05,161 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:01:05,161 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:01:20,176 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:01:20,176 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:01:20,176 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:01:35,182 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:01:35,183 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:01:35,183 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:01:50,190 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:01:50,191 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:01:50,191 - WARNING - Not Found: /api/carrier/check-insurance-status/
+2025-05-18 19:01:54,105 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:02:05,208 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:02:05,211 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:02:20,219 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:02:20,219 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:02:35,225 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:02:35,226 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:02:50,231 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:02:50,231 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:03:05,239 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:03:05,240 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:03:20,246 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:03:20,247 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:03:35,254 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:03:35,255 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:03:50,262 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:03:50,262 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:04:05,271 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:04:05,272 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:04:20,279 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:04:20,279 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:04:35,286 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:04:35,287 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:04:50,296 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:04:50,296 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:05:05,304 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:05:05,304 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:05:20,313 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:05:20,314 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:05:35,321 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:05:35,322 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:05:48,527 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:05:50,333 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:05:50,334 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:06:05,343 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:06:05,344 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:06:20,353 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:06:20,353 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:06:35,363 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:06:35,363 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:06:50,370 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:06:50,371 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:07:05,379 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:07:05,379 - INFO - Checking insurance status for MC# 1647700 in company 2, found carrier_id: None
+2025-05-18 19:07:07,097 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:07:13,434 - INFO - Insurance fetch requested for MC#: 1647700 by user omar2
+2025-05-18 19:07:13,434 - INFO - User omar2 is_superuser: True
+2025-05-18 19:07:13,435 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:07:13,437 - INFO - Superuser looking up carrier with MC# 1647700 across all companies, found carrier_id: 20
+2025-05-18 19:07:13,437 - INFO - Starting background scraper for MC# 1647700, process 20804, thread Thread-4 (run_insurance_scraper)
+2025-05-18 19:07:13,437 - INFO - Parameters: user_id=3, carrier_id=20, company_id=2
+2025-05-18 19:07:13,437 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1647700
+2025-05-18 19:07:28,503 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:07:43,510 - INFO - User omar2 is_superuser: True
+2025-05-18 19:07:43,511 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:07:43,511 - INFO - Superuser looking up carrier with MC# 1647700 across all companies, found carrier_id: 20
+2025-05-18 19:07:43,512 - INFO - No insurance data available for MC# 1647700, returning processing status
+2025-05-18 19:07:58,518 - INFO - User omar2 is_superuser: True
+2025-05-18 19:07:58,518 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:07:58,519 - INFO - Superuser looking up carrier with MC# 1647700 across all companies, found carrier_id: 20
+2025-05-18 19:07:58,519 - INFO - No insurance data available for MC# 1647700, returning processing status
+2025-05-18 19:08:13,526 - INFO - User omar2 is_superuser: True
+2025-05-18 19:08:13,527 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:08:13,528 - INFO - Superuser looking up carrier with MC# 1647700 across all companies, found carrier_id: 20
+2025-05-18 19:08:13,528 - INFO - No insurance data available for MC# 1647700, returning processing status
+2025-05-18 19:08:20,816 - INFO - Scraper completed for MC# 1647700, return code: 0, took 67.38 seconds
+2025-05-18 19:08:20,816 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "ACCREDITED SPECIALTY INSURANCE COMPANY",
+    "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+    "posted_date": "06/25/2024",
+    "coverage_from": "$0",
+    "coverage_to": "$1,000,000",
+    "effective_date": "06/25/2024",
+    "cancellation_date": ""
+  }
+]
+...
+2025-05-18 19:08:20,816 - DEBUG - Stderr: 
+2025-05-18 19:08:20,816 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'ACCREDITED SPECIALTY INSURANCE COMPANY', 'policy_surety_number': '2-XPT-TX-19-S0349800-00', 'posted_date': '06/25/2024', 'coverage_from': '$0', 'coverage_to': '$1,000,000', 'effective_date': '06/25/2024', 'cancellation_date': ''}]
+2025-05-18 19:08:20,816 - INFO - Getting user with id 3
+2025-05-18 19:08:20,817 - INFO - Looking up carrier with id 20 and company_id 2
+2025-05-18 19:08:20,819 - INFO - Found 1 carriers with id 20
+2025-05-18 19:08:20,819 - INFO -   Carrier 20 has company_id=3
+2025-05-18 19:08:20,819 - INFO - Found 1 carriers in company 2
+2025-05-18 19:08:20,820 - INFO - Found 0 carriers matching both id=20 and company_id=2
+2025-05-18 19:08:20,821 - WARNING - Carrier with ID 20 and company_id 2 not found, trying without company filter
+2025-05-18 19:08:20,822 - INFO - Found carrier 20 with company_id 3
+2025-05-18 19:08:20,822 - INFO - Processing insurance data for carrier 20 in company 2: {
+  "insurance": [
+    {
+      "type": "BIPD/Primary",
+      "insurance_carrier": "ACCREDITED SPECIALTY INSURANCE COMPANY",
+      "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+      "posted_date": "06/25/2024",
+      "coverage_from": "$0",
+      "coverage_to": "$1,000,000",
+      "effective_date": "06/25/2024",
+      "cancellation_date": ""
+    }
+  ]
+}
+2025-05-18 19:08:20,846 - INFO - Saved new insurance data for carrier 20 as file 49
+2025-05-18 19:08:20,846 - INFO - Updating SavedCarrier with insurance data: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "ACCREDITED SPECIALTY INSURANCE COMPANY",
+  "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+  "posted_date": "06/25/2024",
+  "coverage_from": "$0",
+  "coverage_to": "$1,000,000",
+  "effective_date": "06/25/2024",
+  "cancellation_date": ""
+}
+2025-05-18 19:08:20,846 - INFO - Before update: SavedCarrier coverage_from=None, coverage_to=None
+2025-05-18 19:08:20,846 - INFO - New values: coverage_from=$0, coverage_to=$1,000,000
+2025-05-18 19:08:20,848 - INFO - Updated posted_date to 2024-06-25
+2025-05-18 19:08:20,848 - INFO - Updated effective_date to 2024-06-25
+2025-05-18 19:08:20,850 - INFO - Updated insurance fields for carrier 20
+2025-05-18 19:08:20,859 - INFO - After save (from database): SavedCarrier coverage_from=$0, coverage_to=$1,000,000, posted_date=2024-06-25, effective_date=2024-06-25
+2025-05-18 19:08:20,859 - INFO - Saved insurance data for carrier 20 in company 3
+2025-05-18 19:08:20,859 - INFO - Saved insurance data for carrier 20 in company 3
+2025-05-18 19:08:28,536 - INFO - User omar2 is_superuser: True
+2025-05-18 19:08:28,536 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:08:28,537 - INFO - Superuser looking up carrier with MC# 1647700 across all companies, found carrier_id: 20
+2025-05-18 19:08:28,537 - INFO - Returning SavedCarrier data for MC# 1647700: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "2-XPT-TX-19-S0349800-00",
+  "posted_date": "06/25/2024",
+  "coverage_from": "$0",
+  "coverage_to": "$1,000,000",
+  "effective_date": "06/25/2024",
+  "cancellation_date": ""
+}
+2025-05-18 19:08:41,198 - INFO - Insurance fetch requested for MC#: 1241143 by user omar2
+2025-05-18 19:08:41,198 - INFO - User omar2 is_superuser: True
+2025-05-18 19:08:41,198 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:08:41,199 - INFO - Superuser looking up carrier with MC# 1241143 across all companies, found carrier_id: 7
+2025-05-18 19:08:41,199 - INFO - Starting background scraper for MC# 1241143, process 20804, thread Thread-8 (run_insurance_scraper)
+2025-05-18 19:08:41,199 - INFO - Parameters: user_id=3, carrier_id=7, company_id=2
+2025-05-18 19:08:41,200 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1241143
+2025-05-18 19:08:56,273 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:09:01,052 - INFO - Scraper completed for MC# 1241143, return code: 0, took 19.85 seconds
+2025-05-18 19:09:01,052 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+    "policy_surety_number": "CA983221350",
+    "posted_date": "01/17/2025",
+    "coverage_from": "$0",
+    "coverage_to": "$750,000",
+    "effective_date": "01/17/2025",
+    "cancellation_date": "07/16/2025"
+  }
+]
+...
+2025-05-18 19:09:01,052 - DEBUG - Stderr: 
+2025-05-18 19:09:01,052 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'UNITED FINANCIAL CASUALTY COMPANY', 'policy_surety_number': 'CA983221350', 'posted_date': '01/17/2025', 'coverage_from': '$0', 'coverage_to': '$750,000', 'effective_date': '01/17/2025', 'cancellation_date': '07/16/2025'}]
+2025-05-18 19:09:01,052 - INFO - Getting user with id 3
+2025-05-18 19:09:01,054 - INFO - Looking up carrier with id 7 and company_id 2
+2025-05-18 19:09:01,055 - INFO - Found 1 carriers with id 7
+2025-05-18 19:09:01,055 - INFO -   Carrier 7 has company_id=1
+2025-05-18 19:09:01,056 - INFO - Found 1 carriers in company 2
+2025-05-18 19:09:01,057 - INFO - Found 0 carriers matching both id=7 and company_id=2
+2025-05-18 19:09:01,057 - WARNING - Carrier with ID 7 and company_id 2 not found, trying without company filter
+2025-05-18 19:09:01,058 - INFO - Found carrier 7 with company_id 1
+2025-05-18 19:09:01,058 - INFO - Processing insurance data for carrier 7 in company 2: {
+  "insurance": [
+    {
+      "type": "BIPD/Primary",
+      "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+      "policy_surety_number": "CA983221350",
+      "posted_date": "01/17/2025",
+      "coverage_from": "$0",
+      "coverage_to": "$750,000",
+      "effective_date": "01/17/2025",
+      "cancellation_date": "07/16/2025"
+    }
+  ]
+}
+2025-05-18 19:09:01,071 - INFO - Saved new insurance data for carrier 7 as file 50
+2025-05-18 19:09:01,071 - INFO - Updating SavedCarrier with insurance data: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:09:01,071 - INFO - Before update: SavedCarrier coverage_from=$0, coverage_to=$750,000
+2025-05-18 19:09:01,071 - INFO - New values: coverage_from=$0, coverage_to=$750,000
+2025-05-18 19:09:01,071 - INFO - Updated posted_date to 2025-01-17
+2025-05-18 19:09:01,071 - INFO - Updated effective_date to 2025-01-17
+2025-05-18 19:09:01,071 - INFO - Updated cancellation_date to 2025-07-16
+2025-05-18 19:09:01,073 - INFO - Updated insurance fields for carrier 7
+2025-05-18 19:09:01,081 - INFO - After save (from database): SavedCarrier coverage_from=$0, coverage_to=$750,000, posted_date=2025-01-17, effective_date=2025-01-17
+2025-05-18 19:09:01,081 - INFO - Saved insurance data for carrier 7 in company 1
+2025-05-18 19:09:01,081 - INFO - Saved insurance data for carrier 7 in company 1
+2025-05-18 19:09:11,282 - INFO - User omar2 is_superuser: True
+2025-05-18 19:09:11,283 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:09:11,283 - INFO - Superuser looking up carrier with MC# 1241143 across all companies, found carrier_id: 7
+2025-05-18 19:09:11,283 - INFO - Returning SavedCarrier data for MC# 1241143: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:10:54,403 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:11:20,423 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:11:42,085 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:12:26,741 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:12:32,972 - INFO - Insurance fetch requested for MC#: 1241143 by user omar2
+2025-05-18 19:12:32,972 - INFO - User omar2 is_superuser: True
+2025-05-18 19:12:32,973 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:12:32,977 - INFO - Looking up carrier with MC# 1241143 for company 2, found carrier_id: 16
+2025-05-18 19:12:32,977 - INFO - Starting background scraper for MC# 1241143, process 62468, thread Thread-2 (run_insurance_scraper)
+2025-05-18 19:12:32,977 - INFO - Parameters: user_id=3, carrier_id=16, company_id=2
+2025-05-18 19:12:32,978 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1241143
+2025-05-18 19:12:48,051 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:13:03,058 - INFO - User omar2 is_superuser: True
+2025-05-18 19:13:03,058 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:13:03,059 - INFO - Looking up carrier with MC# 1241143 for company 2, found carrier_id: 16
+2025-05-18 19:13:03,059 - INFO - Returning SavedCarrier data for MC# 1241143: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:13:35,277 - INFO - Scraper completed for MC# 1241143, return code: 0, took 62.30 seconds
+2025-05-18 19:13:35,278 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+    "policy_surety_number": "CA983221350",
+    "posted_date": "01/17/2025",
+    "coverage_from": "$0",
+    "coverage_to": "$750,000",
+    "effective_date": "01/17/2025",
+    "cancellation_date": "07/16/2025"
+  }
+]
+...
+2025-05-18 19:13:35,278 - DEBUG - Stderr: 
+2025-05-18 19:13:35,278 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'UNITED FINANCIAL CASUALTY COMPANY', 'policy_surety_number': 'CA983221350', 'posted_date': '01/17/2025', 'coverage_from': '$0', 'coverage_to': '$750,000', 'effective_date': '01/17/2025', 'cancellation_date': '07/16/2025'}]
+2025-05-18 19:13:35,278 - INFO - Getting user with id 3
+2025-05-18 19:13:35,280 - INFO - Looking up carrier with id 16 and company_id 2
+2025-05-18 19:13:35,280 - INFO - Found 1 carriers with id 16
+2025-05-18 19:13:35,280 - INFO -   Carrier 16 has company_id=2
+2025-05-18 19:13:35,281 - INFO - Found 1 carriers in company 2
+2025-05-18 19:13:35,281 - INFO - Found 1 carriers matching both id=16 and company_id=2
+2025-05-18 19:13:35,282 - INFO - Found carrier 16 in company 2
+2025-05-18 19:13:35,282 - INFO - Processing insurance data for carrier 16 in company 2: {
+  "insurance": [
+    {
+      "type": "BIPD/Primary",
+      "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+      "policy_surety_number": "CA983221350",
+      "posted_date": "01/17/2025",
+      "coverage_from": "$0",
+      "coverage_to": "$750,000",
+      "effective_date": "01/17/2025",
+      "cancellation_date": "07/16/2025"
+    }
+  ]
+}
+2025-05-18 19:13:35,295 - INFO - Saved new insurance data for carrier 16 as file 51
+2025-05-18 19:13:35,295 - INFO - Updating SavedCarrier with insurance data: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:13:35,295 - INFO - Before update: SavedCarrier coverage_from=$0, coverage_to=$750,000
+2025-05-18 19:13:35,295 - INFO - New values: coverage_from=$0, coverage_to=$750,000
+2025-05-18 19:13:35,298 - INFO - Updated posted_date to 2025-01-17
+2025-05-18 19:13:35,298 - INFO - Updated effective_date to 2025-01-17
+2025-05-18 19:13:35,298 - INFO - Updated cancellation_date to 2025-07-16
+2025-05-18 19:13:35,300 - INFO - Updated insurance fields for carrier 16
+2025-05-18 19:13:35,307 - INFO - After save (from database): SavedCarrier coverage_from=$0, coverage_to=$750,000, posted_date=2025-01-17, effective_date=2025-01-17
+2025-05-18 19:13:35,308 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 19:13:35,308 - INFO - Saved insurance data for carrier 16 in company 2
+2025-05-18 19:22:15,916 - INFO - C:\Omar\omar\core\views\fetch_insurance_new.py changed, reloading.
+2025-05-18 19:22:19,768 - INFO - Insurance fetch requested for MC#: 1241143 by user omar2
+2025-05-18 19:22:19,768 - INFO - User omar2 is_superuser: True
+2025-05-18 19:22:19,769 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:22:19,770 - INFO - Using carrier ID 7 in company 1 as reference
+2025-05-18 19:22:19,770 - INFO - Found 3 carriers with MC# 1241143 across all companies
+2025-05-18 19:22:19,770 - INFO -   Carrier ID 7 in company 1
+2025-05-18 19:22:19,770 - INFO -   Carrier ID 16 in company 2
+2025-05-18 19:22:19,770 - INFO -   Carrier ID 18 in company 3
+2025-05-18 19:22:19,770 - INFO - Starting background scraper for MC# 1241143, process 52724, thread Thread-3 (run_insurance_scraper_for_all)
+2025-05-18 19:22:19,770 - INFO - Will update 3 carriers with this MC#
+2025-05-18 19:22:19,770 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1241143
+2025-05-18 19:22:34,843 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:22:49,852 - INFO - User omar2 is_superuser: True
+2025-05-18 19:22:49,852 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:22:49,853 - INFO - Looking up carrier with MC# 1241143 for company 2, found carrier_id: 16
+2025-05-18 19:22:49,853 - INFO - Returning SavedCarrier data for MC# 1241143: {
+  "type": "BIPD/Primary",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:23:53,754 - INFO - Scraper completed for MC# 1241143, return code: 0, took 93.98 seconds
+2025-05-18 19:23:53,754 - DEBUG - Stdout: [
+  {
+    "type": "BIPD/Primary",
+    "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+    "policy_surety_number": "CA983221350",
+    "posted_date": "01/17/2025",
+    "coverage_from": "$0",
+    "coverage_to": "$750,000",
+    "effective_date": "01/17/2025",
+    "cancellation_date": "07/16/2025"
+  }
+]
+...
+2025-05-18 19:23:53,754 - DEBUG - Stderr: 
+2025-05-18 19:23:53,754 - INFO - Parsed insurance data: [{'type': 'BIPD/Primary', 'insurance_carrier': 'UNITED FINANCIAL CASUALTY COMPANY', 'policy_surety_number': 'CA983221350', 'posted_date': '01/17/2025', 'coverage_from': '$0', 'coverage_to': '$750,000', 'effective_date': '01/17/2025', 'cancellation_date': '07/16/2025'}]
+2025-05-18 19:23:53,757 - INFO - Updating insurance data on 3 carriers: {
+  "type": "BIPD/Primary",
+  "insurance_carrier": "UNITED FINANCIAL CASUALTY COMPANY",
+  "policy_surety_number": "CA983221350",
+  "posted_date": "01/17/2025",
+  "coverage_from": "$0",
+  "coverage_to": "$750,000",
+  "effective_date": "01/17/2025",
+  "cancellation_date": "07/16/2025"
+}
+2025-05-18 19:23:53,768 - INFO - Saved insurance data file for carrier 7 in company 1
+2025-05-18 19:23:53,777 - INFO - Saved insurance data file for carrier 16 in company 2
+2025-05-18 19:23:53,789 - INFO - Saved insurance data file for carrier 18 in company 3
+2025-05-18 19:23:53,793 - INFO - Updated insurance fields for 3 carriers with MC# 1241143
+2025-05-18 19:23:53,799 - INFO - Updated insurance data for carrier 7 in company 1
+2025-05-18 19:23:53,799 - INFO - Updated insurance data for carrier 16 in company 2
+2025-05-18 19:23:53,799 - INFO - Updated insurance data for carrier 18 in company 3
+2025-05-18 19:23:53,800 - INFO - Saved insurance data for 3 carriers with MC# 1241143
+2025-05-18 19:24:56,699 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 19:24:57,071 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1060228/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 19:24:58,073 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 19:24:58,230 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/3328333/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 19:24:59,232 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 19:24:59,761 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=3328333 HTTP/1.1" 200 None
+2025-05-18 19:25:10,958 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 19:25:11,201 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/docket-number/1060228/?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 19:25:12,202 - DEBUG - Starting new HTTPS connection (1): mobile.fmcsa.dot.gov:443
+2025-05-18 19:25:12,361 - DEBUG - https://mobile.fmcsa.dot.gov:443 "GET /qc/services/carriers/3328333/authority?webKey=ac1f4f4c53be930e69d0e4660e21499217cae894 HTTP/1.1" 200 None
+2025-05-18 19:25:13,362 - DEBUG - Starting new HTTPS connection (1): data.transportation.gov:443
+2025-05-18 19:25:13,732 - DEBUG - https://data.transportation.gov:443 "GET /resource/az4n-8mr2.json?dot_number=3328333 HTTP/1.1" 200 None
+2025-05-18 19:25:22,698 - INFO - Insurance fetch requested for MC#: 1060228 by user omar2
+2025-05-18 19:25:22,698 - INFO - User omar2 is_superuser: True
+2025-05-18 19:25:22,699 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:25:22,700 - INFO - Using carrier ID 5 in company 1 as reference
+2025-05-18 19:25:22,700 - INFO - Found 2 carriers with MC# 1060228 across all companies
+2025-05-18 19:25:22,700 - INFO -   Carrier ID 5 in company 1
+2025-05-18 19:25:22,700 - INFO -   Carrier ID 21 in company 3
+2025-05-18 19:25:22,700 - INFO - Starting background scraper for MC# 1060228, process 52724, thread Thread-8 (run_insurance_scraper_for_all)
+2025-05-18 19:25:22,700 - INFO - Will update 2 carriers with this MC#
+2025-05-18 19:25:22,701 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1060228
+2025-05-18 19:25:37,770 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:25:52,782 - INFO - User omar2 is_superuser: True
+2025-05-18 19:25:52,782 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:25:52,783 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:25:52,783 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:26:07,789 - INFO - User omar2 is_superuser: True
+2025-05-18 19:26:07,790 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:26:07,790 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:26:07,791 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:26:22,797 - INFO - User omar2 is_superuser: True
+2025-05-18 19:26:22,798 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:26:22,798 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:26:22,799 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:26:37,805 - INFO - User omar2 is_superuser: True
+2025-05-18 19:26:37,806 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:26:37,806 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:26:37,807 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:26:51,902 - INFO - Scraper completed for MC# 1060228, return code: 0, took 89.20 seconds
+2025-05-18 19:26:51,902 - DEBUG - Stdout: [
+  {
+    "type": "No Insurance on file",
+    "policy_surety_number": "No Insurance on file",
+    "posted_date": "",
+    "coverage_from": "",
+    "coverage_to": "",
+    "effective_date": "",
+    "cancellation_date": ""
+  }
+]
+...
+2025-05-18 19:26:51,902 - DEBUG - Stderr: 
+2025-05-18 19:26:51,902 - INFO - Parsed insurance data: [{'type': 'No Insurance on file', 'policy_surety_number': 'No Insurance on file', 'posted_date': '', 'coverage_from': '', 'coverage_to': '', 'effective_date': '', 'cancellation_date': ''}]
+2025-05-18 19:26:51,904 - INFO - Updating insurance data on 2 carriers: {
+  "type": "No Insurance on file",
+  "policy_surety_number": "No Insurance on file",
+  "posted_date": "",
+  "coverage_from": "",
+  "coverage_to": "",
+  "effective_date": "",
+  "cancellation_date": ""
+}
+2025-05-18 19:26:51,913 - INFO - Saved insurance data file for carrier 5 in company 1
+2025-05-18 19:26:51,928 - INFO - Saved insurance data file for carrier 21 in company 3
+2025-05-18 19:26:51,930 - INFO - Updated insurance fields for 2 carriers with MC# 1060228
+2025-05-18 19:26:51,936 - INFO - Updated insurance data for carrier 5 in company 1
+2025-05-18 19:26:51,936 - INFO - Updated insurance data for carrier 21 in company 3
+2025-05-18 19:26:51,937 - INFO - Saved insurance data for 2 carriers with MC# 1060228
+2025-05-18 19:26:52,813 - INFO - User omar2 is_superuser: True
+2025-05-18 19:26:52,814 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:26:52,814 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:26:52,815 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:27:07,821 - INFO - User omar2 is_superuser: True
+2025-05-18 19:27:07,822 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:27:07,822 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:27:07,823 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:27:22,828 - INFO - User omar2 is_superuser: True
+2025-05-18 19:27:22,829 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:27:22,830 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:27:22,830 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:27:37,837 - INFO - User omar2 is_superuser: True
+2025-05-18 19:27:37,838 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:27:37,838 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:27:37,839 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:27:52,845 - INFO - User omar2 is_superuser: True
+2025-05-18 19:27:52,845 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:27:52,846 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:27:52,846 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:28:07,851 - INFO - User omar2 is_superuser: True
+2025-05-18 19:28:07,852 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:28:07,852 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:28:07,853 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:28:22,859 - INFO - User omar2 is_superuser: True
+2025-05-18 19:28:22,859 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:28:22,860 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:28:22,860 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:28:37,866 - INFO - User omar2 is_superuser: True
+2025-05-18 19:28:37,866 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:28:37,867 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:28:37,867 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:28:52,872 - INFO - User omar2 is_superuser: True
+2025-05-18 19:28:52,873 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:28:52,873 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:28:52,873 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:29:07,878 - INFO - User omar2 is_superuser: True
+2025-05-18 19:29:07,878 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:29:07,879 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:29:07,879 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:29:22,884 - INFO - User omar2 is_superuser: True
+2025-05-18 19:29:22,885 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:29:22,886 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:29:22,887 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:29:37,894 - INFO - User omar2 is_superuser: True
+2025-05-18 19:29:37,894 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:29:37,895 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:29:37,895 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:29:50,418 - INFO - Insurance fetch requested for MC#: 1060228 by user omar2
+2025-05-18 19:29:50,418 - INFO - User omar2 is_superuser: True
+2025-05-18 19:29:50,419 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:29:50,419 - INFO - Using carrier ID 5 in company 1 as reference
+2025-05-18 19:29:50,419 - INFO - Found 2 carriers with MC# 1060228 across all companies
+2025-05-18 19:29:50,419 - INFO -   Carrier ID 5 in company 1
+2025-05-18 19:29:50,419 - INFO -   Carrier ID 21 in company 3
+2025-05-18 19:29:50,420 - INFO - Starting background scraper for MC# 1060228, process 52724, thread Thread-11 (run_insurance_scraper_for_all)
+2025-05-18 19:29:50,420 - INFO - Will update 2 carriers with this MC#
+2025-05-18 19:29:50,420 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1060228
+2025-05-18 19:29:52,908 - INFO - User omar2 is_superuser: True
+2025-05-18 19:29:52,909 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:29:52,910 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:29:52,910 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:05,478 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:30:07,919 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:07,920 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:07,920 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:07,921 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:20,485 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:20,486 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:20,487 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:20,487 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:22,929 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:22,930 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:22,930 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:22,930 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:35,492 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:35,493 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:35,494 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:35,494 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:37,935 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:37,936 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:37,936 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:37,937 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:42,184 - INFO - Scraper completed for MC# 1060228, return code: 0, took 51.76 seconds
+2025-05-18 19:30:42,185 - DEBUG - Stdout: [
+  {
+    "type": "SURETY",
+    "insurance_carrier": "NATIONWIDE MUTUAL INSURANCE COMP",
+    "policy_surety_number": "7901100773",
+    "posted_date": "05/03/2022",
+    "coverage_from": "$0",
+    "coverage_to": "$75,000*",
+    "effective_date": "05/04/2022",
+    "cancellation_date": ""
+  }
+]
+...
+2025-05-18 19:30:42,185 - DEBUG - Stderr: 
+2025-05-18 19:30:42,185 - INFO - Parsed insurance data: [{'type': 'SURETY', 'insurance_carrier': 'NATIONWIDE MUTUAL INSURANCE COMP', 'policy_surety_number': '7901100773', 'posted_date': '05/03/2022', 'coverage_from': '$0', 'coverage_to': '$75,000*', 'effective_date': '05/04/2022', 'cancellation_date': ''}]
+2025-05-18 19:30:42,187 - INFO - Updating insurance data on 2 carriers: {
+  "type": "SURETY",
+  "insurance_carrier": "NATIONWIDE MUTUAL INSURANCE COMP",
+  "policy_surety_number": "7901100773",
+  "posted_date": "05/03/2022",
+  "coverage_from": "$0",
+  "coverage_to": "$75,000*",
+  "effective_date": "05/04/2022",
+  "cancellation_date": ""
+}
+2025-05-18 19:30:42,202 - INFO - Saved insurance data file for carrier 5 in company 1
+2025-05-18 19:30:42,213 - INFO - Saved insurance data file for carrier 21 in company 3
+2025-05-18 19:30:42,214 - INFO - Updated insurance fields for 2 carriers with MC# 1060228
+2025-05-18 19:30:42,221 - INFO - Updated insurance data for carrier 5 in company 1
+2025-05-18 19:30:42,221 - INFO - Updated insurance data for carrier 21 in company 3
+2025-05-18 19:30:42,221 - INFO - Saved insurance data for 2 carriers with MC# 1060228
+2025-05-18 19:30:50,500 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:50,500 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:50,501 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:50,501 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:30:52,941 - INFO - User omar2 is_superuser: True
+2025-05-18 19:30:52,941 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:30:52,942 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:30:52,942 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:31:05,507 - INFO - User omar2 is_superuser: True
+2025-05-18 19:31:05,507 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:31:05,508 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:31:05,508 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:31:07,948 - INFO - User omar2 is_superuser: True
+2025-05-18 19:31:07,949 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:31:07,949 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:31:07,950 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:31:20,513 - INFO - User omar2 is_superuser: True
+2025-05-18 19:31:20,513 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:31:20,514 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:31:20,514 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:31:22,956 - INFO - User omar2 is_superuser: True
+2025-05-18 19:31:22,958 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:31:22,958 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:31:22,958 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:31:42,357 - INFO - User omar2 is_superuser: True
+2025-05-18 19:31:42,357 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:31:42,358 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:31:42,358 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:31:57,363 - INFO - User omar2 is_superuser: True
+2025-05-18 19:31:57,364 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:31:57,365 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:31:57,365 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:32:12,371 - INFO - User omar2 is_superuser: True
+2025-05-18 19:32:12,372 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:32:12,372 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:32:12,373 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:32:33,085 - INFO - User omar2 is_superuser: True
+2025-05-18 19:32:33,085 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:32:33,086 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:32:33,086 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:32:48,092 - INFO - User omar2 is_superuser: True
+2025-05-18 19:32:48,093 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:32:48,093 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:32:48,094 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:33:03,099 - INFO - User omar2 is_superuser: True
+2025-05-18 19:33:03,099 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:33:03,100 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:33:03,100 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:33:07,837 - ERROR - Internal Server Error: /carrier-info/21/
+Traceback (most recent call last):
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "c:\Omar\omar\core\decorators.py", line 16, in wrapper
+    return view_func(request, *args, **kwargs)
+  File "c:\Omar\omar\core\views\carrier_views.py", line 399, in carrier_info
+    return render(request, 'carrier_info.html', {
+        'company_info': company_info,
+        'company': company,
+        'carrier': carrier,
+    })
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\omarm\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 586, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 821: 'if'. Looking for one of: elif, else, endif.
+2025-05-18 19:33:32,251 - INFO - User omar2 is_superuser: True
+2025-05-18 19:33:32,252 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:33:32,252 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:33:32,253 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:33:47,261 - INFO - User omar2 is_superuser: True
+2025-05-18 19:33:47,262 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:33:47,263 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:33:47,263 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:34:02,271 - INFO - User omar2 is_superuser: True
+2025-05-18 19:34:02,272 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:34:02,272 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:34:02,273 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:34:17,278 - INFO - User omar2 is_superuser: True
+2025-05-18 19:34:17,279 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:34:17,279 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:34:17,280 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:34:38,661 - INFO - Insurance fetch requested for MC#: 1060228 by user omar2
+2025-05-18 19:34:38,661 - INFO - User omar2 is_superuser: True
+2025-05-18 19:34:38,661 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:34:38,662 - INFO - Using carrier ID 5 in company 1 as reference
+2025-05-18 19:34:38,662 - INFO - Found 2 carriers with MC# 1060228 across all companies
+2025-05-18 19:34:38,662 - INFO -   Carrier ID 5 in company 1
+2025-05-18 19:34:38,662 - INFO -   Carrier ID 21 in company 3
+2025-05-18 19:34:38,662 - INFO - Starting background scraper for MC# 1060228, process 52724, thread Thread-15 (run_insurance_scraper_for_all)
+2025-05-18 19:34:38,662 - INFO - Will update 2 carriers with this MC#
+2025-05-18 19:34:38,662 - INFO - Executing command: C:\Users\omarm\AppData\Local\Programs\Python\Python313\python.exe C:\Omar\omar\scripts\fmcsa_insurance_scraper.py 1060228
+2025-05-18 19:34:53,723 - WARNING - Error in immediate scraper response: The request timed out. Insurance data is being processed in the background.
+2025-05-18 19:35:04,040 - INFO - User omar2 is_superuser: True
+2025-05-18 19:35:04,041 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:35:04,041 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:35:04,042 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:35:19,050 - INFO - User omar2 is_superuser: True
+2025-05-18 19:35:19,051 - INFO - User omar2 belongs to company ID: 2
+2025-05-18 19:35:19,051 - INFO - Looking up carrier with MC# 1060228 for company 2, found carrier_id: None
+2025-05-18 19:35:19,051 - INFO - Superuser found carrier with MC# 1060228 in another company: 5
+2025-05-18 19:35:40,904 - INFO - Scraper completed for MC# 1060228, return code: 0, took 62.24 seconds
+2025-05-18 19:35:40,904 - DEBUG - Stdout: [
+  {
+    "type": "SURETY",
+    "insurance_carrier": "NATIONWIDE MUTUAL INSURANCE COMP",
+    "policy_surety_number": "7901100773",
+    "posted_date": "05/03/2022",
+    "coverage_from": "$0",
+    "coverage_to": "$75,000*",
+    "effective_date": "05/04/2022",
+    "cancellation_date": ""
+  }
+]
+...
+2025-05-18 19:35:40,904 - DEBUG - Stderr: 
+2025-05-18 19:35:40,904 - INFO - Parsed insurance data: [{'type': 'SURETY', 'insurance_carrier': 'NATIONWIDE MUTUAL INSURANCE COMP', 'policy_surety_number': '7901100773', 'posted_date': '05/03/2022', 'coverage_from': '$0', 'coverage_to': '$75,000*', 'effective_date': '05/04/2022', 'cancellation_date': ''}]
+2025-05-18 19:35:40,910 - INFO - Updating insurance data on 2 carriers: {
+  "type": "SURETY",
+  "insurance_carrier": "NATIONWIDE MUTUAL INSURANCE COMP",
+  "policy_surety_number": "7901100773",
+  "posted_date": "05/03/2022",
+  "coverage_from": "$0",
+  "coverage_to": "$75,000*",
+  "effective_date": "05/04/2022",
+  "cancellation_date": ""
+}
+2025-05-18 19:35:40,922 - INFO - Saved insurance data file for carrier 5 in company 1
+2025-05-18 19:35:40,933 - INFO - Saved insurance data file for carrier 21 in company 3
+2025-05-18 19:35:40,934 - INFO - Updated insurance fields for 2 carriers with MC# 1060228
+2025-05-18 19:35:40,934 - INFO - Updated insurance data for carrier 5 in company 1
+2025-05-18 19:35:40,934 - INFO - Updated insurance data for carrier 21 in company 3
+2025-05-18 19:35:40,934 - INFO - Saved insurance data for 2 carriers with MC# 1060228
+2025-05-18 19:38:32,060 - WARNING - Not Found: /ad/

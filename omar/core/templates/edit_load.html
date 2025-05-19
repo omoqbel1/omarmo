@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Load #{{ load.load_number }} - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+            --success: #28a745;
+            --error: #ff5555;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header button, .header a.btn {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .header button:hover, .header a.btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .form-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-section > div {
+            flex: 1;
+        }
+
+        .carrier-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .carrier-info {
+            flex: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .driver-info {
+            flex: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .carrier-info p, .driver-info p {
+            margin: 5px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 0.875rem;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .form-group select {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .customer-search-container {
+            position: relative;
+            z-index: 0;
+        }
+
+        .autocomplete {
+            position: relative;
+            width: 100%;
+        }
+
+        .autocomplete-items {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .autocomplete-items div {
+            padding: 8px;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .autocomplete-items div:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #customer-dropdown {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 0.875rem;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            position: absolute;
+            z-index: 4000;
+            top: calc(100% + 5px);
+            left: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #customer-dropdown .dropdown-option {
+            padding: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #customer-dropdown .dropdown-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #no-customer-message {
+            display: none;
+            margin-top: 5px;
+            color: var(--error);
+            font-size: 0.875rem;
+        }
+
+        #add-customer-button {
+            display: none;
+            margin-top: 5px;
+            padding: 8px 16px;
+            background: linear-gradient(45deg, var(--accent), #00b7c2);
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        #add-customer-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 245, 255, 0.2);
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 5px;
+            color: var(--error);
+            font-size: 0.875rem;
+        }
+
+        .mileage-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .mileage-table th,
+        .mileage-table td {
+            border: 1px solid var(--border);
+            padding: 8px;
+            text-align: left;
+            color: var(--text);
+        }
+
+        .mileage-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+        }
+
+        .mileage-table tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mileage-table tr:last-child {
+            font-weight: bold;
+            background: rgba(255, 160, 122, 0.2);
+        }
+
+        #profit_percentage,
+        #amount_difference,
+        #cust_profit,
+        #carr_profit {
+            text-align: left !important;
+        }
+
+        .notes-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .notes-section textarea {
+            width: 100%;
+            height: 80px;
+            padding: 8px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .pickup-block,
+        .delivery-block,
+        .additional-pickup-block,
+        .additional-delivery-block {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .messages .success {
+            color: #00ff00;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .messages .error {
+            color: #ff9999;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        /* Styles for Commodities and Accessories Table */
+        .commodities-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .commodities-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        .commodities-table th,
+        .commodities-table td {
+            border: 1px solid var(--border);
+            padding: 8px;
+            text-align: left;
+            color: var(--text);
+        }
+
+        .commodities-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+        }
+
+        .commodities-table tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .commodities-table select,
+        .commodities-table input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .commodities-table select {
+            background: rgba(255, 250, 250, 0.1);
+            cursor: pointer;
+        }
+
+        .commodities-table select option {
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .commodities-table input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .commodities-table input[type="number"]::-webkit-outer-spin-button,
+        .commodities-table input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .commodities-table .remove-row {
+            padding: 6px 12px;
+            background: var(--error);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .commodities-table .remove-row:hover {
+            background: #cc4444;
+        }
+
+        .commodities-note {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .add-row-button {
+            padding: 8px 16px;
+            background: linear-gradient(45deg, var(--accent), #00b7c2);
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .add-row-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 245, 255, 0.2);
+        }
+
+        .add-pickup-button,
+        .add-delivery-button {
+            padding: 8px 16px;
+            background: linear-gradient(45deg, var(--accent), #00b7c2);
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .add-pickup-button:hover,
+        .add-delivery-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 245, 255, 0.2);
+        }
+
+        .remove-pickup-button,
+        .remove-delivery-button {
+            padding: 6px 12px;
+            background: var(--error);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .remove-pickup-button:hover,
+        .remove-delivery-button:hover {
+            background: #cc4444;
+        }
+
+        input.error {
+            border-color: var(--error);
+            background: rgba(255, 85, 85, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .form-section,
+            .carrier-section {
+                flex-direction: column;
+            }
+
+            .header .buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .header button, .header a.btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvhTA3qIz4wBBu8O5L6Rvll07mw2AC61E&libraries=places&callback=initAutocomplete" async defer></script>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <div class="container">
+      <div class="header">
+      <h1>Edit Load #{{ load.load_number }}</h1>
+      <div class="buttons">
+          <button type="button" class="btn btn-primary" onclick="saveAndRedirect('{% url 'generate_rate_confirmation' load_id=load.load_number %}')">Rate Confirmation</button>
+          <button type="button" class="btn btn-primary" onclick="saveAndRedirect('{% url 'generate_bol' load_id=load.load_number %}')">Bill of Lading (BOL)</button>
+          <button type="button" onclick="saveWithoutRedirect()">Save</button>
+          <button type="button" onclick="window.location.href='{% url 'my_loads' %}'">Cancel</button>
+      </div>
+  </div>
+
+        <div class="messages">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <form id="edit-load-form" method="post" action="{% url 'edit_load' load_id=load.load_number %}">
+            {% csrf_token %}
+            <input type="hidden" id="total_miles" name="total_miles" value="{{ load.total_miles|default:'0' }}">
+            <input type="hidden" id="total_amount" name="total_amount" value="{{ load.total_amount|default:'0.00' }}">
+
+            <!-- General Info Section (Status and Customer) -->
+            <div class="form-section">
+                <div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="ACTIVE" {% if load.status == 'ACTIVE' %}selected{% endif %}>ACTIVE</option>
+                            <option value="BOOKED" {% if load.status == 'BOOKED' %}selected{% endif %}>BOOKED</option>
+                            <option value="PAID" {% if load.status == 'PAID' %}selected{% endif %}>PAID</option>
+                            <option value="COMPLETED" {% if load.status == 'COMPLETED' %}selected{% endif %}>COMPLETED</option>
+                            <option value="PROBLEM" {% if load.status == 'PROBLEM' %}selected{% endif %}>PROBLEM</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group customer-search-container">
+                        <label for="customer_search">Customer</label>
+                        <div class="autocomplete">
+                            <input type="text" id="customer_search" name="customer_search" placeholder="Search for a customer..." value="{% for customer in customers %}{% if customer.name == load.customer %}{{ customer.company_name }}{% endif %}{% endfor %}">
+                            <div id="customer-dropdown" name="customer_name">
+                                {% for customer in customers %}
+                                    <div class="dropdown-option" data-value="{{ customer.name }}" data-company="{{ customer.company_name }}">{{ customer.company_name }}</div>
+                                {% endfor %}
+                            </div>
+                            <input type="hidden" id="customer_name" name="customer_name" value="{{ load.customer }}">
+                            <div id="no-customer-message">
+                                No matching customer found.
+                                <button type="button" id="add-customer-button" onclick="window.location.href='{% url 'add_customer' %}'">
+                                    Add New Customer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mileage and Amount Section -->
+            <div class="mileage-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Miles</th>
+                        <th>Amount</th>
+                        <th>Profit %</th>
+                    </tr>
+                    <tr>
+                        <td>Customer</td>
+                        <td><input type="number" id="cust_miles" name="cust_miles" value="{{ load.cust_miles|default:'0' }}" min="0"></td>
+                        <td><input type="number" id="cust_amt" name="cust_amt" value="{{ load.cust_amt|default:'0.00' }}" step="0.01" min="0"></td>
+                        <td id="cust_profit">0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Carrier</td>
+                        <td><input type="number" id="carr_miles" name="carr_miles" value="{{ load.carr_miles|default:'0' }}" min="0"></td>
+                        <td><input type="number" id="carr_amt" name="carr_amt" value="{{ load.carr_amt|default:'0.00' }}" step="0.01" min="0"></td>
+                        <td id="carr_profit">0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Profit</td>
+                        <td id="total_miles_display">{{ load.total_miles|default:'0' }}</td>
+                        <td id="amount_difference">0.00</td>
+                        <td id="profit_percentage">0.0%</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Pickup and Delivery Details Section -->
+            <div class="form-section">
+                <div>
+                    <h3>Pickup Details</h3>
+                    <div class="pickup-block">
+                        <div class="form-group">
+                            <label for="pickup_name">Pickup Name</label>
+                            <input type="text" id="pickup_name" name="pickup_name" value="{{ load.pickup_name|default_if_none:'' }}" placeholder="Enter contact name">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_address">Address</label>
+                            <input type="text" id="pickup_address" name="pickup_address" class="map-autocomplete" value="{{ load.pickup_address|default_if_none:'' }}" placeholder="Enter pickup address">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_city">City</label>
+                            <input type="text" id="pickup_city" name="pickup_city" value="{{ load.pickup_city|default_if_none:'' }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_state">State</label>
+                            <input type="text" id="pickup_state" name="pickup_state" value="{{ load.pickup_state|default_if_none:'' }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_zip">Zip</label>
+                            <input type="text" id="pickup_zip" name="pickup_zip" value="{{ load.pickup_zip|default_if_none:'' }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_date">Pickup Date</label>
+                            <input type="date" id="pickup_date" name="pickup_date" value="{{ load.pickup_date|date:'Y-m-d' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_phone">Phone</label>
+                            <input type="tel" id="pickup_phone" name="pickup_phone" value="{{ load.pickup_phone|default_if_none:'' }}" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_email">Email</label>
+                            <input type="email" id="pickup_email" name="pickup_email" value="{{ load.pickup_email|default_if_none:'' }}" placeholder="Enter email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_appointment_time">Appointment Time</label>
+                            <input type="time" id="pickup_appointment_time" name="pickup_appointment_time" value="{{ load.pickup_appointment_time|default_if_none:'' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup_instructions">Pickup Instructions</label>
+                            <textarea id="pickup_instructions" name="pickup_instructions">{{ load.pickup_instructions|default_if_none:'' }}</textarea>
+                        </div>
+                    </div>
+                    <button type="button" class="add-pickup-button" id="add-pickup">Add Pickup</button>
+                    <div id="additional-pickups">
+                        {% for pickup in load.additional_pickups.all %}
+                            <div class="additional-pickup-block">
+                                <h3>Additional Pickup {{ forloop.counter }}</h3>
+                                <button type="button" class="remove-pickup-button">Remove</button>
+                                <div class="form-group">
+                                    <label for="additional_pickup_name_{{ forloop.counter }}">Pickup Name</label>
+                                    <input type="text" id="additional_pickup_name_{{ forloop.counter }}" name="additional_pickup_name[]" value="{{ pickup.name|default_if_none:'' }}" placeholder="Enter contact name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_address_{{ forloop.counter }}">Address</label>
+                                    <input type="text" id="additional_pickup_address_{{ forloop.counter }}" name="additional_pickup_address[]" class="map-autocomplete" value="{{ pickup.address|default_if_none:'' }}" placeholder="Enter pickup address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_city_{{ forloop.counter }}">City</label>
+                                    <input type="text" id="additional_pickup_city_{{ forloop.counter }}" name="additional_pickup_city[]" value="{{ pickup.city|default_if_none:'' }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_state_{{ forloop.counter }}">State</label>
+                                    <input type="text" id="additional_pickup_state_{{ forloop.counter }}" name="additional_pickup_state[]" value="{{ pickup.state|default_if_none:'' }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_zip_{{ forloop.counter }}">Zip</label>
+                                    <input type="text" id="additional_pickup_zip_{{ forloop.counter }}" name="additional_pickup_zip[]" value="{{ pickup.zip|default_if_none:'' }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_date_{{ forloop.counter }}">Pickup Date</label>
+                                    <input type="date" id="additional_pickup_date_{{ forloop.counter }}" name="additional_pickup_date[]" value="{{ pickup.date|date:'Y-m-d' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_phone_{{ forloop.counter }}">Phone</label>
+                                    <input type="tel" id="additional_pickup_phone_{{ forloop.counter }}" name="additional_pickup_phone[]" value="{{ pickup.phone|default_if_none:'' }}" placeholder="Enter phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_email_{{ forloop.counter }}">Email</label>
+                                    <input type="email" id="additional_pickup_email_{{ forloop.counter }}" name="additional_pickup_email[]" value="{{ pickup.email|default_if_none:'' }}" placeholder="Enter email address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_appointment_time_{{ forloop.counter }}">Appointment Time</label>
+                                    <input type="time" id="additional_pickup_appointment_time_{{ forloop.counter }}" name="additional_pickup_appointment_time[]" value="{{ pickup.appointment_time|default_if_none:'' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_pickup_instructions_{{ forloop.counter }}">Pickup Instructions</label>
+                                    <textarea id="additional_pickup_instructions_{{ forloop.counter }}" name="additional_pickup_instructions[]">{{ pickup.instructions|default_if_none:'' }}</textarea>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div>
+                    <h3>Delivery Details</h3>
+                    <div class="delivery-block">
+                        <div class="form-group">
+                            <label for="delivery_name">Delivery Name</label>
+                            <input type="text" id="delivery_name" name="delivery_name" value="{{ load.delivery_name|default_if_none:'' }}" placeholder="Enter contact name">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_address">Address</label>
+                            <input type="text" id="delivery_address" name="delivery_address" class="map-autocomplete" value="{{ load.delivery_address|default_if_none:'' }}" placeholder="Enter delivery address">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_city">City</label>
+                            <input type="text" id="delivery_city" name="delivery_city" value="{{ load.delivery_city|default_if_none:'' }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_state">State</label>
+                            <input type="text" id="delivery_state" name="delivery_state" value="{{ load.delivery_state|default_if_none:'' }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_zip">Zip</label>
+                            <input type="text" id="delivery_zip" name="delivery_zip" value="{{ load.delivery_zip|default_if_none:'' }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_date">Delivery Date</label>
+                            <input type="date" id="delivery_date" name="delivery_date" value="{{ load.delivery_date|date:'Y-m-d' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_phone">Phone</label>
+                            <input type="tel" id="delivery_phone" name="delivery_phone" value="{{ load.delivery_phone|default_if_none:'' }}" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_email">Email</label>
+                            <input type="email" id="delivery_email" name="delivery_email" value="{{ load.delivery_email|default_if_none:'' }}" placeholder="Enter email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_appointment_time">Appointment Time</label>
+                            <input type="time" id="delivery_appointment_time" name="delivery_appointment_time" value="{{ load.delivery_appointment_time|default_if_none:'' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_instructions">Delivery Instructions</label>
+                            <textarea id="delivery_instructions" name="delivery_instructions">{{ load.delivery_instructions|default_if_none:'' }}</textarea>
+                        </div>
+                    </div>
+                    <button type="button" class="add-delivery-button" id="add-delivery">Add Dropoff</button>
+                    <div id="additional-deliveries">
+                        {% for delivery in load.additional_deliveries.all %}
+                            <div class="additional-delivery-block">
+                                <h3>Additional Dropoff {{ forloop.counter }}</h3>
+                                <button type="button" class="remove-delivery-button">Remove</button>
+                                <div class="form-group">
+                                    <label for="additional_delivery_name_{{ forloop.counter }}">Delivery Name</label>
+                                    <input type="text" id="additional_delivery_name_{{ forloop.counter }}" name="additional_delivery_name[]" value="{{ delivery.name|default_if_none:'' }}" placeholder="Enter contact name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_address_{{ forloop.counter }}">Address</label>
+                                    <input type="text" id="additional_delivery_address_{{ forloop.counter }}" name="additional_delivery_address[]" class="map-autocomplete" value="{{ delivery.address|default_if_none:'' }}" placeholder="Enter delivery address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_city_{{ forloop.counter }}">City</label>
+                                    <input type="text" id="additional_delivery_city_{{ forloop.counter }}" name="additional_delivery_city[]" value="{{ delivery.city|default_if_none:'' }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_state_{{ forloop.counter }}">State</label>
+                                    <input type="text" id="additional_delivery_state_{{ forloop.counter }}" name="additional_delivery_state[]" value="{{ delivery.state|default_if_none:'' }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_zip_{{ forloop.counter }}">Zip</label>
+                                    <input type="text" id="additional_delivery_zip_{{ forloop.counter }}" name="additional_delivery_zip[]" value="{{ delivery.zip|default_if_none:'' }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_date_{{ forloop.counter }}">Delivery Date</label>
+                                    <input type="date" id="additional_delivery_date_{{ forloop.counter }}" name="additional_delivery_date[]" value="{{ delivery.date|date:'Y-m-d' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_phone_{{ forloop.counter }}">Phone</label>
+                                    <input type="tel" id="additional_delivery_phone_{{ forloop.counter }}" name="additional_delivery_phone[]" value="{{ delivery.phone|default_if_none:'' }}" placeholder="Enter phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_email_{{ forloop.counter }}">Email</label>
+                                    <input type="email" id="additional_delivery_email_{{ forloop.counter }}" name="additional_delivery_email[]" value="{{ delivery.email|default_if_none:'' }}" placeholder="Enter email address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_appointment_time_{{ forloop.counter }}">Appointment Time</label>
+                                    <input type="time" id="additional_delivery_appointment_time_{{ forloop.counter }}" name="additional_delivery_appointment_time[]" value="{{ delivery.appointment_time|default_if_none:'' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional_delivery_instructions_{{ forloop.counter }}">Delivery Instructions</label>
+                                    <textarea id="additional_delivery_instructions_{{ forloop.counter }}" name="additional_delivery_instructions[]">{{ delivery.instructions|default_if_none:'' }}</textarea>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Internal Notes Section -->
+            <div class="notes-section">
+                <h3>Internal Notes</h3>
+                <div class="form-group">
+                    <label for="pickup_internal_notes">Internal Notes</label>
+                    <textarea id="pickup_internal_notes" name="pickup_internal_notes">{{ load.pickup_internal_notes|default_if_none:'' }}</textarea>
+                </div>
+            </div>
+
+            <!-- Choose Carrier Section -->
+            <div class="form-section">
+                <div>
+                    <h3>Choose Carrier</h3>
+                    <div class="form-group">
+                        <label for="carrier_search">Search Carrier (MC#, Name, or DOT#):</label>
+                        <div class="autocomplete">
+                            <input type="text" id="carrier_search" placeholder="Search for a carrier..." value="{{ load.carrier|default_if_none:'' }}">
+                            <input type="hidden" id="carrier" name="carrier" value="{% for carrier in onboarded_carriers %}{% if carrier.legal_name == load.carrier %}{{ carrier.id }}{% endif %}{% endfor %}">
+                            <div id="carrier_autocomplete_list" class="autocomplete-items"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrier Info and Driver Fields -->
+            <div class="carrier-section">
+                <div class="carrier-info" id="carrier-info">
+                    {% if load.carrier %}
+                        {% for carrier in onboarded_carriers %}
+                            {% if carrier.legal_name == load.carrier %}
+                                <p><strong>Legal Name:</strong> <span class="carrier-legal-name">{{ carrier.legal_name }}</span></p>
+                                <p><strong>Address:</strong> <span class="carrier-address"></span></p>
+                                <p><strong>MC Number:</strong> <span class="carrier-mc-number">{{ carrier.mc_number }}</span></p>
+                                <p><strong>DOT Number:</strong> <span class="carrier-dot-number">{{ carrier.dot_number }}</span></p>
+                                <p><strong>Email:</strong> <span class="carrier-email">{{ carrier.email|default:'N/A' }}</span></p>
+                                <p><strong>Phone:</strong> <span class="carrier-phone">{{ carrier.phone|default:'N/A' }}</span></p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="driver-info">
+                    <h3>Driver Information</h3>
+                    <div class="form-group">
+                        <label for="driver_1">Driver 1:</label>
+                        <input type="text" id="driver_1" name="driver_1" value="{{ load.driver_1|default_if_none:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="driver_1_cell">Driver 1 Cell:</label>
+                        <input type="tel" id="driver_1_cell" name="driver_1_cell" value="{{ load.driver_1_cell|default_if_none:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="driver_2">Driver 2:</label>
+                        <input type="text" id="driver_2" name="driver_2" value="{{ load.driver_2|default_if_none:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="driver_2_cell">Driver 2 Cell:</label>
+                        <input type="tel" id="driver_2_cell" name="driver_2_cell" value="{{ load.driver_2_cell|default_if_none:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="truck_number">Truck #:</label>
+                        <input type="text" id="truck_number" name="truck_number" value="{{ load.truck_number|default_if_none:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="trailer_number">Trailer #:</label>
+                        <input type="text" id="trailer_number" name="trailer_number" value="{{ load.trailer_number|default_if_none:'' }}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commodities and Accessories Section -->
+            <div class="commodities-section">
+                <h3>Commodities and Accessories</h3>
+                <table class="commodities-table" id="commodities-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Qty*</th>
+                            <th>Weight (lbs)</th>
+                            <th>Value</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for commodity in load.commodities.all %}
+                            <tr>
+                                <td><input type="text" name="commodity_type[]" value="{{ commodity.type|default_if_none:'' }}" placeholder="Enter type"></td>
+                                <td><input type="text" name="commodity_description[]" value="{{ commodity.description|default_if_none:'' }}" placeholder="e.g., Facemasks"></td>
+                                <td><input type="number" name="commodity_qty[]" value="{{ commodity.quantity|default:'1' }}" min="0"></td>
+                                <td><input type="number" name="commodity_weight[]" value="{{ commodity.weight|default:'0' }}" min="0" step="0.1"></td>
+                                <td><input type="number" name="commodity_value[]" value="{{ commodity.value|default:'0.00' }}" min="0" step="0.01"></td>
+                                <td><button type="button" class="remove-row">Remove</button></td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td><input type="text" name="commodity_type[]" placeholder="Enter type"></td>
+                                <td><input type="text" name="commodity_description[]" placeholder="e.g., Facemasks"></td>
+                                <td><input type="number" name="commodity_qty[]" value="1" min="0"></td>
+                                <td><input type="number" name="commodity_weight[]" value="0" min="0" step="0.1"></td>
+                                <td><input type="number" name="commodity_value[]" value="0.00" min="0" step="0.01"></td>
+                                <td><button type="button" class="remove-row">Remove</button></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p class="commodities-note">*Enter 0 Qty to hide all columns EXCEPT Description on the Rate Con/Invoice</p>
+                <button type="button" class="add-row-button" id="add-commodity-row">Add New Row</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Customer Autocomplete
+        function initCustomerAutocomplete() {
+            const customerInput = document.getElementById('customer_search');
+            const customerHiddenInput = document.getElementById('customer_name');
+            const customerDropdown = document.getElementById('customer-dropdown');
+            const noCustomerMessage = document.getElementById('no-customer-message');
+            const addCustomerButton = document.getElementById('add-customer-button');
+            const customerOptions = customerDropdown.getElementsByClassName('dropdown-option');
+
+            customerInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                customerDropdown.style.display = 'block';
+
+                let hasMatches = false;
+                Array.from(customerOptions).forEach(option => {
+                    const companyName = option.getAttribute('data-company').toLowerCase();
+                    if (companyName.includes(searchTerm)) {
+                        option.style.display = 'block';
+                        hasMatches = true;
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+
+                if (!hasMatches) {
+                    customerDropdown.style.display = 'none';
+                    noCustomerMessage.style.display = 'block';
+                    addCustomerButton.style.display = 'inline-block';
+                } else {
+                    noCustomerMessage.style.display = 'none';
+                    addCustomerButton.style.display = 'none';
+                }
+            });
+
+            Array.from(customerOptions).forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    customerInput.value = this.getAttribute('data-company');
+                    customerHiddenInput.value = this.getAttribute('data-value');
+                    customerDropdown.style.display = 'none';
+                    noCustomerMessage.style.display = 'none';
+                    addCustomerButton.style.display = 'none';
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!customerInput.contains(event.target) && !customerDropdown.contains(event.target)) {
+                    customerDropdown.style.display = 'none';
+                    const searchTerm = customerInput.value.toLowerCase().trim();
+                    if (searchTerm && !Array.from(customerOptions).some(opt =>
+                        opt.getAttribute('data-company').toLowerCase().includes(searchTerm)
+                    )) {
+                        noCustomerMessage.style.display = 'block';
+                        addCustomerButton.style.display = 'inline-block';
+                    } else {
+                        noCustomerMessage.style.display = 'none';
+                        addCustomerButton.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Carrier Autocomplete
+        function initCarrierAutocomplete() {
+            const carrierInput = document.getElementById('carrier_search');
+            const carrierHiddenInput = document.getElementById('carrier');
+            const carrierAutocompleteList = document.getElementById('carrier_autocomplete_list');
+            const carrierInfoDiv = document.getElementById('carrier-info');
+            const carriers = [
+                {% for carrier in onboarded_carriers %}
+                {
+                    id: "{{ carrier.id|escapejs }}",
+                    legal_name: "{{ carrier.legal_name|escapejs }}",
+                    mc_number: "{{ carrier.mc_number|escapejs }}",
+                    dot_number: "{{ carrier.dot_number|escapejs }}",
+                    email: "{{ carrier.email|escapejs }}",
+                    phone: "{{ carrier.phone|escapejs }}",
+                    street: "{{ carrier.street|escapejs }}",
+                    city: "{{ carrier.city|escapejs }}",
+                    state: "{{ carrier.state|escapejs }}",
+                    zip_code: "{{ carrier.zip_code|escapejs }}"
+                }{% if not forloop.last %},{% endif %}
+                {% empty %}
+                []
+                {% endfor %}
+            ];
+
+            // Clean up city fields in carriers array to remove trailing commas and spaces
+            carriers.forEach(carrier => {
+                if (carrier.city) {
+                    carrier.city = carrier.city.replace(/[, ]+$/, '');
+                }
+            });
+
+            // Update initial render of carrier info with cleaned city
+            const initialCarrier = carriers.find(carrier => carrier.legal_name === carrierInput.value);
+            if (initialCarrier) {
+                let address = '';
+                if (initialCarrier.street || initialCarrier.city || initialCarrier.state || initialCarrier.zip_code) {
+                    address = [
+                        initialCarrier.street || '',
+                        initialCarrier.city || '',
+                        initialCarrier.state || '',
+                        initialCarrier.zip_code || ''
+                    ].filter(Boolean).join(', ');
+                } else {
+                    address = 'N/A';
+                }
+                carrierInfoDiv.innerHTML = `
+                    <p><strong>Legal Name:</strong> ${initialCarrier.legal_name || 'N/A'}</p>
+                    <p><strong>Address:</strong> ${address}</p>
+                    <p><strong>MC Number:</strong> ${initialCarrier.mc_number || 'N/A'}</p>
+                    <p><strong>DOT Number:</strong> ${initialCarrier.dot_number || 'N/A'}</p>
+                    <p><strong>Email:</strong> ${initialCarrier.email || 'N/A'}</p>
+                    <p><strong>Phone:</strong> ${initialCarrier.phone || 'N/A'}</p>
+                `;
+            }
+
+            carrierInput.addEventListener('input', function() {
+                const value = this.value.toLowerCase();
+                carrierAutocompleteList.innerHTML = '';
+                carrierHiddenInput.value = '';
+                carrierInfoDiv.innerHTML = '';
+
+                if (!value) {
+                    carrierAutocompleteList.style.display = 'none';
+                    return;
+                }
+
+                if (!Array.isArray(carriers) || carriers.length === 0) {
+                    carrierAutocompleteList.style.display = 'none';
+                    return;
+                }
+
+                const matches = carriers.filter(carrier => {
+                    return (
+                        (carrier.legal_name && carrier.legal_name.toLowerCase().includes(value)) ||
+                        (carrier.mc_number && carrier.mc_number.toLowerCase().includes(value)) ||
+                        (carrier.dot_number && carrier.dot_number.toLowerCase().includes(value))
+                    );
+                });
+
+                if (matches.length === 0) {
+                    carrierAutocompleteList.style.display = 'none';
+                    return;
+                }
+
+                matches.forEach(match => {
+                    const div = document.createElement('div');
+                    div.textContent = `${match.legal_name} (MC#: ${match.mc_number}, DOT#: ${match.dot_number})`;
+                    div.addEventListener('click', () => {
+                        carrierInput.value = match.legal_name;
+                        carrierHiddenInput.value = match.id;
+                        carrierAutocompleteList.innerHTML = '';
+                        carrierAutocompleteList.style.display = 'none';
+
+                        // City is already cleaned in the carriers array
+                        let address = '';
+                        if (match.street || match.city || match.state || match.zip_code) {
+                            address = [
+                                match.street || '',
+                                match.city || '',
+                                match.state || '',
+                                match.zip_code || ''
+                            ].filter(Boolean).join(', ');
+                        } else {
+                            address = 'N/A';
+                        }
+
+                        carrierInfoDiv.innerHTML = `
+                            <p><strong>Legal Name:</strong> ${match.legal_name || 'N/A'}</p>
+                            <p><strong>Address:</strong> ${address}</p>
+                            <p><strong>MC Number:</strong> ${match.mc_number || 'N/A'}</p>
+                            <p><strong>DOT Number:</strong> ${match.dot_number || 'N/A'}</p>
+                            <p><strong>Email:</strong> ${match.email || 'N/A'}</p>
+                            <p><strong>Phone:</strong> ${match.phone || 'N/A'}</p>
+                        `;
+                    });
+                    carrierAutocompleteList.appendChild(div);
+                });
+
+                carrierAutocompleteList.style.display = 'block';
+            });
+
+            carrierInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    carrierAutocompleteList.style.display = 'none';
+                }, 200);
+            });
+        }
+
+        // Google Maps Autocomplete
+        function initAutocomplete() {
+            if (!google || !google.maps || !google.maps.places) {
+                console.error('Google Maps API or Places library not loaded. Check API key and script URL.');
+                return;
+            }
+
+            const inputs = document.querySelectorAll('.map-autocomplete');
+            inputs.forEach(input => {
+                const autocomplete = new google.maps.places.Autocomplete(input, {
+                    types: ['address'],
+                    componentRestrictions: { country: 'us' }
+                });
+
+                autocomplete.addListener('place_changed', () => {
+                    const place = autocomplete.getPlace();
+                    if (!place.geometry || !place.address_components) {
+                        console.warn('No geometry or address components for place:', place);
+                        input.classList.add('error');
+                        return;
+                    }
+
+                    input.classList.remove('error');
+                    const block = input.closest('.pickup-block, .additional-pickup-block, .delivery-block, .additional-delivery-block');
+                    if (!block) {
+                        console.error('Could not find parent block for input:', input.id);
+                        return;
+                    }
+
+                    // Extract city, state, and zip from address components
+                    let city = '', state = '', zip = '';
+                    for (const component of place.address_components) {
+                        if (component.types.includes('locality')) {
+                            city = component.long_name;
+                        }
+                        if (component.types.includes('administrative_area_level_1')) {
+                            state = component.short_name;
+                        }
+                        if (component.types.includes('postal_code')) {
+                            zip = component.long_name;
+                        }
+                    }
+
+                    // Find the corresponding city, state, and zip inputs within the same block
+                    const baseId = input.id.replace('_address', '');
+                    const cityInput = block.querySelector(`input[id="${baseId}_city"]`);
+                    const stateInput = block.querySelector(`input[id="${baseId}_state"]`);
+                    const zipInput = block.querySelector(`input[id="${baseId}_zip"]`);
+
+                    // Log if any inputs are missing
+                    if (!cityInput || !stateInput || !zipInput) {
+                        console.error('Missing city, state, or zip input for:', input.id, {
+                            cityInput: !!cityInput,
+                            stateInput: !!stateInput,
+                            zipInput: !!zipInput
+                        });
+                        return;
+                    }
+
+                    // Populate the fields
+                    input.value = place.formatted_address.split(',')[0];
+                    cityInput.value = city || '';
+                    stateInput.value = state || '';
+                    zipInput.value = zip || '';
+
+                    console.log(`Updated fields for ${input.id}:`, {
+                        address: input.value,
+                        city: cityInput.value,
+                        state: stateInput.value,
+                        zip: zipInput.value
+                    });
+
+                    calculateMileage();
+                });
+            });
+        }
+
+        // Mileage Calculation
+        function calculateMileage() {
+            if (!google || !google.maps || !google.maps.DistanceMatrixService) {
+                console.error('Google Maps Distance Matrix Service not available');
+                return;
+            }
+
+            const pickupZips = [document.getElementById('pickup_zip')?.value].filter(Boolean);
+            const deliveryZips = [document.getElementById('delivery_zip')?.value].filter(Boolean);
+
+            document.querySelectorAll('input[name="additional_pickup_zip[]"]').forEach(input => {
+                if (input.value) pickupZips.push(input.value);
+            });
+
+            document.querySelectorAll('input[name="additional_delivery_zip[]"]').forEach(input => {
+                if (input.value) deliveryZips.push(input.value);
+            });
+
+            if (pickupZips.length === 0 || deliveryZips.length === 0) {
+                console.log('Missing zip codes, skipping mileage calculation');
+                return;
+            }
+
+            const service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+                {
+                    origins: pickupZips,
+                    destinations: deliveryZips,
+                    travelMode: 'DRIVING',
+                    unitSystem: google.maps.UnitSystem.IMPERIAL
+                },
+                function(response, status) {
+                    if (status === 'OK') {
+                        let totalMiles = 0;
+                        for (let i = 0; i < response.rows.length; i++) {
+                            for (let j = 0; j < response.rows[i].elements.length; j++) {
+                                if (response.rows[i].elements[j].status === 'OK') {
+                                    const distance = response.rows[i].elements[j].distance;
+                                    const miles = Math.round(distance.value / 1609.34);
+                                    totalMiles += miles;
+                                }
+                            }
+                        }
+                        console.log(`Calculated total distance: ${totalMiles} miles`);
+
+                        document.getElementById('cust_miles').value = totalMiles;
+                        document.getElementById('carr_miles').value = totalMiles;
+                        document.getElementById('total_miles').value = totalMiles;
+                        document.getElementById('total_miles_display').textContent = totalMiles;
+
+                        calculateProfit();
+                    } else {
+                        console.error('Distance Matrix API error:', status, response);
+                    }
+                }
+            );
+        }
+
+        // Profit Calculation
+        function calculateProfit() {
+            try {
+                const custMiles = parseFloat(document.getElementById('cust_miles').value) || 0;
+                const carrMiles = parseFloat(document.getElementById('carr_miles').value) || 0;
+                const custAmt = parseFloat(document.getElementById('cust_amt').value) || 0;
+                const carrAmt = parseFloat(document.getElementById('carr_amt').value) || 0;
+
+                const totalMiles = Math.max(custMiles, carrMiles);
+                const profitAmount = (custAmt - carrAmt).toFixed(2);
+                const profitPercentage = custAmt !== 0 ? ((profitAmount / custAmt) * 100).toFixed(1) : 0;
+
+                document.getElementById('total_miles').value = totalMiles;
+                document.getElementById('total_miles_display').textContent = totalMiles;
+                document.getElementById('total_amount').value = profitAmount;
+                document.getElementById('amount_difference').textContent = profitAmount;
+                document.getElementById('profit_percentage').textContent = profitPercentage + '%';
+                document.getElementById('cust_profit').textContent = profitPercentage + '%';
+                document.getElementById('carr_profit').textContent = profitPercentage + '%';
+
+                console.log('Calculated profit:', {
+                    totalMiles: totalMiles,
+                    profitAmount: profitAmount,
+                    profitPercentage: profitPercentage
+                });
+            } catch (error) {
+                console.error('Error in calculateProfit:', error);
+            }
+        }
+
+        // Commodities and Accessories Row Management
+        function initCommodityRows() {
+            document.getElementById('add-commodity-row').addEventListener('click', function() {
+                const tbody = document.querySelector('#commodities-table tbody');
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td><input type="text" name="commodity_type[]" placeholder="Enter type"></td>
+                    <td><input type="text" name="commodity_description[]" placeholder="e.g., Facemasks"></td>
+                    <td><input type="number" name="commodity_qty[]" value="1" min="0"></td>
+                    <td><input type="number" name="commodity_weight[]" value="0" min="0" step="0.1"></td>
+                    <td><input type="number" name="commodity_value[]" value="0.00" min="0" step="0.01"></td>
+                    <td><button type="button" class="remove-row">Remove</button></td>
+                `;
+                tbody.appendChild(newRow);
+
+                newRow.querySelector('.remove-row').addEventListener('click', function() {
+                    newRow.remove();
+                });
+            });
+
+            document.querySelectorAll('.remove-row').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('tr').remove();
+                });
+            });
+        }
+
+        // Additional Pickup and Delivery Management
+        function initPickupDelivery() {
+            let pickupCounter = {{ load.additional_pickups.count|default:'0' }};
+            let deliveryCounter = {{ load.additional_deliveries.count|default:'0' }};
+
+            document.getElementById('add-pickup').addEventListener('click', function() {
+                pickupCounter++;
+                const container = document.getElementById('additional-pickups');
+                const newPickup = document.createElement('div');
+                newPickup.className = 'additional-pickup-block';
+                newPickup.innerHTML = `
+                    <h3>Additional Pickup ${pickupCounter}</h3>
+                    <button type="button" class="remove-pickup-button">Remove</button>
+                    <div class="form-group">
+                        <label for="additional_pickup_name_${pickupCounter}">Pickup Name</label>
+                        <input type="text" id="additional_pickup_name_${pickupCounter}" name="additional_pickup_name[]" placeholder="Enter contact name">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_address_${pickupCounter}">Address</label>
+                        <input type="text" id="additional_pickup_address_${pickupCounter}" name="additional_pickup_address[]" class="map-autocomplete" placeholder="Enter pickup address">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_city_${pickupCounter}">City</label>
+                        <input type="text" id="additional_pickup_city_${pickupCounter}" name="additional_pickup_city[]" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_state_${pickupCounter}">State</label>
+                        <input type="text" id="additional_pickup_state_${pickupCounter}" name="additional_pickup_state[]" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_zip_${pickupCounter}">Zip</label>
+                        <input type="text" id="additional_pickup_zip_${pickupCounter}" name="additional_pickup_zip[]" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_date_${pickupCounter}">Pickup Date</label>
+                        <input type="date" id="additional_pickup_date_${pickupCounter}" name="additional_pickup_date[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_phone_${pickupCounter}">Phone</label>
+                        <input type="tel" id="additional_pickup_phone_${pickupCounter}" name="additional_pickup_phone[]" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_email_${pickupCounter}">Email</label>
+                        <input type="email" id="additional_pickup_email_${pickupCounter}" name="additional_pickup_email[]" placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_appointment_time_${pickupCounter}">Appointment Time</label>
+                        <input type="time" id="additional_pickup_appointment_time_${pickupCounter}" name="additional_pickup_appointment_time[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_pickup_instructions_${pickupCounter}">Pickup Instructions</label>
+                        <textarea id="additional_pickup_instructions_${pickupCounter}" name="additional_pickup_instructions[]"></textarea>
+                    </div>
+                `;
+                container.appendChild(newPickup);
+
+                // Store references to the city, state, and zip inputs
+                const addressInput = newPickup.querySelector(`#additional_pickup_address_${pickupCounter}`);
+                const cityInput = newPickup.querySelector(`#additional_pickup_city_${pickupCounter}`);
+                const stateInput = newPickup.querySelector(`#additional_pickup_state_${pickupCounter}`);
+                const zipInput = newPickup.querySelector(`#additional_pickup_zip_${pickupCounter}`);
+
+                // Initialize Google Maps Autocomplete for the new address field
+                if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+                    const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+                        types: ['address'],
+                        componentRestrictions: { country: 'us' }
+                    });
+
+                    autocomplete.addListener('place_changed', function() {
+                        const place = autocomplete.getPlace();
+                        if (!place.geometry || !place.address_components) {
+                            console.warn('No geometry or address components for place:', place);
+                            addressInput.classList.add('error');
+                            return;
+                        }
+
+                        addressInput.classList.remove('error');
+                        let city = '', state = '', zip = '';
+                        for (const component of place.address_components) {
+                            if (component.types.includes('locality')) {
+                                city = component.long_name;
+                            }
+                            if (component.types.includes('administrative_area_level_1')) {
+                                state = component.short_name;
+                            }
+                            if (component.types.includes('postal_code')) {
+                                zip = component.long_name;
+                            }
+                        }
+
+                        // Update the fields using the stored references
+                        addressInput.value = place.formatted_address.split(',')[0];
+                        cityInput.value = city || '';
+                        stateInput.value = state || '';
+                        zipInput.value = zip || '';
+
+                        console.log('Updated additional pickup fields:', {
+                            address: addressInput.value,
+                            city: city,
+                            state: state,
+                            zip: zip
+                        });
+
+                        calculateMileage();
+                    });
+                } else {
+                    console.error('Google Maps API not loaded for additional pickup');
+                }
+
+                newPickup.querySelector('.remove-pickup-button').addEventListener('click', function() {
+                    newPickup.remove();
+                    calculateMileage();
+                });
+            });
+
+            document.getElementById('add-delivery').addEventListener('click', function() {
+                deliveryCounter++;
+                const container = document.getElementById('additional-deliveries');
+                const newDelivery = document.createElement('div');
+                newDelivery.className = 'additional-delivery-block';
+                newDelivery.innerHTML = `
+                    <h3>Additional Dropoff ${deliveryCounter}</h3>
+                    <button type="button" class="remove-delivery-button">Remove</button>
+                    <div class="form-group">
+                        <label for="additional_delivery_name_${deliveryCounter}">Delivery Name</label>
+                        <input type="text" id="additional_delivery_name_${deliveryCounter}" name="additional_delivery_name[]" placeholder="Enter contact name">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_address_${deliveryCounter}">Address</label>
+                        <input type="text" id="additional_delivery_address_${deliveryCounter}" name="additional_delivery_address[]" class="map-autocomplete" placeholder="Enter delivery address">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_city_${deliveryCounter}">City</label>
+                        <input type="text" id="additional_delivery_city_${deliveryCounter}" name="additional_delivery_city[]" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_state_${deliveryCounter}">State</label>
+                        <input type="text" id="additional_delivery_state_${deliveryCounter}" name="additional_delivery_state[]" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_zip_${deliveryCounter}">Zip</label>
+                        <input type="text" id="additional_delivery_zip_${deliveryCounter}" name="additional_delivery_zip[]" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_date_${deliveryCounter}">Delivery Date</label>
+                        <input type="date" id="additional_delivery_date_${deliveryCounter}" name="additional_delivery_date[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_phone_${deliveryCounter}">Phone</label>
+                        <input type="tel" id="additional_delivery_phone_${deliveryCounter}" name="additional_delivery_phone[]" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_email_${deliveryCounter}">Email</label>
+                        <input type="email" id="additional_delivery_email_${deliveryCounter}" name="additional_delivery_email[]" placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_appointment_time_${deliveryCounter}">Appointment Time</label>
+                        <input type="time" id="additional_delivery_appointment_time_${deliveryCounter}" name="additional_delivery_appointment_time[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional_delivery_instructions_${deliveryCounter}">Delivery Instructions</label>
+                        <textarea id="additional_delivery_instructions_${deliveryCounter}" name="additional_delivery_instructions[]"></textarea>
+                    </div>
+                `;
+                container.appendChild(newDelivery);
+
+                // Store references to the city, state, and zip inputs
+                const addressInput = newDelivery.querySelector(`#additional_delivery_address_${deliveryCounter}`);
+                const cityInput = newDelivery.querySelector(`#additional_delivery_city_${deliveryCounter}`);
+                const stateInput = newDelivery.querySelector(`#additional_delivery_state_${deliveryCounter}`);
+                const zipInput = newDelivery.querySelector(`#additional_delivery_zip_${deliveryCounter}`);
+
+                // Initialize Google Maps Autocomplete for the new address field
+                if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+                    const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+                        types: ['address'],
+                        componentRestrictions: { country: 'us' }
+                    });
+
+                    autocomplete.addListener('place_changed', function() {
+                        const place = autocomplete.getPlace();
+                        if (!place.geometry || !place.address_components) {
+                            console.warn('No geometry or address components for place:', place);
+                            addressInput.classList.add('error');
+                            return;
+                        }
+
+                        addressInput.classList.remove('error');
+                        let city = '', state = '', zip = '';
+                        for (const component of place.address_components) {
+                            if (component.types.includes('locality')) {
+                                city = component.long_name;
+                            }
+                            if (component.types.includes('administrative_area_level_1')) {
+                                state = component.short_name;
+                            }
+                            if (component.types.includes('postal_code')) {
+                                zip = component.long_name;
+                            }
+                        }
+
+                        // Update the fields using the stored references
+                        addressInput.value = place.formatted_address.split(',')[0];
+                        cityInput.value = city || '';
+                        stateInput.value = state || '';
+                        zipInput.value = zip || '';
+
+                        console.log('Updated additional delivery fields:', {
+                            address: addressInput.value,
+                            city: city,
+                            state: state,
+                            zip: zip
+                        });
+
+                        calculateMileage();
+                    });
+                } else {
+                    console.error('Google Maps API not loaded for additional delivery');
+                }
+
+                newDelivery.querySelector('.remove-delivery-button').addEventListener('click', function() {
+                    newDelivery.remove();
+                    calculateMileage();
+                });
+            });
+
+            document.querySelectorAll('.remove-pickup-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('.additional-pickup-block').remove();
+                    calculateMileage();
+                });
+            });
+
+            document.querySelectorAll('.remove-delivery-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('.additional-delivery-block').remove();
+                    calculateMileage();
+                });
+            });
+        }
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initCustomerAutocomplete();
+            initCarrierAutocomplete();
+            initCommodityRows();
+            initPickupDelivery();
+
+            const fieldsToWatch = ['cust_miles', 'carr_miles', 'cust_amt', 'carr_amt'];
+            fieldsToWatch.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                field.addEventListener('input', calculateProfit);
+                field.addEventListener('change', calculateProfit);
+            });
+
+            calculateProfit();
+            initAutocomplete();
+        });
+    </script>
+    <!-- Add this script at the end of your edit_load.html file, just before the closing </body> tag -->
+    <script>
+        // Function to format phone numbers as xxx-xxx-xxxx #extension
+        function formatPhoneNumber(input) {
+            // Remove all non-numeric characters (temporarily)
+            let fullNumber = input.value.replace(/\D/g, '');
+
+            // Format the number as xxx-xxx-xxxx #extension
+            if (fullNumber.length > 0) {
+                if (fullNumber.length <= 3) {
+                    // Just show the area code
+                    input.value = fullNumber;
+                } else if (fullNumber.length <= 6) {
+                    // Format as xxx-xxx
+                    input.value = fullNumber.slice(0, 3) + '-' + fullNumber.slice(3);
+                } else if (fullNumber.length <= 10) {
+                    // Format as xxx-xxx-xxxx
+                    input.value = fullNumber.slice(0, 3) + '-' + fullNumber.slice(3, 6) + '-' + fullNumber.slice(6);
+                } else {
+                    // Format with extension: xxx-xxx-xxxx #123
+                    let mainNumber = fullNumber.slice(0, 10);
+                    let extension = fullNumber.slice(10);
+
+                    input.value = mainNumber.slice(0, 3) + '-' +
+                                  mainNumber.slice(3, 6) + '-' +
+                                  mainNumber.slice(6) +
+                                  (extension ? ' #' + extension : '');
+                }
+            }
+        }
+
+        // Apply formatting to all phone number fields
+        function initPhoneFormatting() {
+            // Find all phone input fields
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+
+            // Add input event listener to each phone field
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    // Preserve cursor position
+                    const cursorPos = this.selectionStart;
+                    const oldLength = this.value.length;
+
+                    formatPhoneNumber(this);
+
+                    // Adjust cursor position
+                    if (this === document.activeElement) {
+                        const newLength = this.value.length;
+                        const newPos = cursorPos + (newLength - oldLength);
+                        this.setSelectionRange(newPos, newPos);
+                    }
+                });
+
+                // Format existing values on page load
+                if (input.value && !input.value.includes('#')) {
+                    formatPhoneNumber(input);
+                }
+            });
+        }
+
+        // Listen for new pickup/delivery blocks being added
+        function setupDynamicPhoneFormatting() {
+            document.getElementById('add-pickup').addEventListener('click', function() {
+                // Wait for the DOM to update with the new pickup fields
+                setTimeout(() => {
+                    const newPickupBlock = document.getElementById('additional-pickups').lastElementChild;
+                    if (newPickupBlock) {
+                        const newPhoneInputs = newPickupBlock.querySelectorAll('input[type="tel"]');
+                        newPhoneInputs.forEach(input => {
+                            input.addEventListener('input', function() {
+                                formatPhoneNumber(this);
+                            });
+                        });
+                    }
+                }, 100);
+            });
+
+            document.getElementById('add-delivery').addEventListener('click', function() {
+                // Wait for the DOM to update with the new delivery fields
+                setTimeout(() => {
+                    const newDeliveryBlock = document.getElementById('additional-deliveries').lastElementChild;
+                    if (newDeliveryBlock) {
+                        const newPhoneInputs = newDeliveryBlock.querySelectorAll('input[type="tel"]');
+                        newPhoneInputs.forEach(input => {
+                            input.addEventListener('input', function() {
+                                formatPhoneNumber(this);
+                            });
+                        });
+                    }
+                }, 100);
+            });
+        }
+
+        // Initialize everything when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle formatting for phone numbers that already have extensions
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                // Check if the value already contains an extension
+                if (input.value && input.value.includes('#')) {
+                    // Keep the formatting as is for existing extensions
+                    // The input event handler will handle new changes
+                } else {
+                    // Format numbers without extensions
+                    if (input.value) {
+                        formatPhoneNumber(input);
+                    }
+                }
+
+                // Add input event listener
+                input.addEventListener('input', function() {
+                    // Preserve cursor position for better user experience
+                    const cursorPos = this.selectionStart;
+                    const oldLength = this.value.length;
+
+                    formatPhoneNumber(this);
+
+                    // Try to adjust cursor position after formatting
+                    if (this === document.activeElement) {
+                        // Only adjust if this field has focus
+                        const newLength = this.value.length;
+                        const newPos = cursorPos + (newLength - oldLength);
+                        this.setSelectionRange(newPos, newPos);
+                    }
+                });
+            });
+
+            // Set up listeners for dynamically added phone fields
+            setupDynamicPhoneFormatting();
+        });
+    </script>
+    <script>
+        // Function to save form data and redirect to another page
+        function saveAndRedirect(targetUrl) {
+            // Get the form
+            const form = document.getElementById('edit-load-form');
+            // Create a hidden input to indicate where to redirect after saving
+            const redirectInput = document.createElement('input');
+            redirectInput.type = 'hidden';
+            redirectInput.name = 'redirect_after_save';
+            redirectInput.value = targetUrl;
+            form.appendChild(redirectInput);
+            // Submit the form
+            form.submit();
+        }
+    </script>
+    <script>
+        // Function to save form data and redirect to another page
+        function saveAndRedirect(targetUrl) {
+            // Get the form
+            const form = document.getElementById('edit-load-form');
+            // Create a hidden input to indicate where to redirect after saving
+            const redirectInput = document.createElement('input');
+            redirectInput.type = 'hidden';
+            redirectInput.name = 'redirect_after_save';
+            redirectInput.value = targetUrl;
+            form.appendChild(redirectInput);
+            // Submit the form
+            form.submit();
+        }
+
+        // Function to save form data without redirecting
+        function saveWithoutRedirect() {
+            // Get the form
+            const form = document.getElementById('edit-load-form');
+
+            // Create a hidden input to indicate not to redirect
+            const stayOnPageInput = document.createElement('input');
+            stayOnPageInput.type = 'hidden';
+            stayOnPageInput.name = 'stay_on_page';
+            stayOnPageInput.value = 'true';
+            form.appendChild(stayOnPageInput);
+
+            // Submit the form
+            form.submit();
+        }
+    </script>
+
+    </html>

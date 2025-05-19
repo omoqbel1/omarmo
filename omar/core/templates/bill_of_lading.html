@@ -1,0 +1,486 @@
+{% load load_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill of Lading</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0.25in;
+        }
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --light-gray: #f5f5f5;
+            --border-color: #cccccc;
+            --text-color: #000000;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background: #FFFFFF;
+            line-height: 1.1;
+            font-size: 8pt;
+        }
+        .container {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 4px;
+        }
+        .logo-section {
+            width: 90px; /* Increased from 70px */
+            height: 40px; /* Increased from 30px */
+            text-align: center;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--primary-color);
+            background-color: white;
+            color: var(--primary-color);
+            padding: 3px;
+            width: 100%;
+            height: 100%;
+        }
+        .logo-text {
+            font-weight: bold;
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .title-section {
+            flex-grow: 1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 0;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-section {
+            width: 150px;
+            text-align: right;
+            font-size: 8pt; /* Increased from 7pt */
+            background-color: white;
+            padding: 3px;
+            border: 1px solid var(--border-color);
+        }
+        .info-row {
+            margin-bottom: 3px; /* Increased from 1px */
+        }
+        .info-row strong {
+            color: var(--primary-color);
+            font-size: 9pt; /* Made labels larger */
+        }
+        /* Make load number and BOL number bigger */
+        .info-row:nth-child(1), .info-row:nth-child(2) {
+            font-size: 9pt; /* Larger font for BOL# and Load# */
+            font-weight: bold;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 0.75in; /* Ensure content doesn't overlap with fixed footer */
+        }
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 3px;
+        }
+        .company-box, .carrier-box {
+            width: 49%;
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            font-size: 7pt;
+            background-color: white;
+            word-break: break-word;
+        }
+        .company-box h3, .carrier-box h3 {
+            margin-top: 0;
+            margin-bottom: 2px;
+            font-size: 8pt;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 2px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .addresses-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 3px;
+        }
+        .address-box {
+            width: 49%;
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            font-size: 7pt;
+            background-color: white;
+            min-height: 60px;
+        }
+        .address-box h3 {
+            margin-top: 0;
+            margin-bottom: 2px;
+            font-size: 8pt;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 2px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .carrier-details {
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            margin-bottom: 4px;
+            background-color: white;
+            font-size: 7pt;
+        }
+        .carrier-detail-item {
+            width: 25%;
+            margin-bottom: 2px;
+            word-break: break-word;
+            padding-right: 3px;
+            box-sizing: border-box;
+        }
+        .carrier-detail-item strong {
+            color: var(--primary-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 4px;
+            font-size: 7pt;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 3px;
+            text-align: left;
+            word-break: break-word;
+        }
+        th {
+            background-color: #e6e6e6;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .commodities-table {
+            margin-bottom: 4px;
+        }
+        .commodities-table th {
+            padding: 3px;
+        }
+        .total-row td {
+            font-weight: bold;
+            background-color: #e6e6e6;
+        }
+        .special-instructions {
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            margin-bottom: 6px;
+            background-color: white;
+            min-height: 20px;
+        }
+        .special-instructions h3 {
+            margin-top: 0;
+            margin-bottom: 3px;
+            font-size: 8pt;
+            color: var(--primary-color);
+        }
+        .special-instructions p {
+            margin: 0;
+            min-height: 15px;
+        }
+        .declaration {
+            margin-bottom: 6px;
+            font-size: 7pt;
+            line-height: 1.1;
+        }
+        .declaration p {
+            margin: 0 0 3px 0;
+        }
+        .cert-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 4px;
+        }
+        .cert-table td {
+            vertical-align: top;
+            padding: 0;
+            width: 50%;
+        }
+        .cert-box {
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            margin: 0 4px 6px 0;
+            background-color: white;
+            height: 110px;
+            position: relative;
+        }
+        .cert-box h3 {
+            margin: 0 0 2px 0;
+            font-size: 8pt;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2px;
+        }
+        .cert-box p {
+            margin: 0 0 2px 0;
+            font-size: 7pt;
+            line-height: 1.1;
+            height: 55px;
+            overflow: hidden;
+        }
+        .cert-signature {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid var(--border-color);
+            margin: 0 4px;
+        }
+        .cert-label {
+            position: absolute;
+            bottom: 2px;
+            left: 4px;
+            font-size: 6pt;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0.15in;
+            left: 0.25in;
+            right: 0.25in;
+            text-align: center;
+            color: var(--text-color);
+            border-top: 1px solid var(--primary-color);
+            padding-top: 4px;
+            font-size: 6pt;
+            background-color: white;
+        }
+        .footer-highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Logo size control */
+        .logo-section img {
+            max-width: 90px; /* Increased from 70px */
+            max-height: 40px; /* Increased from 30px */
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                {% if CompanyLogoURL %}
+                    <img src="{{ CompanyLogoURL }}" alt="{{ CompanyName }} Logo">
+                {% else %}
+                    <div class="logo-container">
+                        <div class="logo-text">{{ CompanyName|default:"TMS" }}</div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="title-section">
+                <div class="title">BILL OF LADING</div>
+            </div>
+            <div class="info-section">
+                <div class="info-row"><strong>BOL#:</strong> {{ BOLNumber }}</div>
+                <div class="info-row"><strong>Load#:</strong> {{ LoadNumber }}</div>
+                <div class="info-row"><strong>Date:</strong> {{ OrderDate }}</div>
+                <!-- Removed the PRO line as requested -->
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="company-info">
+                <div class="company-box">
+                    <h3>Carrier Information: <span style="font-size: 8pt;">MC#: {{ CarrierMCNumber }}</span></h3>
+                    <strong>{{ CarrierName }}</strong><br>
+                    {{ CarrierAddress }}<br>
+                    {{ CarrierCityStateZip }}<br>
+                    Phone: {{ CarrierPhone }}
+                </div>
+                <div class="company-box">
+                    <h3>3rd Party Bill To</h3>
+                    <strong>{{ CompanyName }}</strong><br>
+                    {{ CompanyAddress }}<br>
+                    {{ CompanyCityStateZip }}<br>
+                    Phone: {{ CompanyPhone }}
+                </div>
+            </div>
+
+            <div class="addresses-section">
+                <div class="address-box">
+                    <h3>Shipper</h3>
+                    {% if ShipperName or ShipperAddress or ShipperFormattedAddress %}
+                        {% if ShipperName and ShipperName != '' %}<strong>{{ ShipperName }}</strong><br>{% endif %}
+                        {% if ShipperAddress and ShipperAddress != '' %}{{ ShipperAddress }}<br>{% endif %}
+                        {% if ShipperCity and ShipperCity != '' or ShipperState and ShipperState != '' or ShipperZip and ShipperZip != '' %}
+                            {% if ShipperCity and ShipperCity != '' %}{{ ShipperCity }}{% endif %}{% if ShipperCity and ShipperCity != '' and ShipperState and ShipperState != '' %}, {% endif %}{% if ShipperState and ShipperState != '' %}{{ ShipperState }}{% endif %} {% if ShipperZip and ShipperZip != '' %}{{ ShipperZip }}{% endif %}<br>
+                        {% endif %}
+                        {% if ShipperPhone and ShipperPhone != '' %}<span>Phone: {{ ShipperPhone }}</span><br>{% endif %}
+                        {% if ShipperDate and ShipperDate != '' %}<span>Date: {{ ShipperDate }}</span>{% endif %}
+                        {% if ShipperTime and ShipperTime != '' %} | <span>Time: {{ ShipperTime }}</span>{% endif %}
+
+                        {% if ShipperFormattedAddress and ShipperFormattedAddress != '' and not ShipperName and not ShipperAddress %}
+                            {{ ShipperFormattedAddress|safe }}
+                        {% endif %}
+                    {% else %}
+                        <p>No shipper information available</p>
+                    {% endif %}
+                </div>
+                <div class="address-box">
+                    <h3>Consignee</h3>
+                    {% if ConsigneeName or ConsigneeAddress or ConsigneeFormattedAddress %}
+                        {% if ConsigneeName and ConsigneeName != '' %}<strong>{{ ConsigneeName }}</strong><br>{% endif %}
+                        {% if ConsigneeAddress and ConsigneeAddress != '' %}{{ ConsigneeAddress }}<br>{% endif %}
+                        {% if ConsigneeCity and ConsigneeCity != '' or ConsigneeState and ConsigneeState != '' or ConsigneeZip and ConsigneeZip != '' %}
+                            {% if ConsigneeCity and ConsigneeCity != '' %}{{ ConsigneeCity }}{% endif %}{% if ConsigneeCity and ConsigneeCity != '' and ConsigneeState and ConsigneeState != '' %}, {% endif %}{% if ConsigneeState and ConsigneeState != '' %}{{ ConsigneeState }}{% endif %} {% if ConsigneeZip and ConsigneeZip != '' %}{{ ConsigneeZip }}{% endif %}<br>
+                        {% endif %}
+                        {% if ConsigneePhone and ConsigneePhone != '' %}<span>Phone: {{ ConsigneePhone }}</span><br>{% endif %}
+                        {% if ConsigneeDate and ConsigneeDate != '' %}<span>Date: {{ ConsigneeDate }}</span>{% endif %}
+                        {% if ConsigneeTime and ConsigneeTime != '' %} | <span>Time: {{ ConsigneeTime }}</span>{% endif %}
+
+                        {% if ConsigneeFormattedAddress and ConsigneeFormattedAddress != '' and not ConsigneeName and not ConsigneeAddress %}
+                            {{ ConsigneeFormattedAddress|safe }}
+                        {% endif %}
+                    {% else %}
+                        <p>No consignee information available</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="carrier-details">
+                <div class="carrier-detail-item"><strong>Driver 1:</strong> {{ Driver1 }}</div>
+                <div class="carrier-detail-item"><strong>Driver 2:</strong> {{ Driver2 }}</div>
+                <div class="carrier-detail-item"><strong>Truck#:</strong> {{ TruckNumber }}</div>
+                <div class="carrier-detail-item"><strong>Trailer#:</strong> {{ TrailerNumber }}</div>
+                <div class="carrier-detail-item"><strong>Miles:</strong> {{ TotalMiles }}</div>
+                <div class="carrier-detail-item"><strong>Weight:</strong> {{ TotalWeight }} lbs</div>
+                <div class="carrier-detail-item"><strong>Seal #:</strong> </div>
+                <div class="carrier-detail-item"></div>
+            </div>
+
+            <table class="commodities-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">Qty</th>
+                        <th style="width: 10%">Type</th>
+                        <th style="width: 50%">Description</th>
+                        <th style="width: 15%">Weight (lbs)</th>
+                        <th style="width: 15%">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for commodity in Commodities %}
+                    <tr>
+                        <td>{{ commodity.quantity }}</td>
+                        <td>{{ commodity.type }}</td>
+                        <td>{{ commodity.description }}</td>
+                        <td>{{ commodity.weight }}</td>
+                        <td>{% if commodity.value and commodity.value != '0' and commodity.value != '0.0' and commodity.value != '0.00' %}${{ commodity.value }}{% endif %}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" style="text-align: center;">No commodities listed</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="total-row">
+                        <td>{{ TotalQty }}</td>
+                        <td>TOTAL</td>
+                        <td></td>
+                        <td>{{ TotalWeight }} lbs</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="special-instructions">
+                <h3>Special Instructions / Remarks</h3>
+                <p></p>
+            </div>
+
+            <div class="declaration">
+                <p>RECEIVED, subject to individually determined rates or contracts that have been agreed upon in writing between the carrier and shipper, if applicable, otherwise to the rates, classifications and rules that have been established by the carrier and are available to the shipper, on request, and to all applicable state and federal regulations.</p>
+                <p>The carrier shall not make delivery of this shipment without payment of freight and all other lawful charges.</p>
+            </div>
+
+            <!-- Certification sections -->
+            <table class="cert-table" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td>
+                        <div class="cert-box">
+                            <h3>Shipper Certification</h3>
+                            <p>I hereby declare that the contents of this consignment are fully and accurately described above by the proper shipping name, and are classified, packaged, marked and labeled/placarded, and are in all respects in proper condition for transport according to applicable regulations.</p>
+                            <div class="cert-signature"></div>
+                            <div class="cert-label">SHIPPER SIGNATURE / DATE</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cert-box">
+                            <h3>Carrier Certification</h3>
+                            <p>Carrier acknowledges receipt of packages and required placards. Carrier certifies emergency response information was made available and/or carrier has the DOT emergency response guidebook or equivalent documentation in the vehicle.</p>
+                            <div class="cert-signature"></div>
+                            <div class="cert-label">CARRIER SIGNATURE / DATE</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cert-box">
+                            <h3>Consignee Certification</h3>
+                            <p>Received in good condition except as noted.</p>
+                            <div class="cert-signature"></div>
+                            <div class="cert-label">CONSIGNEE SIGNATURE / DATE</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cert-box">
+                            <h3>Driver Certification</h3>
+                            <p>I acknowledge receipt of the above-described shipment in apparent good condition except as noted.</p>
+                            <div class="cert-signature"></div>
+                            <div class="cert-label">DRIVER SIGNATURE / DATE</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <span class="footer-highlight">{{ CompanyName }}</span> | {{ CompanyAddress }}, {{ CompanyCityStateZip }} | Phone: {{ CompanyPhone }} | ORIGINAL - NOT NEGOTIABLE
+        </div>
+    </div>
+</body>
+</html>

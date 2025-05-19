@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Customer #{{ customer_id }} - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f5ff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        button[type="button"] {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        button[type="button"]:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            font-size: 0.875rem;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        @media (max-width: 768px) {
+            .form-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <div class="container">
+        <div class="header">
+            <h1>Edit Customer #{{ customer_id }}</h1>
+            <div class="buttons">
+                <button type="submit" form="edit-customer-form">Save</button>
+                <button type="button" onclick="window.location.href='{% url 'delete_customer' customer_id=customer_id %}'">Delete</button>
+                <button type="button" onclick="window.location.href='{% url 'my_customers' %}'">Cancel</button>
+            </div>
+        </div>
+
+        <form id="edit-customer-form" method="post" action="{% url 'edit_customer' customer_id=customer_id %}">
+            {% csrf_token %}
+            <div class="form-section">
+                <div>
+                    <div class="form-group">
+                        <label for="company_name">Company Name</label>
+                        <input type="text" id="company_name" name="company_name" value="{{ customer.company_name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Customer Name</label>
+                        <input type="text" id="name" name="name" value="{{ customer.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="map-autocomplete" value="{{ customer.address }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" value="{{ customer.city }}">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" name="state">
+                            <option value="">Select</option>
+                            <option value="AL" {% if customer.state == "AL" %}selected{% endif %}>AL</option>
+                            <option value="AK" {% if customer.state == "AK" %}selected{% endif %}>AK</option>
+                            <option value="AZ" {% if customer.state == "AZ" %}selected{% endif %}>AZ</option>
+                            <option value="AR" {% if customer.state == "AR" %}selected{% endif %}>AR</option>
+                            <option value="CA" {% if customer.state == "CA" %}selected{% endif %}>CA</option>
+                            <option value="CO" {% if customer.state == "CO" %}selected{% endif %}>CO</option>
+                            <option value="CT" {% if customer.state == "CT" %}selected{% endif %}>CT</option>
+                            <option value="DE" {% if customer.state == "DE" %}selected{% endif %}>DE</option>
+                            <option value="FL" {% if customer.state == "FL" %}selected{% endif %}>FL</option>
+                            <option value="GA" {% if customer.state == "GA" %}selected{% endif %}>GA</option>
+                            <option value="HI" {% if customer.state == "HI" %}selected{% endif %}>HI</option>
+                            <option value="ID" {% if customer.state == "ID" %}selected{% endif %}>ID</option>
+                            <option value="IL" {% if customer.state == "IL" %}selected{% endif %}>IL</option>
+                            <option value="IN" {% if customer.state == "IN" %}selected{% endif %}>IN</option>
+                            <option value="IA" {% if customer.state == "IA" %}selected{% endif %}>IA</option>
+                            <option value="KS" {% if customer.state == "KS" %}selected{% endif %}>KS</option>
+                            <option value="KY" {% if customer.state == "KY" %}selected{% endif %}>KY</option>
+                            <option value="LA" {% if customer.state == "LA" %}selected{% endif %}>LA</option>
+                            <option value="ME" {% if customer.state == "ME" %}selected{% endif %}>ME</option>
+                            <option value="MD" {% if customer.state == "MD" %}selected{% endif %}>MD</option>
+                            <option value="MA" {% if customer.state == "MA" %}selected{% endif %}>MA</option>
+                            <option value="MI" {% if customer.state == "MI" %}selected{% endif %}>MI</option>
+                            <option value="MN" {% if customer.state == "MN" %}selected{% endif %}>MN</option>
+                            <option value="MS" {% if customer.state == "MS" %}selected{% endif %}>MS</option>
+                            <option value="MO" {% if customer.state == "MO" %}selected{% endif %}>MO</option>
+                            <option value="MT" {% if customer.state == "MT" %}selected{% endif %}>MT</option>
+                            <option value="NE" {% if customer.state == "NE" %}selected{% endif %}>NE</option>
+                            <option value="NV" {% if customer.state == "NV" %}selected{% endif %}>NV</option>
+                            <option value="NH" {% if customer.state == "NH" %}selected{% endif %}>NH</option>
+                            <option value="NJ" {% if customer.state == "NJ" %}selected{% endif %}>NJ</option>
+                            <option value="NM" {% if customer.state == "NM" %}selected{% endif %}>NM</option>
+                            <option value="NY" {% if customer.state == "NY" %}selected{% endif %}>NY</option>
+                            <option value="NC" {% if customer.state == "NC" %}selected{% endif %}>NC</option>
+                            <option value="ND" {% if customer.state == "ND" %}selected{% endif %}>ND</option>
+                            <option value="OH" {% if customer.state == "OH" %}selected{% endif %}>OH</option>
+                            <option value="OK" {% if customer.state == "OK" %}selected{% endif %}>OK</option>
+                            <option value="OR" {% if customer.state == "OR" %}selected{% endif %}>OR</option>
+                            <option value="PA" {% if customer.state == "PA" %}selected{% endif %}>PA</option>
+                            <option value="RI" {% if customer.state == "RI" %}selected{% endif %}>RI</option>
+                            <option value="SC" {% if customer.state == "SC" %}selected{% endif %}>SC</option>
+                            <option value="SD" {% if customer.state == "SD" %}selected{% endif %}>SD</option>
+                            <option value="TN" {% if customer.state == "TN" %}selected{% endif %}>TN</option>
+                            <option value="TX" {% if customer.state == "TX" %}selected{% endif %}>TX</option>
+                            <option value="UT" {% if customer.state == "UT" %}selected{% endif %}>UT</option>
+                            <option value="VT" {% if customer.state == "VT" %}selected{% endif %}>VT</option>
+                            <option value="VA" {% if customer.state == "VA" %}selected{% endif %}>VA</option>
+                            <option value="WA" {% if customer.state == "WA" %}selected{% endif %}>WA</option>
+                            <option value="WV" {% if customer.state == "WV" %}selected{% endif %}>WV</option>
+                            <option value="WI" {% if customer.state == "WI" %}selected{% endif %}>WI</option>
+                            <option value="WY" {% if customer.state == "WY" %}selected{% endif %}>WY</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">Zip</label>
+                        <input type="text" id="zip" name="zip" value="{{ customer.zip }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" value="{{ customer.phone }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="{{ customer.email }}">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Google Maps JavaScript API -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvhTA3qIz4wBBu8O5L6Rvll07mw2AC61E&libraries=places&callback=initAutocomplete" async defer></script>
+        <script>
+            function initAutocomplete() {
+                var input = document.getElementById('address');
+                var autocomplete = new google.maps.places.Autocomplete(input, {
+                    types: ['address'],
+                    componentRestrictions: { country: 'us' } // Restrict to US addresses
+                });
+
+                autocomplete.addListener('place_changed', function() {
+                    var place = autocomplete.getPlace();
+                    if (!place.geometry) return;
+
+                    // Extract street address only
+                    var streetNumber = place.address_components.find(component => component.types.includes('street_number'))?.long_name || '';
+                    var route = place.address_components.find(component => component.types.includes('route'))?.long_name || '';
+                    document.getElementById('address').value = streetNumber + (streetNumber && route ? ' ' : '') + route;
+
+                    // Populate related fields
+                    document.getElementById('city').value = place.address_components.find(component => component.types.includes('locality'))?.long_name || '';
+                    var stateComponent = place.address_components.find(component => component.types.includes('administrative_area_level_1'));
+                    if (stateComponent) {
+                        document.getElementById('state').value = stateComponent.short_name;
+                    }
+                    document.getElementById('zip').value = place.address_components.find(component => component.types.includes('postal_code'))?.long_name || '';
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>

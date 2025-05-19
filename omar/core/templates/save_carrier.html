@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Carrier - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #B0B0B0;
+            --background: #0A0A0A;
+            --card-bg: #1C1C1C;
+            --text: #E0E0E0;
+            --border: rgba(255, 255, 255, 0.1);
+            --danger: #FF0000;
+            --success: #28a745;
+            --accent: #00f5ff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            color: var(--text);
+            padding: 32px;
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 0.875rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 98%;
+            background-position-y: 50%;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        button[type="button"] {
+            background: linear-gradient(45deg, var(--danger), #ff9999);
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .messages .success {
+            color: #00ff00;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .messages .error {
+            color: #ff9999;
+            font-size: 0.875rem;
+            padding: 10px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' with company_info=company_info %}
+    <div class="card">
+        <h1>Save Carrier</h1>
+
+        <!-- Messages Block -->
+        <div class="messages">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <form method="post" id="carrierForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="legal_name">Legal Name:</label>
+                <input type="text" id="legal_name" name="legal_name" value="{{ form_data.legal_name|default:'' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="mc_number">MC Number:</label>
+                <input type="text" id="mc_number" name="mc_number" value="{{ form_data.mc|default:'' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="dot_number">DOT Number:</label>
+                <input type="text" id="dot_number" name="dot_number" value="{{ form_data.dot|default:'' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ form_data.email|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" value="{{ form_data.phone|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="ein_number">EIN Number:</label>
+                <input type="text" id="ein_number" name="ein_number" value="{{ form_data.ein_number|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="company_officer">Company Officer:</label>
+                <input type="text" id="company_officer" name="company_officer" value="{{ form_data.company_officer|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="street">Street Address:</label>
+                <input type="text" id="street" name="street" value="{{ form_data.street|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" value="{{ form_data.city|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" value="{{ form_data.state|default:'' }}" maxlength="2">
+            </div>
+            <div class="form-group">
+                <label for="zip_code">Zip Code:</label>
+                <input type="text" id="zip_code" name="zip_code" value="{{ form_data.zip_code|default:'' }}" maxlength="10">
+            </div>
+            <div class="form-group">
+                <label for="contact_person">Contact Person:</label>
+                <input type="text" id="contact_person" name="contact_person" value="{{ form_data.contact_person|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="Active" {% if form_data.status == "Active" %}selected{% endif %}>Active</option>
+                    <option value="Inactive" {% if form_data.status == "Inactive" %}selected{% endif %}>Inactive</option>
+                    <option value="Dont Use" {% if form_data.status == "Dont Use" %}selected{% endif %}>Don't Use</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <button type="submit" role="button">Save Carrier</button>
+                <button type="button" role="button" onclick="window.location.href='{% url 'saved_carriers' %}'">Cancel</button>
+            </div>
+        </form>
+
+        <script>
+            // Split address into street, city, state, zip when form loads
+            window.onload = function() {
+                const fullAddress = "{{ form_data.address|default:'' }}";
+                const streetField = document.getElementById('street');
+                const cityField = document.getElementById('city');
+                const stateField = document.getElementById('state');
+                const zipField = document.getElementById('zip_code');
+
+                if (fullAddress && !streetField.value && !cityField.value && !stateField.value && !zipField.value) {
+                    // First, extract state and zip from the end
+                    const parts = fullAddress.split(' ');
+                    if (parts.length >= 3) {
+                        // Last part should be zip (5 or 9 digits)
+                        const zip = parts[parts.length - 1].trim();
+                        if (/^\d{5}(-\d{4})?$/.test(zip)) {
+                            zipField.value = zip;
+
+                            // Second-to-last part should be state (2 letters)
+                            const state = parts[parts.length - 2].trim();
+                            if (/^[A-Z]{2}$/.test(state)) {
+                                stateField.value = state;
+
+                                // Third-to-last part should be city (before state)
+                                const city = parts[parts.length - 3].trim();
+                                cityField.value = city;
+
+                                // Everything before the city is the street
+                                const street = parts.slice(0, -3).join(' ').trim();
+                                streetField.value = street;
+                            } else {
+                                // Fallback: if state doesn't match, put everything in street
+                                streetField.value = fullAddress;
+                            }
+                        } else {
+                            // Fallback: if zip doesn't match, put everything in street
+                            streetField.value = fullAddress;
+                        }
+                    } else {
+                        // Fallback: if not enough parts, put everything in street
+                        streetField.value = fullAddress;
+                    }
+                }
+            };
+
+            document.getElementById('carrierForm').addEventListener('submit', function(e) {
+                const dotNumber = document.getElementById('dot_number').value.trim();
+                const mcNumber = document.getElementById('mc_number').value.trim();
+                const legalName = document.getElementById('legal_name').value.trim();
+                const state = document.getElementById('state').value.trim();
+                const zipCode = document.getElementById('zip_code').value.trim();
+
+                if (!legalName) {
+                    e.preventDefault();
+                    alert('Legal Name is required.');
+                }
+                if (!mcNumber) {
+                    e.preventDefault();
+                    alert('MC Number is required.');
+                }
+                if (!dotNumber) {
+                    e.preventDefault();
+                    alert('DOT Number is required.');
+                }
+                if (state && !/^[A-Z]{2}$/.test(state)) {
+                    e.preventDefault();
+                    alert('State must be a 2-letter code (e.g., CA, NY).');
+                }
+                if (zipCode && !/^\d{5}(-\d{4})?$/.test(zipCode)) {
+                    e.preventDefault();
+                    alert('Zip Code must be 5 digits or 5+4 format (e.g., 12345 or 12345-6789).');
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
