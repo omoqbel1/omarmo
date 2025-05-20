@@ -3,298 +3,641 @@
 <head>
     <title>Save Carrier - {{ company_info.company_name|default:"Bullets Transport LLC" }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #FFFFFF;
-            --secondary: #B0B0B0;
-            --background: #0A0A0A;
-            --card-bg: #1C1C1C;
-            --text: #E0E0E0;
-            --border: rgba(255, 255, 255, 0.1);
-            --danger: #FF0000;
-            --success: #28a745;
-            --accent: #00f5ff;
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --primary-light: #818cf8;
+            --secondary: #64748b;
+            --background: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent: #06b6d4;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--background) 0%, #212121 100%);
+            background: var(--background);
             color: var(--text);
-            padding: 32px;
-            max-width: 1440px;
-            margin: auto;
             min-height: 100vh;
-            padding-top: 80px;
+            position: relative;
+            overflow-x: hidden;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 32px;
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 32px;
             font-weight: 700;
+            color: var(--neutral-50);
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h1 i {
             color: var(--primary);
-            margin-bottom: 16px;
         }
 
         .card {
             background: var(--card-bg);
-            padding: 24px;
-            border-radius: 12px;
+            padding: 32px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 4px 0 0 4px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 24px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .form-group label {
             display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label i {
+            color: var(--primary-light);
         }
 
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group select {
             width: 100%;
-            padding: 8px;
+            padding: 14px 18px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
-            border-radius: 4px;
+            border-radius: 12px;
             color: var(--text);
-            font-size: 0.875rem;
+            font-size: 15px;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group select:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
         }
 
         .form-group select {
             appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%94a3b8" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
             background-repeat: no-repeat;
-            background-position-x: 98%;
+            background-position-x: calc(100% - 15px);
             background-position-y: 50%;
+            padding-right: 40px;
         }
 
         .buttons {
             display: flex;
-            gap: 10px;
+            gap: 16px;
+            margin-top: 32px;
         }
 
         button {
-            padding: 12px 24px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 14px 28px;
+            background: var(--primary);
             border: none;
-            border-radius: 6px;
-            color: #000;
+            border-radius: 12px;
+            color: white;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 15px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 150px;
         }
 
         button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
         }
 
-        button:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
+        button[type="submit"] {
+            background: #10b981; /* Bright green color */
+            color: white;
+            font-weight: 700;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background: #059669; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        button i {
+            font-size: 16px;
         }
 
         button[type="button"] {
-            background: linear-gradient(45deg, var(--danger), #ff9999);
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        button[type="button"]:hover {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
         }
 
         .messages {
-            margin-bottom: 20px;
+            margin-bottom: 28px;
         }
 
         .messages .success {
-            color: #00ff00;
-            font-size: 0.875rem;
-            padding: 10px;
-            background: rgba(0, 255, 0, 0.1);
-            border-radius: 4px;
+            color: var(--success);
+            font-size: 15px;
+            padding: 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .messages .error {
-            color: #ff9999;
-            font-size: 0.875rem;
-            padding: 10px;
-            background: rgba(255, 0, 0, 0.1);
-            border-radius: 4px;
+            color: var(--danger);
+            font-size: 15px;
+            padding: 16px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(79, 70, 229, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .toast {
+            padding: 16px 20px;
+            background: var(--card-bg);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            max-width: 400px;
+            pointer-events: none;
+            transform: translateX(120%);
+            animation: slideIn 0.3s forwards, fadeOut 0.3s 2.7s forwards;
+        }
+
+        @keyframes slideIn {
+            to { transform: translateX(0); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; transform: translateX(120%); }
+        }
+
+        .toast-success {
+            border-left-color: var(--success);
+        }
+
+        .toast-error {
+            border-left-color: var(--danger);
+        }
+
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        .toast-success .toast-icon {
+            color: var(--success);
+        }
+
+        .toast-error .toast-icon {
+            color: var(--danger);
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            color: var(--text-secondary);
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 16px;
+            .container {
+                padding: 20px;
             }
+
+            .card {
+                padding: 24px;
+            }
+
             .buttons {
                 flex-direction: column;
+            }
+
+            button {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     {% include 'navbar.html' with company_info=company_info %}
-    <div class="card">
-        <h1>Save Carrier</h1>
 
-        <!-- Messages Block -->
-        <div class="messages">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
-                        {{ message }}
+    <div class="container">
+        <div class="card">
+            <h1><i class="fas fa-truck"></i> Save Carrier</h1>
+
+            <!-- Messages Block -->
+            <div class="messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <form method="post" id="carrierForm">
+                {% csrf_token %}
+
+                <div class="section-title">
+                    <i class="fas fa-building"></i> Company Information
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="legal_name"><i class="fas fa-building"></i> Legal Name:</label>
+                        <input type="text" id="legal_name" name="legal_name" value="{{ form_data.legal_name|default:'' }}" required>
                     </div>
-                {% endfor %}
-            {% endif %}
+                    <div class="form-group">
+                        <label for="mc_number"><i class="fas fa-hashtag"></i> MC Number:</label>
+                        <input type="text" id="mc_number" name="mc_number" value="{{ form_data.mc|default:'' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dot_number"><i class="fas fa-id-card"></i> DOT Number:</label>
+                        <input type="text" id="dot_number" name="dot_number" value="{{ form_data.dot|default:'' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ein_number"><i class="fas fa-file-invoice"></i> EIN Number:</label>
+                        <input type="text" id="ein_number" name="ein_number" value="{{ form_data.ein_number|default:'' }}">
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-address-card"></i> Contact Information
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                        <input type="email" id="email" name="email" value="{{ form_data.email|default:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Phone:</label>
+                        <input type="text" id="phone" name="phone" value="{{ form_data.phone|default:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="company_officer"><i class="fas fa-user-tie"></i> Company Officer:</label>
+                        <input type="text" id="company_officer" name="company_officer" value="{{ form_data.company_officer|default:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_person"><i class="fas fa-user"></i> Contact Person:</label>
+                        <input type="text" id="contact_person" name="contact_person" value="{{ form_data.contact_person|default:'' }}">
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-map-marker-alt"></i> Address Information
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="street"><i class="fas fa-road"></i> Street Address:</label>
+                        <input type="text" id="street" name="street" value="{{ form_data.street|default:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="city"><i class="fas fa-city"></i> City:</label>
+                        <input type="text" id="city" name="city" value="{{ form_data.city|default:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="state"><i class="fas fa-flag-usa"></i> State:</label>
+                        <input type="text" id="state" name="state" value="{{ form_data.state|default:'' }}" maxlength="2" placeholder="CA">
+                    </div>
+                    <div class="form-group">
+                        <label for="zip_code"><i class="fas fa-mail-bulk"></i> Zip Code:</label>
+                        <input type="text" id="zip_code" name="zip_code" value="{{ form_data.zip_code|default:'' }}" maxlength="10" placeholder="12345 or 12345-6789">
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-clipboard-check"></i> Status
+                </div>
+
+                <div class="form-group">
+                    <label for="status"><i class="fas fa-check-circle"></i> Carrier Status:</label>
+                    <select id="status" name="status">
+                        <option value="Active" {% if form_data.status == "Active" %}selected{% endif %}>Active</option>
+                        <option value="Inactive" {% if form_data.status == "Inactive" %}selected{% endif %}>Inactive</option>
+                        <option value="Dont Use" {% if form_data.status == "Dont Use" %}selected{% endif %}>Don't Use</option>
+                    </select>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" role="button" style="background: #10b981; color: white; font-weight: 700;">
+                        <i class="fas fa-save"></i> Save Carrier
+                    </button>
+                    <button type="button" role="button" onclick="window.location.href='{% url 'saved_carriers' %}'">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <form method="post" id="carrierForm">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="legal_name">Legal Name:</label>
-                <input type="text" id="legal_name" name="legal_name" value="{{ form_data.legal_name|default:'' }}" required>
-            </div>
-            <div class="form-group">
-                <label for="mc_number">MC Number:</label>
-                <input type="text" id="mc_number" name="mc_number" value="{{ form_data.mc|default:'' }}" required>
-            </div>
-            <div class="form-group">
-                <label for="dot_number">DOT Number:</label>
-                <input type="text" id="dot_number" name="dot_number" value="{{ form_data.dot|default:'' }}" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ form_data.email|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" value="{{ form_data.phone|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="ein_number">EIN Number:</label>
-                <input type="text" id="ein_number" name="ein_number" value="{{ form_data.ein_number|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="company_officer">Company Officer:</label>
-                <input type="text" id="company_officer" name="company_officer" value="{{ form_data.company_officer|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="street">Street Address:</label>
-                <input type="text" id="street" name="street" value="{{ form_data.street|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" value="{{ form_data.city|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="state">State:</label>
-                <input type="text" id="state" name="state" value="{{ form_data.state|default:'' }}" maxlength="2">
-            </div>
-            <div class="form-group">
-                <label for="zip_code">Zip Code:</label>
-                <input type="text" id="zip_code" name="zip_code" value="{{ form_data.zip_code|default:'' }}" maxlength="10">
-            </div>
-            <div class="form-group">
-                <label for="contact_person">Contact Person:</label>
-                <input type="text" id="contact_person" name="contact_person" value="{{ form_data.contact_person|default:'' }}">
-            </div>
-            <div class="form-group">
-                <label for="status">Status:</label>
-                <select id="status" name="status">
-                    <option value="Active" {% if form_data.status == "Active" %}selected{% endif %}>Active</option>
-                    <option value="Inactive" {% if form_data.status == "Inactive" %}selected{% endif %}>Inactive</option>
-                    <option value="Dont Use" {% if form_data.status == "Dont Use" %}selected{% endif %}>Don't Use</option>
-                </select>
-            </div>
-            <div class="buttons">
-                <button type="submit" role="button">Save Carrier</button>
-                <button type="button" role="button" onclick="window.location.href='{% url 'saved_carriers' %}'">Cancel</button>
-            </div>
-        </form>
+    <script>
+        // Loading indicator
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const carrierForm = document.getElementById('carrierForm');
 
-        <script>
-            // Split address into street, city, state, zip when form loads
-            window.onload = function() {
-                const fullAddress = "{{ form_data.address|default:'' }}";
-                const streetField = document.getElementById('street');
-                const cityField = document.getElementById('city');
-                const stateField = document.getElementById('state');
-                const zipField = document.getElementById('zip_code');
+        // Toast notification function
+        function showToast(title, message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
 
-                if (fullAddress && !streetField.value && !cityField.value && !stateField.value && !zipField.value) {
-                    // First, extract state and zip from the end
-                    const parts = fullAddress.split(' ');
-                    if (parts.length >= 3) {
-                        // Last part should be zip (5 or 9 digits)
-                        const zip = parts[parts.length - 1].trim();
-                        if (/^\d{5}(-\d{4})?$/.test(zip)) {
-                            zipField.value = zip;
+            let icon = '';
+            if (type === 'success') icon = '<i class="fas fa-check-circle toast-icon"></i>';
+            else if (type === 'error') icon = '<i class="fas fa-times-circle toast-icon"></i>';
 
-                            // Second-to-last part should be state (2 letters)
-                            const state = parts[parts.length - 2].trim();
-                            if (/^[A-Z]{2}$/.test(state)) {
-                                stateField.value = state;
+            toast.innerHTML = `
+                ${icon}
+                <div class="toast-content">
+                    <div class="toast-title">${title}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+            `;
 
-                                // Third-to-last part should be city (before state)
-                                const city = parts[parts.length - 3].trim();
-                                cityField.value = city;
+            container.appendChild(toast);
 
-                                // Everything before the city is the street
-                                const street = parts.slice(0, -3).join(' ').trim();
-                                streetField.value = street;
-                            } else {
-                                // Fallback: if state doesn't match, put everything in street
-                                streetField.value = fullAddress;
-                            }
+            // Remove the toast after animation completes
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Split address into street, city, state, zip when form loads
+        window.onload = function() {
+            const fullAddress = "{{ form_data.address|default:'' }}";
+            const streetField = document.getElementById('street');
+            const cityField = document.getElementById('city');
+            const stateField = document.getElementById('state');
+            const zipField = document.getElementById('zip_code');
+
+            if (fullAddress && !streetField.value && !cityField.value && !stateField.value && !zipField.value) {
+                // First, extract state and zip from the end
+                const parts = fullAddress.split(' ');
+                if (parts.length >= 3) {
+                    // Last part should be zip (5 or 9 digits)
+                    const zip = parts[parts.length - 1].trim();
+                    if (/^\d{5}(-\d{4})?$/.test(zip)) {
+                        zipField.value = zip;
+
+                        // Second-to-last part should be state (2 letters)
+                        const state = parts[parts.length - 2].trim();
+                        if (/^[A-Z]{2}$/.test(state)) {
+                            stateField.value = state;
+
+                            // Third-to-last part should be city (before state)
+                            const city = parts[parts.length - 3].trim();
+                            cityField.value = city;
+
+                            // Everything before the city is the street
+                            const street = parts.slice(0, -3).join(' ').trim();
+                            streetField.value = street;
                         } else {
-                            // Fallback: if zip doesn't match, put everything in street
+                            // Fallback: if state doesn't match, put everything in street
                             streetField.value = fullAddress;
                         }
                     } else {
-                        // Fallback: if not enough parts, put everything in street
+                        // Fallback: if zip doesn't match, put everything in street
                         streetField.value = fullAddress;
                     }
+                } else {
+                    // Fallback: if not enough parts, put everything in street
+                    streetField.value = fullAddress;
                 }
-            };
+            }
 
-            document.getElementById('carrierForm').addEventListener('submit', function(e) {
+            // Show success message as toast if present
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                    showToast('Success', '{{ message }}', 'success');
+                    {% else %}
+                    showToast('Error', '{{ message }}', 'error');
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        };
+
+        if (carrierForm) {
+            carrierForm.addEventListener('submit', function(e) {
                 const dotNumber = document.getElementById('dot_number').value.trim();
                 const mcNumber = document.getElementById('mc_number').value.trim();
                 const legalName = document.getElementById('legal_name').value.trim();
                 const state = document.getElementById('state').value.trim();
                 const zipCode = document.getElementById('zip_code').value.trim();
+                let isValid = true;
+                let hasShownError = false;
 
-                if (!legalName) {
+                // Only validate if fields are empty
+                if (legalName === '') {
                     e.preventDefault();
-                    alert('Legal Name is required.');
+                    showToast('Validation Error', 'Legal Name is required.', 'error');
+                    isValid = false;
+                    hasShownError = true;
                 }
-                if (!mcNumber) {
+                if (mcNumber === '') {
                     e.preventDefault();
-                    alert('MC Number is required.');
+                    if (!hasShownError) {
+                        showToast('Validation Error', 'MC Number is required.', 'error');
+                        hasShownError = true;
+                    }
+                    isValid = false;
                 }
-                if (!dotNumber) {
+                if (dotNumber === '') {
                     e.preventDefault();
-                    alert('DOT Number is required.');
+                    if (!hasShownError) {
+                        showToast('Validation Error', 'DOT Number is required.', 'error');
+                        hasShownError = true;
+                    }
+                    isValid = false;
                 }
-                if (state && !/^[A-Z]{2}$/.test(state)) {
+
+                // Only validate format if fields are not empty
+                if (state !== '' && !/^[A-Z]{2}$/.test(state)) {
                     e.preventDefault();
-                    alert('State must be a 2-letter code (e.g., CA, NY).');
+                    if (!hasShownError) {
+                        showToast('Validation Error', 'State must be a 2-letter code (e.g., CA, NY).', 'error');
+                        hasShownError = true;
+                    }
+                    isValid = false;
                 }
-                if (zipCode && !/^\d{5}(-\d{4})?$/.test(zipCode)) {
+                if (zipCode !== '' && !/^\d{5}(-\d{4})?$/.test(zipCode)) {
                     e.preventDefault();
-                    alert('Zip Code must be 5 digits or 5+4 format (e.g., 12345 or 12345-6789).');
+                    if (!hasShownError) {
+                        showToast('Validation Error', 'Zip Code must be 5 digits or 5+4 format (e.g., 12345 or 12345-6789).', 'error');
+                        hasShownError = true;
+                    }
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    loadingOverlay.classList.add('active');
                 }
             });
-        </script>
-    </div>
+        }
+    </script>
 </body>
 </html>
