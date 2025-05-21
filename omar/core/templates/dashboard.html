@@ -1,4 +1,127 @@
-<!DOCTYPE html>
+<script>
+        // Show loading overlay when form is submitted
+        document.addEventListener('DOMContentLoaded', function() {
+            const lookupForm = document.getElementById('lookupForm');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            if (lookupForm) {
+                lookupForm.addEventListener('submit', function() {
+                    loadingOverlay.classList.add('active');
+                });
+            }
+
+            // Rating color highlighting
+            paint('driverRate');
+            paint('vehicleRate');
+            highlightCrashes();
+
+            // If there was a result, show a toast notification
+            {% if result %}
+                showToast('Carrier Found', 'Successfully retrieved carrier information', 'success');
+            {% endif %}
+
+            // Add event listener for save button
+            const saveBtn = document.getElementById('saveCarrierBtn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function() {
+                    showToast('Carrier Saved', 'Carrier saved successfully', 'success');
+                });
+            }
+        });
+
+        function paint(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            // Clear any existing content
+            el.innerHTML = '';
+
+            const text = id === 'driverRate' || id === 'vehicleRate' ? parseFloat(el.getAttribute('data-value')).toFixed(2) + '%' : el.getAttribute('data-value');
+            if (text === "N/A") return;
+
+            const val = parseFloat(text.replace('%', ''));
+            if (!isNaN(val)) {
+                // Create value display element
+                const valueEl = document.createElement('span');
+                valueEl.textContent = text;
+
+                // Style based on threshold
+                if (val > 50) {
+                    el.classList.add('bad');
+                    valueEl.classList.add('highlight-critical');
+                } else {
+                    el.classList.add('good');
+                    valueEl.classList.add('value-highlight');
+                }
+
+                // Add the value element first
+                el.appendChild(valueEl);
+
+                // Add tooltip if needed
+                if (id === 'driverRate' || id === 'vehicleRate') {
+                    const tooltipEl = document.createElement('span');
+                    tooltipEl.className = 'tooltip-text';
+                    tooltipEl.textContent = id === 'driverRate' ?
+                        'Driver Out of Service Rate' :
+                        'Vehicle Out of Service Rate';
+                    el.appendChild(tooltipEl);
+                }
+            }
+        }
+
+        // Highlight crash count if above zero
+        function highlightCrashes() {
+            const el = document.getElementById('totalCrashes');
+            if (!el) return;
+            const text = el.textContent.trim();
+            if (text === "N/A" || text === "0") return;
+
+            const val = parseInt(text);
+            if (!isNaN(val) && val > 0) {
+                el.classList.add('warning');
+            }
+        }
+
+        function copyEmail(email) {
+            if (email && email !== "N/A") {
+                navigator.clipboard.writeText(email).then(() => {
+                    showToast('Email Copied', 'Email has been copied to clipboard', 'success');
+                }).catch(err => {
+                    console.error("Failed to copy email:", err);
+                    showToast('Copy Failed', 'Failed to copy email to clipboard', 'error');
+                });
+            }
+        }
+
+        // Toast notification function
+        function showToast(title, message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+
+            let icon = '';
+            if (type === 'success') icon = '<i class="fas fa-check-circle toast-icon"></i>';
+            else if (type === 'warning') icon = '<i class="fas fa-exclamation-triangle toast-icon"></i>';
+            else if (type === 'error') icon = '<i class="fas fa-times-circle toast-icon"></i>';
+
+            toast.innerHTML = `
+                ${icon}
+                <div class="toast-content">
+                    <div class="toast-title">${title}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+            `;
+
+            container.appendChild(toast);
+
+            // Remove the toast after animation completes
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
 <html>
 <head>
     <title>Carrier Dashboard</title>
@@ -15,6 +138,7 @@
             --text: #f1f5f9;
             --text-secondary: #94a3b8;
             --success: #10b981;
+            --success-dark: #047857;
             --danger: #ef4444;
             --warning: #f59e0b;
             --border: rgba(148, 163, 184, 0.2);
@@ -188,6 +312,29 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+        }
+
+        /* Green Lookup Button */
+        .lookup-button {
+            padding: 14px 26px;
+            background: var(--success);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .lookup-button:hover {
+            background: var(--success-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
         button:hover {
@@ -571,48 +718,6 @@
             color: var(--primary);
         }
 
-        .monitored-carrier-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 14px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .monitored-carrier-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .carrier-name {
-            font-weight: 600;
-            color: white;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .carrier-name i {
-            color: var(--primary);
-        }
-
-        .carrier-meta {
-            font-size: 13px;
-            color: var(--text-secondary);
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .carrier-meta div {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
         /* Card types with colored borders */
         .card-primary::before {
             background: linear-gradient(to bottom, var(--primary), var(--primary-light));
@@ -897,27 +1002,11 @@
                             <label for="dot"><i class="fas fa-id-card"></i> DOT Number:</label>
                             <input type="text" name="dot" id="dot" value="{{ request.POST.dot|default_if_none:'' }}" placeholder="Enter DOT number...">
                         </div>
-                        <button type="submit" name="lookup" id="lookupButton">
+                        <button type="submit" name="lookup" id="lookupButton" class="lookup-button">
                             <i class="fas fa-search"></i> Lookup Carrier
                         </button>
                     </form>
                 </div>
-
-                {% if request.user.userprofile.is_superuser_profile and monitored_carriers %}
-                <div class="card card-success fade-in">
-                    <h2><i class="fas fa-star"></i> Monitored Carriers</h2>
-                    {% for carrier in monitored_carriers %}
-                        <div class="monitored-carrier-item">
-                            <div class="carrier-name"><i class="fas fa-truck-moving"></i> {{ carrier.legal_name }}</div>
-                            <div class="carrier-meta">
-                                <div><i class="fas fa-id-card"></i> DOT: {{ carrier.dot_number }}</div>
-                                <div><i class="fas fa-user"></i> Added by: {{ carrier.created_by.username }}</div>
-                                <div><i class="fas fa-calendar-alt"></i> {{ carrier.saved_at }}</div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
             </div>
 
             {% if result %}
@@ -1151,128 +1240,3 @@
             {% endif %}
         </div>
     </div>
-
-    <script>
-        // Show loading overlay when form is submitted
-        document.addEventListener('DOMContentLoaded', function() {
-            const lookupForm = document.getElementById('lookupForm');
-            const loadingOverlay = document.getElementById('loadingOverlay');
-
-            if (lookupForm) {
-                lookupForm.addEventListener('submit', function() {
-                    loadingOverlay.classList.add('active');
-                });
-            }
-
-            // Rating color highlighting
-            paint('driverRate');
-            paint('vehicleRate');
-            highlightCrashes();
-
-            // If there was a result, show a toast notification
-            {% if result %}
-                showToast('Carrier Found', 'Successfully retrieved carrier information', 'success');
-            {% endif %}
-
-            // Add event listener for save button
-            const saveBtn = document.getElementById('saveCarrierBtn');
-            if (saveBtn) {
-                saveBtn.addEventListener('click', function() {
-                    showToast('Carrier Saved', 'This carrier has been added to your monitored carriers', 'success');
-                });
-            }
-        });
-
-        function paint(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-
-            // Clear any existing content
-            el.innerHTML = '';
-
-            const text = id === 'driverRate' || id === 'vehicleRate' ? parseFloat(el.getAttribute('data-value')).toFixed(2) + '%' : el.getAttribute('data-value');
-            if (text === "N/A") return;
-
-            const val = parseFloat(text.replace('%', ''));
-            if (!isNaN(val)) {
-                // Create value display element
-                const valueEl = document.createElement('span');
-                valueEl.textContent = text;
-
-                // Style based on threshold
-                if (val > 50) {
-                    el.classList.add('bad');
-                    valueEl.classList.add('highlight-critical');
-                } else {
-                    el.classList.add('good');
-                    valueEl.classList.add('value-highlight');
-                }
-
-                // Add the value element first
-                el.appendChild(valueEl);
-
-                // Add tooltip if needed
-                if (id === 'driverRate' || id === 'vehicleRate') {
-                    const tooltipEl = document.createElement('span');
-                    tooltipEl.className = 'tooltip-text';
-                    tooltipEl.textContent = id === 'driverRate' ?
-                        'Driver Out of Service Rate' :
-                        'Vehicle Out of Service Rate';
-                    el.appendChild(tooltipEl);
-                }
-            }
-        }
-
-        // Highlight crash count if above zero
-        function highlightCrashes() {
-            const el = document.getElementById('totalCrashes');
-            if (!el) return;
-            const text = el.textContent.trim();
-            if (text === "N/A" || text === "0") return;
-
-            const val = parseInt(text);
-            if (!isNaN(val) && val > 0) {
-                el.classList.add('warning');
-            }
-        }
-
-        function copyEmail(email) {
-            if (email && email !== "N/A") {
-                navigator.clipboard.writeText(email).then(() => {
-                    showToast('Email Copied', 'Email has been copied to clipboard', 'success');
-                }).catch(err => {
-                    console.error("Failed to copy email:", err);
-                    showToast('Copy Failed', 'Failed to copy email to clipboard', 'error');
-                });
-            }
-        }
-
-        // Toast notification function
-        function showToast(title, message, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-
-            let icon = '';
-            if (type === 'success') icon = '<i class="fas fa-check-circle toast-icon"></i>';
-            else if (type === 'warning') icon = '<i class="fas fa-exclamation-triangle toast-icon"></i>';
-            else if (type === 'error') icon = '<i class="fas fa-times-circle toast-icon"></i>';
-
-            toast.innerHTML = `
-                ${icon}
-                <div class="toast-content">
-                    <div class="toast-title">${title}</div>
-                    <div class="toast-message">${message}</div>
-                </div>
-            `;
-
-            container.appendChild(toast);
-
-            // Remove the toast after animation completes
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }
-    </script>
-</body>
-</html>
